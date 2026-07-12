@@ -40,10 +40,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -61,10 +57,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -81,10 +73,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 150M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -114,10 +102,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 800M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -147,10 +131,6 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
-    deploy:
-      resources:
-        limits:
-          memory: 700M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -173,10 +153,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 150M
     networks:
     - elearning-network
 
@@ -198,10 +174,6 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
-    deploy:
-      resources:
-        limits:
-          memory: 1000M
     networks:
     - elearning-network
 
@@ -228,10 +200,6 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -247,10 +215,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -266,10 +230,6 @@ services:
         condition: service_healthy
       postgres-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -287,10 +247,6 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -308,10 +264,6 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -328,10 +280,6 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -346,10 +294,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -365,10 +309,6 @@ services:
         condition: service_healthy
       postgres-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -383,10 +323,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 400M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -401,10 +337,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 700M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -418,10 +350,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 500M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -435,10 +363,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 400M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -455,10 +379,6 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 1000M
     networks:
     - elearning-network
     restart: unless-stopped
@@ -468,10 +388,6 @@ services:
     container_name: stt-service
     environment:
       <<: *common-env
-    deploy:
-      resources:
-        limits:
-          memory: 1G
     networks:
     - elearning-network
     restart: unless-stopped
@@ -481,10 +397,6 @@ services:
     container_name: pdf-parser-service
     environment:
       <<: *common-env
-    deploy:
-      resources:
-        limits:
-          memory: 1G
     networks:
     - elearning-network
     restart: unless-stopped
