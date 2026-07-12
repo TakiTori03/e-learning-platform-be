@@ -13,7 +13,7 @@ spring:
     name: search-service
 
   elasticsearch:
-    uris: ${ELASTICSEARCH_URI:http://localhost:9200}
+    uris: ${ELASTICSEARCH_URI:http://elasticsearch:9200}
     connection-timeout: 15s
     socket-timeout: 15s
 
@@ -21,7 +21,7 @@ spring:
 
   # Kafka Configuration
   kafka:
-    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    bootstrap-servers: ${KAFKA_SERVER:kafka:29092}
     consumer:
       group-id: search-service-group
       auto-offset-reset: earliest
@@ -36,7 +36,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://discovery-service:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
 

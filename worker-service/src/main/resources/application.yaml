@@ -8,7 +8,7 @@ spring:
 
   # Kafka Configuration
   kafka:
-    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    bootstrap-servers: ${KAFKA_SERVER:kafka:29092}
     consumer:
       group-id: worker-group
       auto-offset-reset: earliest
@@ -21,7 +21,7 @@ spring:
   # Redis for Media Processing Status Coordination
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
+      host: ${REDIS_HOST:redis}
       port: ${REDIS_PORT:6379}
 
 eureka:
@@ -30,12 +30,12 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://discovery-service:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
 
 app:
-  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  frontend-url: ${FRONTEND_URL:https://e-learning-platform-web.vercel.app}
   storage:
     local-path: ${STORAGE_LOCAL_PATH:./uploads}
   ffmpeg:
@@ -43,16 +43,12 @@ app:
   ffprobe:
     path: ${FFPROBE_PATH:ffprobe}
   minio:
-    endpoint: ${MINIO_ENDPOINT:http://localhost:9100}
+    endpoint: ${MINIO_ENDPOINT:https://api.hust-elearning.online}
     access-key: ${MINIO_ACCESS_KEY:minioadmin}
     secret-key: ${MINIO_SECRET_KEY:minioadmin}
     bucket-name: ${MINIO_BUCKET:elearning-media}
     region: ${MINIO_REGION:us-east-1}
-  whisper:
-    enabled: ${WHISPER_ENABLED:true}
-    path: ${WHISPER_PATH:bin/whisper-cli.exe}
-    model-path: ${WHISPER_MODEL_PATH:models/whisper/ggml-base.bin}
-    language: ${WHISPER_LANGUAGE:auto}
+
 
 logging:
   level:

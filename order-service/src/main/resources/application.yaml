@@ -10,7 +10,7 @@ spring:
 
   # Database Configuration
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:order_db}
+    url: jdbc:postgresql://${DB_HOST:postgres-db}:${DB_PORT:5432}/${DB_NAME:order_db}
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:}
     driver-class-name: org.postgresql.Driver
@@ -38,12 +38,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
-          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:8443/realms/elearning-realm/protocol/openid-connect/certs}
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:https://auth.hust-elearning.online/realms/elearning-realm}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs}
 
   # Kafka Configuration
   kafka:
-    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    bootstrap-servers: ${KAFKA_SERVER:kafka:29092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -66,7 +66,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://discovery-service:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
 
@@ -82,5 +82,4 @@ payment:
     tmn-code: ${VNPAY_TMN_CODE:DSN2ECPX}
     hash-secret: ${VNPAY_HASH_SECRET:A0M6XA158VQMXQJ7TMB96L6MB6DHO1JA}
     url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-    return-url: ${VNPAY_RETURN_URL:http://localhost:3000/order/vnpay-return}
-
+    return-url: ${VNPAY_RETURN_URL:https://e-learning-platform-web.vercel.app/order/vnpay-return}

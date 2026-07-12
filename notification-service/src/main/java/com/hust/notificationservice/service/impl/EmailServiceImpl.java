@@ -30,6 +30,9 @@ public class EmailServiceImpl implements EmailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
+    @Value("${app.backend-url:https://api.hust-elearning.online}")
+    private String backendUrl;
+
     @Override
     @Async
     public void sendHtmlEmail(String to, String subject, String templateName, Object templateModel) {
@@ -95,7 +98,7 @@ public class EmailServiceImpl implements EmailService {
                 Context context = new Context();
                 context.setVariables(baseModel);
                 // Add recipient-specific variables
-                context.setVariable("unsubscribeUrl", "http://localhost:8080/notification/subscriptions/" + to);
+                context.setVariable("unsubscribeUrl", backendUrl + "/notification/subscriptions/" + to);
 
                 String htmlContent = templateEngine.process(templateName, context);
 

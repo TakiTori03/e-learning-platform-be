@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -28,6 +29,9 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private final OAuth2AuthorizedClientService authorizedClientService;
     private final UserRepository userRepository;
+
+    @Value("${app.frontend-url:https://e-learning-platform-web.vercel.app}")
+    private String frontendUrl;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -68,7 +72,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         log.info("User {} logged in successfully via OAuth2. Redirecting to Frontend...", oidcUser.getEmail());
 
         // Redirect về Frontend sau khi xử lý xong
-        response.sendRedirect(AppConstants.FRONTEND_HOST + "/auth-callback");
+        response.sendRedirect(frontendUrl + "/auth-callback");
     }
 
     private void syncUserToDatabase(OidcUser oidcUser) {

@@ -37,7 +37,7 @@ public class BaseRedisConfig {
     @Value("${spring.application.name:common}")
     private String applicationName;
 
-    @Value("${spring.data.redis.host:localhost}")
+    @Value("${spring.data.redis.host:redis}")
     private String redisHost;
 
     @Value("${spring.data.redis.port:6379}")

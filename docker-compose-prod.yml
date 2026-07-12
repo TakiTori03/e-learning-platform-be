@@ -14,11 +14,15 @@ x-common-env: &common-env
   REDIS_HOST: redis
   SPRING_DATA_REDIS_HOST: redis
   SPRING_DATA_REDIS_PORT: 6379
-  MINIO_ENDPOINT: http://minio:9000
+  MINIO_ENDPOINT: https://api.hust-elearning.online
   ELASTICSEARCH_URI: http://elasticsearch:9200
   KAFKA_SERVER: kafka:29092
   KEYCLOAK_ISSUER_URI: https://auth.hust-elearning.online/realms/elearning-realm
   KEYCLOAK_JWKS_URI: http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs
+  KEYCLOAK_AUTH_URL: http://keycloak:8080
+  FRONTEND_URL: https://e-learning-platform-web.vercel.app
+  VNPAY_RETURN_URL: https://e-learning-platform-web.vercel.app/order/vnpay-return
+  BACKEND_URL: https://api.hust-elearning.online
 
 services:
   # ==========================================
@@ -120,6 +124,9 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HOSTNAME_STRICT: 'false'
+      KC_PROXY_HEADERS: xforwarded
+      KC_HOSTNAME_URL: https://auth.hust-elearning.online
+      KC_HOSTNAME_ADMIN_URL: https://auth.hust-elearning.online
       JAVA_OPTS_APPEND: -Xmx512m
     ports:
     - 8443:8080
@@ -214,6 +221,7 @@ services:
     environment:
       <<: *common-env
       JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+      CORS_ALLOWED_ORIGINS: "https://e-learning-platform-web.vercel.app"
     depends_on:
       discovery-service:
         condition: service_healthy

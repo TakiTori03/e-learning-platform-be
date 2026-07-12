@@ -10,10 +10,10 @@ spring:
 
   data:
     mongodb:
-      uri: ${MONGODB_URI:mongodb://localhost:27017/course_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000}
+      uri: ${MONGODB_URI:mongodb://mongodb:27017/course_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000}
       auto-index-creation: true
     redis:
-      host: ${REDIS_HOST:localhost}
+      host: ${REDIS_HOST:redis}
       port: ${REDIS_PORT:6379}
       lettuce:
         pool:
@@ -26,12 +26,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
-          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:8443/realms/elearning-realm/protocol/openid-connect/certs}
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:https://auth.hust-elearning.online/realms/elearning-realm}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs}
 
   # Kafka Configuration
   kafka:
-    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    bootstrap-servers: ${KAFKA_SERVER:kafka:29092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -52,7 +52,7 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://discovery-service:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
 
@@ -71,5 +71,3 @@ grpc:
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
-
-

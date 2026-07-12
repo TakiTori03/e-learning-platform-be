@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +26,9 @@ public class NewsletterScheduler {
     private final SubscriptionRepository subscriptionRepository;
     private final EmailService emailService;
     private final CourseClient courseClient;
+
+    @Value("${app.frontend-url:https://e-learning-platform-web.vercel.app}")
+    private String frontendUrl;
 
     // Cron job running at 8 AM on the 1st day of every month
     @Scheduled(cron = "0 0 8 1 * *")
@@ -66,7 +70,7 @@ public class NewsletterScheduler {
             courseData.put("thumbnail", course.getThumbnail());
             courseData.put("priceFormatted", priceFormatter.format(course.getPrice() != null ? course.getPrice() : 0) + " đ");
             courseData.put("finalPriceFormatted", priceFormatter.format(course.getFinalPrice() != null ? course.getFinalPrice() : 0) + " đ");
-            courseData.put("url", "http://localhost:3000/courses/" + course.getId());
+            courseData.put("url", frontendUrl + "/courses/" + course.getId());
             courseDataList.add(courseData);
         }
 
