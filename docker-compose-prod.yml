@@ -14,7 +14,7 @@ x-common-env: &common-env
   REDIS_HOST: redis
   SPRING_DATA_REDIS_HOST: redis
   SPRING_DATA_REDIS_PORT: 6379
-  MINIO_ENDPOINT: https://api.hust-elearning.online
+  MINIO_ENDPOINT: https://storage.hust-elearning.online
   ELASTICSEARCH_URI: http://elasticsearch:9200
   KAFKA_SERVER: kafka:29092
   KEYCLOAK_ISSUER_URI: https://auth.hust-elearning.online/realms/elearning-realm
