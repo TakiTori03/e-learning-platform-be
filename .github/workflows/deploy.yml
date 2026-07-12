@@ -71,11 +71,11 @@ jobs:
             echo "TAVILY_API_KEY=${{ secrets.TAVILY_API_KEY }}" >> .env
             
             # Khởi động tầng Hạ tầng (Database, Kafka, ...)
-            docker-compose -f docker-compose-prod.yml up -d postgres-db mongo-db redis kafka keycloak elasticsearch minio
+            docker compose -f docker-compose-prod.yml up -d postgres-db mongo-db redis kafka keycloak elasticsearch minio
             
             echo "Đợi 15 giây cho hạ tầng khởi động..."
             sleep 15
             
             # Khởi động toàn bộ Microservices
-            docker-compose -f docker-compose-prod.yml pull
-            docker-compose -f docker-compose-prod.yml up -d
+            docker compose -f docker-compose-prod.yml pull
+            docker compose -f docker-compose-prod.yml up -d
