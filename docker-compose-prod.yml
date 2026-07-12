@@ -24,7 +24,7 @@ services:
   # Đã có Persistent Volumes và Healthchecks
   # ==========================================
   postgres-db:
-    image: postgres:15-alpine
+    image: pgvector/pgvector:pg15
     container_name: elearning-postgres
     environment:
       POSTGRES_USER: postgres
@@ -280,10 +280,12 @@ services:
     environment:
       <<: *common-env
       JAVA_TOOL_OPTIONS: -Xmx512m -XX:TieredStopAtLevel=1
+      SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017/course_db
+      MONGODB_URI: mongodb://mongo-db:27017/course_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
     depends_on:
       discovery-service:
         condition: service_healthy
-      postgres-db:
+      mongo-db:
         condition: service_healthy
     deploy:
       resources:
