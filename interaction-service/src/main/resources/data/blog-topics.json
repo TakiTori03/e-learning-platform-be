@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Web Development",
+    "slug": "web-development",
+    "description": "Chia sẻ kiến thức về HTML, CSS, JavaScript, React, Spring Boot, Node.js.",
+    "icon": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Mobile App Development",
+    "slug": "mobile-app",
+    "description": "Lập trình ứng dụng di động Flutter, React Native, iOS, Android.",
+    "icon": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Data Science & AI",
+    "slug": "data-science-ai",
+    "description": "Kiến thức về Machine Learning, Deep Learning, Python và Big Data.",
+    "icon": "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Software Engineering",
+    "slug": "software-engineering",
+    "description": "Nguyên lý thiết kế hệ thống, Clean Code, Design Patterns.",
+    "icon": "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Design & UI/UX",
+    "slug": "design-ui-ux",
+    "description": "Quy trình thiết kế giao diện, trải nghiệm người dùng với Figma.",
+    "icon": "https://images.unsplash.com/photo-1561070791-26c113006238?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Cloud & DevOps",
+    "slug": "cloud-devops",
+    "description": "Kiến thức về AWS, Docker, Kubernetes, CI/CD và hạ tầng đám mây.",
+    "icon": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Cyber Security",
+    "slug": "cyber-security",
+    "description": "An toàn thông tin, bảo mật hệ thống, mật mã học và kiểm thử xâm nhập.",
+    "icon": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Database Systems",
+    "slug": "database-systems",
+    "description": "Quản trị và tối ưu cơ sở dữ liệu quan hệ (SQL) và phi quan hệ (NoSQL).",
+    "icon": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Blockchain & Web3",
+    "slug": "blockchain-web3",
+    "description": "Tìm hiểu công nghệ chuỗi khối, Smart Contract và lập trình dApps.",
+    "icon": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=120&h=120&fit=crop&q=80"
+  },
+  {
+    "name": "Personal Development",
+    "slug": "personal-development",
+    "description": "Phát triển bản thân, phương pháp tự học và rèn luyện kỹ năng mềm.",
+    "icon": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=120&h=120&fit=crop&q=80"
+  }
+]

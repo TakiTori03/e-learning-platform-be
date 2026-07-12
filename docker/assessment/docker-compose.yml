@@ -1,0 +1,23 @@
+services:
+  elearning-assessment-db:
+    image: mongo:latest
+    container_name: elearning-assessment-db
+    environment:
+      MONGO_INITDB_DATABASE: assessment_db
+    ports:
+      - "27021:27017" # Sử dụng 27021 để không trùng với các service khác
+    volumes:
+      - assessment_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  assessment_mongo_data:
+
+networks:
+  default:
+    name: elearning-network
+    external: true

@@ -1,0 +1,87 @@
+server:
+  port: 9000
+  forward-headers-strategy: framework
+
+spring:
+  config:
+    import: optional:classpath:common-observability.yml
+  application:
+    name: identity-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:identity_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: ${HIKARI_MAX_POOL_SIZE:25}
+      minimum-idle: ${HIKARI_MIN_IDLE:5}
+      idle-timeout: 300000              # 5 minutes
+      connection-timeout: 20000         # 20 seconds
+      max-lifetime: 1200000             # 20 minutes
+      leak-detection-threshold: 5000    # 5 seconds
+      pool-name: HikariPool-IdentityService
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      lettuce:
+        pool:
+          max-active: 100
+          max-idle: 10
+          min-idle: 5
+      timeout: 1000ms
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: ${KEYCLOAK_CLIENT_ID:elearning-client}
+            client-secret: ${KEYCLOAK_CLIENT_SECRET:Q00zTTG1USNRQqniiMfhFaplnxNRehjj}
+            scope: openid, profile, email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+        provider:
+          keycloak:
+            issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
+            user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:8443/realms/elearning-realm/protocol/openid-connect/certs}
+
+  keycloak:
+    auth-server-url: ${KEYCLOAK_AUTH_URL:http://localhost:8443}
+    realm: ${KEYCLOAK_REALM:elearning-realm}
+    client-id: ${KEYCLOAK_CLIENT_ID:elearning-client}
+    client-secret: ${KEYCLOAK_CLIENT_SECRET:Q00zTTG1USNRQqniiMfhFaplnxNRehjj}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+    org.hibernate.SQL: DEBUG
+    com.hust.identityservice: DEBUG

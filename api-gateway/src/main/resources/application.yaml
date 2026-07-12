@@ -1,0 +1,119 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: identity-service-auth
+          uri: lb://identity-service
+          predicates:
+            - Path=/oauth2/**, /login/**
+
+        - id: identity-service-api
+          uri: lb://identity-service
+          predicates:
+            - Path=/identity/**
+          filters:
+            - StripPrefix=1
+
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+          filters:
+            - StripPrefix=1
+
+        - id: interaction-service
+          uri: lb://interaction-service
+          predicates:
+            - Path=/interaction/**
+          filters:
+            - StripPrefix=1
+
+        - id: learning-service
+          uri: lb://learning-service
+          predicates:
+            - Path=/learning/**
+          filters:
+            - StripPrefix=1
+
+        - id: media-service
+          uri: lb://media-service
+          predicates:
+            - Path=/media/**
+          filters:
+            - StripPrefix=1
+
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+
+        - id: ai-service
+          uri: lb://ai-service
+          predicates:
+            - Path=/ai/**
+          filters:
+            - StripPrefix=1
+
+        - id: assessment-service
+          uri: lb://assessment-service
+          predicates:
+            - Path=/assessment/**
+          filters:
+            - StripPrefix=1
+
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification/**
+          filters:
+            - StripPrefix=1
+
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            allowCredentials: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  file:
+    name: logs/api-gateway.log
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: INFO
+    com.hust.apigateway: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}

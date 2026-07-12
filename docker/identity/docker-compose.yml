@@ -1,0 +1,47 @@
+
+services:
+  elearning-identity-db:
+    image: postgres:15-alpine
+    container_name: elearning-identity-db
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - identity_pg_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  elearning-keycloak:
+    image: quay.io/keycloak/keycloak:24.0.2
+    container_name: elearning-keycloak
+    command: start-dev --import-realm
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://elearning-identity-db:5432/keycloak
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HOSTNAME_STRICT: "false"
+      KC_HTTP_ENABLED: "true"
+    ports:
+      - "8443:8080"
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+    depends_on:
+      elearning-identity-db:
+        condition: service_healthy
+
+
+volumes:
+  identity_pg_data:
+
+networks:
+  default:
+    name: elearning-network
+    external: true

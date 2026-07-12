@@ -1,0 +1,73 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+.logs
+
+### E-Learning Platform Custom Ignores ###
+# Ignore local file uploads (HLS segments, temporary files, raw videos)
+uploads/
+**/uploads/
+
+# Ignore log files
+logs/
+**/logs/
+*.log
+
+# Ignore large Whisper & CUDA binaries and models (exceeding 100MB GitHub limit)
+**/bin/
+**/models/
+
+### Node.js BFF (aggregator-service) ###
+/aggregator-service/node_modules/
+/aggregator-service/dist/
+/aggregator-service/npm-debug.log*
+/aggregator-service/yarn-debug.log*
+/aggregator-service/yarn-error.log*
+/aggregator-service/.env
+/aggregator-service/.env.*
+
+### Python AI Parser (pdf-parser-service) ###
+/pdf-parser-service/__pycache__/
+/pdf-parser-service/*.py[cod]
+/pdf-parser-service/venv/
+/pdf-parser-service/.venv/
+/pdf-parser-service/env/
+/pdf-parser-service/.pytest_cache/
+/pdf-parser-service/.env
+/pdf-parser-service/.env.*
+
+### OS & System Files ###
+.DS_Store
+Thumbs.db
+
+

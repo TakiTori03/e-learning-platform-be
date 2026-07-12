@@ -1,0 +1,150 @@
+server:
+  port: 9008
+  compression:
+    enabled: true
+    mime-types: application/json,text/css,application/javascript,text/html
+    min-response-size: 1024
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: ai-service
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:8443/realms/elearning-realm/protocol/openid-connect/certs}
+
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:ai_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: ${DB_MAX_POOL_SIZE:20}
+      minimum-idle: ${DB_MIN_IDLE:5}
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  # Redis Configuration
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: ${FORMAT_SQL:false}
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Database Migrations Configuration
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+
+  # Kafka Configuration
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    listener:
+      type: batch
+      concurrency: ${KAFKA_CONCURRENCY:3}
+    consumer:
+      group-id: ${KAFKA_CONSUMER_GROUP_ID:ai-group}
+      auto-offset-reset: earliest
+      max-poll-records: ${KAFKA_MAX_POLL_RECORDS:100}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      attempts: ${KAFKA_CONSUMER_ATTEMPTS:4}
+      backoff-delay: ${KAFKA_CONSUMER_BACKOFF_DELAY:5000}
+      backoff-multiplier: ${KAFKA_CONSUMER_BACKOFF_MULTIPLIER:2.0}
+      properties:
+        spring.json.trusted.packages: "com.hust.commonlibrary.event"
+    topic:
+      raw-text-ingested: ${KAFKA_TOPIC_RAW_TEXT_INGESTED:raw-text-ingested-topic}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    root: INFO
+    com.hust.aiservice: ${LOG_LEVEL:INFO}
+    org.springframework.security: INFO
+
+# Gemini AI Configuration
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+  embedding-model: gemini-embedding-001
+  chat-model: gemini-3.1-flash-lite
+  pro-model: gemini-2.5-flash
+  base-url: ${GEMINI_BASE_URL:https://generativelanguage.googleapis.com}
+  max-attempts: ${GEMINI_MAX_ATTEMPTS:3}
+  backoff-delay-ms: ${GEMINI_BACKOFF_DELAY_MS:1000}
+  embedding-dimensions: ${GEMINI_EMBEDDING_DIMENSIONS:768}
+  temperature: ${GEMINI_TEMPERATURE:0.2}
+  connect-timeout-ms: ${GEMINI_CONNECT_TIMEOUT_MS:15000}
+  read-timeout-ms: ${GEMINI_READ_TIMEOUT_MS:60000}
+
+# Cohere Rerank Configuration
+cohere:
+  rerank:
+    enabled: ${COHERE_RERANK_ENABLED:true}
+    api-key: ${COHERE_API_KEY:}
+    url: https://api.cohere.com/v1/rerank
+    model: rerank-multilingual-v3.0
+    connect-timeout-ms: ${COHERE_RERANK_CONNECT_TIMEOUT_MS:10000}
+    read-timeout-ms: ${COHERE_RERANK_READ_TIMEOUT_MS:20000}
+
+# RAG Configuration
+rag:
+  search-limit: ${RAG_SEARCH_LIMIT:24}
+  top-k-context: ${RAG_TOP_K_CONTEXT:12}
+  rrf-k: ${RAG_RRF_K:60.0}
+  rerank-top-k: ${RAG_RERANK_TOP_K:3}
+  context-window-size: ${RAG_CONTEXT_WINDOW_SIZE:1}
+  max-history-pairs: ${RAG_MAX_HISTORY_PAIRS:3}
+  fallback-answer: ${RAG_FALLBACK_ANSWER:Xin lỗi, tôi chưa tìm thấy tài liệu học tập nào liên quan đến câu hỏi này trong hệ thống.}
+  redis-exact-prefix: ${RAG_REDIS_EXACT_PREFIX:cache:exact:}
+  cache-ttl-hours: ${RAG_CACHE_TTL_HOURS:24}
+  semantic-cache-threshold: ${RAG_SEMANTIC_CACHE_THRESHOLD:0.05}
+
+# ═══════════════════════════════════════════════════════════
+# Agentic RAG Bot Configuration
+# ═══════════════════════════════════════════════════════════
+
+# Agent System Configuration
+agent:
+  evaluator:
+    pass-threshold: ${AGENT_EVAL_PASS_THRESHOLD:0.7}
+    max-retries: ${AGENT_EVAL_MAX_RETRIES:1}
+
+# Tavily Web Search Configuration (Corrective RAG Fallback)
+tavily:
+  enabled: ${TAVILY_ENABLED:true}
+  api-key: ${TAVILY_API_KEY:}
+  base-url: ${TAVILY_BASE_URL:https://api.tavily.com}
+  max-results: ${TAVILY_MAX_RESULTS:3}
+  search-depth: ${TAVILY_SEARCH_DEPTH:advanced}
+  connect-timeout-ms: ${TAVILY_CONNECT_TIMEOUT_MS:10000}
+  read-timeout-ms: ${TAVILY_READ_TIMEOUT_MS:15000}
+

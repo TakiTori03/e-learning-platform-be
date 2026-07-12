@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chứng Chỉ Hoàn Thành Khóa Học</title>
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        html, body {
+            width: 297mm;
+            height: 210mm;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #2c3e50;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .cert-container {
+            width: 297mm;
+            height: 210mm;
+            position: relative;
+            background: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .cert-border-outermost {
+            border: 1px solid #c5a059;
+            position: absolute;
+            top: 8mm;
+            left: 8mm;
+            right: 8mm;
+            bottom: 8mm;
+        }
+        .cert-border-double-1 {
+            border: 3px solid #c5a059;
+            position: absolute;
+            top: 12mm;
+            left: 12mm;
+            right: 12mm;
+            bottom: 12mm;
+        }
+        .cert-border-double-2 {
+            border: 1.5px solid #c5a059;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+        }
+        .cert-border-inlay {
+            border: 1px solid #c5a059;
+            position: absolute;
+            top: 4mm;
+            left: 4mm;
+            right: 4mm;
+            bottom: 4mm;
+        }
+        .corner-accent {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid #c5a059;
+        }
+        .ca-tl { top: 4px; left: 4px; border-right: none; border-bottom: none; }
+        .ca-tr { top: 4px; right: 4px; border-left: none; border-bottom: none; }
+        .ca-bl { bottom: 4px; left: 4px; border-right: none; border-top: none; }
+        .ca-br { bottom: 4px; right: 4px; border-left: none; border-top: none; }
+
+        .corner-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #c5a059;
+        }
+        .cd-tl { top: 5px; left: 5px; }
+        .cd-tr { top: 5px; right: 5px; }
+        .cd-bl { bottom: 5px; left: 5px; }
+        .cd-br { bottom: 5px; right: 5px; }
+        .cert-main-table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .cert-logo-img {
+            max-height: 75px;
+            margin-bottom: 5px;
+        }
+        .signature-img {
+            max-height: 46px;
+            margin-bottom: -5px;
+        }
+        .cert-title-main {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1a252f;
+            margin: 5px 0 2px 0;
+            letter-spacing: 4px;
+            line-height: 1.2;
+        }
+        .cert-title-sub {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #c5a059;
+            margin: 0;
+            line-height: 1.2;
+        }
+        .cert-divider {
+            width: 150px;
+            height: 2px;
+            background: #c5a059;
+            margin: 0 auto;
+        }
+        .cert-recipient-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .cert-recipient-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #c5a059;
+            margin: 5px 0 10px 0;
+            text-decoration: underline;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        .cert-course-text {
+            font-size: 15px;
+            color: #34495e;
+            line-height: 1.5;
+            margin: 5px 0;
+            word-wrap: break-word;
+            text-align: center;
+        }
+        .cert-course-name {
+            font-weight: bold;
+            color: #1a252f;
+        }
+        .cert-classification {
+            font-size: 15px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .footer-line {
+            width: 140px;
+            height: 1px;
+            background: #bdc3c7;
+            margin: 0 auto 5px auto;
+        }
+        .footer-label {
+            font-size: 11px;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .footer-val {
+            font-size: 13px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cert-container">
+        <!-- Outermost thin gold frame -->
+        <div class="cert-border-outermost"></div>
+        
+        <div class="cert-border-double-1">
+            <div class="cert-border-double-2">
+                <div class="cert-border-inlay">
+                    <!-- Subtle Corner Accents -->
+                    <div class="corner-accent ca-tl"></div>
+                    <div class="corner-accent ca-tr"></div>
+                    <div class="corner-accent ca-bl"></div>
+                    <div class="corner-accent ca-br"></div>
+                    
+                    <!-- Subtle Corner Dots -->
+                    <div class="corner-dot cd-tl"></div>
+                    <div class="corner-dot cd-tr"></div>
+                    <div class="corner-dot cd-bl"></div>
+                    <div class="corner-dot cd-br"></div>
+
+                    <table class="cert-main-table">
+                        <!-- Row 1: Header / Logo (54mm) -->
+                        <tr style="height: 54mm;">
+                            <td align="center" valign="top" style="padding-top: 5mm;">
+                                <img th:if="${logoPath != null && logoPath != ''}" th:src="${logoPath}" class="cert-logo-img" /><br/>
+                                <div class="cert-title-main">GIẤY CHỨNG NHẬN</div>
+                                <div class="cert-title-sub">Hoàn Thành Khóa Học</div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 2: Divider (8mm) -->
+                        <tr style="height: 8mm;">
+                            <td align="center" valign="middle">
+                                <table align="center" style="width: 200px; margin: 0 auto; border-collapse: collapse;">
+                                    <tr>
+                                        <td style="width: 42%; border-bottom: 2px solid #c5a059; height: 1px; padding: 0;"></td>
+                                        <td style="width: 16%; text-align: center; color: #c5a059; font-size: 10px; padding: 0 5px; line-height: 1; font-weight: bold; vertical-align: middle;">◆</td>
+                                        <td style="width: 42%; border-bottom: 2px solid #c5a059; height: 1px; padding: 0;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!-- Row 3: Recipient & Course info (70mm) -->
+                        <tr style="height: 70mm;">
+                            <td align="center" valign="middle" style="padding: 0 20mm;">
+                                <div class="cert-recipient-text">Chứng nhận này được trân trọng trao cho</div>
+                                <div class="cert-recipient-name" th:text="${studentName}">Nguyễn Văn A</div>
+
+                                <div class="cert-course-text">Đã hoàn thành xuất sắc khóa học <span class="cert-course-name" th:text="'“' + ${courseName} + '”'">Tên khóa học</span></div>
+                                <div class="cert-course-text" style="margin-top: 2px;">trên nền tảng giáo dục trực tuyến E-Learning Platform.</div>
+
+                                <div class="cert-classification">
+                                    Kết quả xếp loại: <span th:text="${classification}">Giỏi</span>
+                                    (Điểm thi cuối kỳ: <span th:text="${#numbers.formatDecimal(finalScore, 1, 1)}">90.0</span>/100)
+                                </div>
+
+                                <div style="font-size: 11px; color: #7f8c8d; margin-top: 8px; font-style: italic; text-align: center; font-family: 'Times New Roman';">
+                                    Mã học viên: <span th:text="${userId}">US-1234</span> &#160;|&#160; Mã khóa học: <span th:text="${courseId}">CO-5678</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Row 4: Footer Columns (42mm) -->
+                        <tr style="height: 42mm;">
+                            <td align="center" valign="bottom" style="padding-bottom: 6mm;">
+                                <table align="center" style="width: 90%; margin: 0 auto; border-collapse: collapse; table-layout: fixed;">
+                                    <tr>
+                                        <!-- Column 1: Date -->
+                                        <td align="center" valign="bottom" style="width: 25%;">
+                                            <div class="footer-val" th:text="${issuedDate}">19/06/2026</div>
+                                            <div class="footer-line"></div>
+                                            <div class="footer-label">Ngày cấp</div>
+                                        </td>
+                                        <!-- Column 2: ID -->
+                                        <td align="center" valign="bottom" style="width: 25%;">
+                                            <div class="footer-val" style="font-size: 11px; line-height: 1.2; word-wrap: break-word; text-align: center;" th:text="${certificateId}">CERT-123456</div>
+                                            <div class="footer-line"></div>
+                                            <div class="footer-label">Mã chứng chỉ</div>
+                                        </td>
+                                        <!-- Column 3: QR -->
+                                        <td align="center" valign="bottom" style="width: 25%;">
+                                            <a th:if="${qrCode != null}" th:href="${verifyUrl}" target="_blank" style="text-decoration: none; border: none;">
+                                                <img th:src="${qrCode}" style="width: 48px; height: 48px; border: 1px solid #bdc3c7; margin-bottom: 5px;" />
+                                            </a>
+                                            <div class="footer-line"></div>
+                                            <div class="footer-label">Xác thực QR</div>
+                                        </td>
+                                        <!-- Column 4: Signature -->
+                                        <td align="center" valign="bottom" style="width: 25%;">
+                                            <img th:if="${signaturePath != null && signaturePath != ''}" th:src="${signaturePath}" class="signature-img" /><br/>
+                                            <div class="footer-val" style="margin-top: 5px;">Ban Quản Trị</div>
+                                            <div class="footer-line"></div>
+                                            <div class="footer-label">E-Learning-Platform</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

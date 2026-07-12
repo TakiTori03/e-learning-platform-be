@@ -1,0 +1,498 @@
+version: '3.8'
+
+# ==========================================
+# KHỐI CẤU HÌNH DÙNG CHUNG (YAML ANCHORS)
+# Rút gọn 200 dòng lặp lại cho các Microservices
+# ==========================================
+x-common-env: &common-env
+  EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-service:8761/eureka/
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+  KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+  DB_HOST: postgres-db
+  REDIS_HOST: redis
+  MINIO_ENDPOINT: http://minio:9000
+  ELASTICSEARCH_URI: http://elasticsearch:9200
+  KAFKA_SERVER: kafka:29092
+  KEYCLOAK_ISSUER_URI: http://${VPS_HOST}:8443/realms/elearning-realm
+  KEYCLOAK_JWKS_URI: http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs
+
+services:
+  # ==========================================
+  # 1. TẦNG HẠ TẦNG (INFRASTRUCTURE)
+  # Đã có Persistent Volumes và Healthchecks
+  # ==========================================
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: elearning-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: elearning
+    ports:
+    - 5432:5432
+    volumes:
+    - postgres_data_prod:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  mongo-db:
+    image: mongo:latest
+    container_name: elearning-mongodb
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    ports:
+    - 27017:27017
+    volumes:
+    - mongodb_data_prod:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: elearning-redis
+    ports:
+    - 6379:6379
+    volumes:
+    - redis_data_prod:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: elearning-kafka
+    ports:
+    - 9092:9092
+    volumes:
+    - kafka_data_prod:/var/lib/kafka/data
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT'
+      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://kafka:29092,PLAINTEXT_HOST://${VPS_HOST}:9092'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka:29093'
+      KAFKA_LISTENERS: 'PLAINTEXT://kafka:29092,CONTROLLER://kafka:29093,PLAINTEXT_HOST://0.0.0.0:9092'
+      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_LOG_DIRS: '/var/lib/kafka/data'
+      CLUSTER_ID: 'MkU3OEVBNTcwNTJENDM2Qk'
+      KAFKA_HEAP_OPTS: -Xmx512m -Xms512m
+    healthcheck:
+      test: nc -z localhost 9092 || exit 0
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 800M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.2
+    container_name: elearning-keycloak
+    command: start-dev --import-realm
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres-db:5432/keycloak
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HOSTNAME_STRICT: 'false'
+      JAVA_OPTS_APPEND: -Xmx512m
+    ports:
+    - 8443:8080
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    volumes:
+    - ./docker_dev/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080;echo -e \"GET /health/ready HTTP/1.1\r\nhost: http://localhost\r\nConnection: close\r\n\r\n\" >&3;grep \"200 OK\" <&3 || exit 0"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+    - 9100:9000
+    - 9101:9001
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_API_CORS_ALLOW_ORIGIN: '*'
+    command: server /data --console-address ":9001"
+    volumes:
+    - minio_data_prod:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+    networks:
+    - elearning-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: elearning-elasticsearch
+    ports:
+    - 9200:9200
+    - 9300:9300
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+      bootstrap.memory_lock: 'false'
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes:
+    - elasticsearch_data_prod:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200 >/dev/null || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    networks:
+    - elearning-network
+
+  # ==========================================
+  # 2. TẦNG MICROSERVICES
+  # Sử dụng YAML Anchors và Chờ DB Healthcheck
+  # ==========================================
+  discovery-service:
+    image: ${DOCKER_USERNAME}/discovery-service:latest
+    container_name: discovery-service
+    ports:
+    - 8761:8761
+    environment:
+      <<: *common-env
+      EUREKA_INSTANCE_HOSTNAME: discovery-service
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  api-gateway:
+    image: ${DOCKER_USERNAME}/api-gateway:latest
+    container_name: api-gateway
+    ports:
+    - 8080:8080
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  identity-service:
+    image: ${DOCKER_USERNAME}/identity-service:latest
+    container_name: identity-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      postgres-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  course-service:
+    image: ${DOCKER_USERNAME}/course-service:latest
+    container_name: course-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx512m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      postgres-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  assessment-service:
+    image: ${DOCKER_USERNAME}/assessment-service:latest
+    container_name: assessment-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+      SPRING_DATA_MONGODB_URI: mongodb://mongo-db:27017/assessment_db
+      MONGODB_URI: mongodb://mongo-db:27017/assessment_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      mongo-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  learning-service:
+    image: ${DOCKER_USERNAME}/learning-service:latest
+    container_name: learning-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+      MONGODB_URI: mongodb://mongo-db:27017/learning_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      mongo-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  interaction-service:
+    image: ${DOCKER_USERNAME}/interaction-service:latest
+    container_name: interaction-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+      MONGODB_URI: mongodb://mongo-db:27017/interaction_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  order-service:
+    image: ${DOCKER_USERNAME}/order-service:latest
+    container_name: order-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+      postgres-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  notification-service:
+    image: ${DOCKER_USERNAME}/notification-service:latest
+    container_name: notification-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1
+      MONGODB_URI: mongodb://mongo-db:27017/notification_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  media-service:
+    image: ${DOCKER_USERNAME}/media-service:latest
+    container_name: media-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx512m -XX:TieredStopAtLevel=1
+      MONGODB_URI: mongodb://mongo-db:27017/media_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  search-service:
+    image: ${DOCKER_USERNAME}/search-service:latest
+    container_name: search-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  worker-service:
+    image: ${DOCKER_USERNAME}/worker-service:latest
+    container_name: worker-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  ai-service:
+    image: ${DOCKER_USERNAME}/ai-service:latest
+    container_name: ai-service
+    environment:
+      <<: *common-env
+      JAVA_TOOL_OPTIONS: -Xmx768m -XX:TieredStopAtLevel=1
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      COHERE_API_KEY: ${COHERE_API_KEY}
+      TAVILY_API_KEY: ${TAVILY_API_KEY}
+    depends_on:
+      discovery-service:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  stt-service:
+    image: ${DOCKER_USERNAME}/stt-service:latest
+    container_name: stt-service
+    environment:
+      <<: *common-env
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+  pdf-parser-service:
+    image: ${DOCKER_USERNAME}/pdf-parser-service:latest
+    container_name: pdf-parser-service
+    environment:
+      <<: *common-env
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    networks:
+    - elearning-network
+    restart: unless-stopped
+
+
+networks:
+  elearning-network:
+    driver: bridge
+
+volumes:
+  postgres_data_prod:
+  mongodb_data_prod:
+  redis_data_prod:
+  kafka_data_prod:
+  minio_data_prod:
+  elasticsearch_data_prod:

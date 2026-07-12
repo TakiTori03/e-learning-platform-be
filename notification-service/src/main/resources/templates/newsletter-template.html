@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản tin học tập hàng tháng</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: 'Segoe UI', Arial, sans-serif;">
+
+    <!-- Main Container -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f3f4f6; padding: 32px 0;">
+        <tr>
+            <td align="center">
+                <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%); padding: 32px 24px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 700; letter-spacing: -0.5px;">📚 E-Learning Platform</h1>
+                            <p style="margin: 8px 0 0 0; color: #bbdefb; font-size: 14px;">Bản tin học tập hàng tháng</p>
+                        </td>
+                    </tr>
+
+                    <!-- Greeting -->
+                    <tr>
+                        <td style="padding: 32px 24px 16px 24px;">
+                            <p style="margin: 0; font-size: 16px; color: #202124; line-height: 1.6;">
+                                Xin chào bạn, 👋
+                            </p>
+                            <p style="margin: 12px 0 0 0; font-size: 15px; color: #5f6368; line-height: 1.6;">
+                                Tháng vừa qua, chúng tôi đã cho ra mắt nhiều khóa học mới cực kỳ hấp dẫn.
+                                Dưới đây là danh sách các khóa học mới đang được
+                                <strong style="color: #d32f2f;">giảm giá đặc biệt</strong> dành riêng cho bạn:
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Section Title -->
+                    <tr>
+                        <td style="padding: 8px 24px;">
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 12px 16px; border-radius: 0 8px 8px 0;">
+                                        <p style="margin: 0; font-size: 15px; font-weight: 600; color: #e65100;">
+                                            🔥 Khóa học giảm giá tháng này
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Course Cards -->
+                    <tr>
+                        <td style="padding: 16px 24px;">
+                            <th:block th:each="course : ${courses}">
+                                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 16px; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                    <!-- Thumbnail -->
+                                    <tr th:if="${course.thumbnail != null}">
+                                        <td>
+                                            <a th:href="${course.url}" target="_blank" style="display: block;">
+                                                <img th:src="${course.thumbnail}" alt="Course thumbnail"
+                                                     style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 20px;">
+                                            <!-- Course Name -->
+                                            <h3 style="margin: 0 0 12px 0; font-size: 17px; color: #202124; font-weight: 600;">
+                                                📖 <span th:text="${course.name}">Tên khóa học</span>
+                                            </h3>
+
+                                            <!-- Pricing -->
+                                            <table role="presentation" cellspacing="0" cellpadding="0" style="margin-bottom: 16px;">
+                                                <tr>
+                                                    <td style="padding-right: 16px;">
+                                                        <span style="font-size: 13px; color: #9e9e9e;">Giá gốc:</span><br/>
+                                                        <del style="font-size: 15px; color: #9e9e9e;" th:text="${course.priceFormatted}">500,000 đ</del>
+                                                    </td>
+                                                    <td>
+                                                        <span style="font-size: 13px; color: #d32f2f;">Chỉ còn:</span><br/>
+                                                        <strong style="font-size: 20px; color: #d32f2f;" th:text="${course.finalPriceFormatted}">299,000 đ</strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <!-- CTA Button -->
+                                            <a th:href="${course.url}" target="_blank"
+                                               style="display: inline-block; background-color: #1a73e8; color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; letter-spacing: 0.3px;">
+                                                Khám phá ngay →
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </th:block>
+                        </td>
+                    </tr>
+
+                    <!-- Outro -->
+                    <tr>
+                        <td style="padding: 8px 24px 24px 24px;">
+                            <p style="margin: 0; font-size: 15px; color: #5f6368; line-height: 1.6;">
+                                Nhanh tay đăng ký học trước khi hết hạn khuyến mãi nhé! 🚀<br/>
+                                Chúc bạn học tập hiệu quả cùng E-Learning Platform.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f9fafb; padding: 24px; text-align: center; border-top: 1px solid #eeeeee;">
+                            <p style="margin: 0 0 12px 0; font-size: 13px; color: #9e9e9e;">
+                                Bạn nhận được email này vì đã đăng ký nhận bản tin từ E-Learning Platform.
+                            </p>
+                            <a th:href="${unsubscribeUrl}" target="_blank"
+                               style="display: inline-block; padding: 8px 20px; background-color: #ef5350; color: #ffffff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 500;">
+                                Hủy đăng ký nhận bản tin
+                            </a>
+                            <p style="margin: 16px 0 0 0; font-size: 12px; color: #bdbdbd;">
+                                © 2026 E-Learning Platform. All rights reserved.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

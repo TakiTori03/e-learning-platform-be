@@ -1,0 +1,24 @@
+
+services:
+  elearning-interaction-db:
+    image: mongo:latest
+    container_name: elearning-interaction-db
+    environment:
+      MONGO_INITDB_DATABASE: interaction_db
+    ports:
+      - "27019:27017" # Sử dụng 27019 để không trùng với Course (27017) và Learning (27018)
+    volumes:
+      - interaction_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  interaction_mongo_data:
+
+networks:
+  default:
+    name: elearning-network
+    external: true

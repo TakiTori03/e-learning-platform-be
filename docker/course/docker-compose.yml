@@ -1,0 +1,25 @@
+
+services:
+  # Database for Course Service
+  elearning-course-db:
+    image: mongo:latest
+    container_name: elearning-course-db
+    environment:
+      MONGO_INITDB_DATABASE: course_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - course_mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  course_mongo_data:
+
+networks:
+  default:
+    name: elearning-network
+    external: true

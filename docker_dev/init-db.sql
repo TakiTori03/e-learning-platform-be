@@ -1,0 +1,4 @@
+CREATE DATABASE keycloak;
+CREATE DATABASE identity_db;
+CREATE DATABASE order_db;
+CREATE DATABASE ai_db;

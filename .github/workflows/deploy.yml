@@ -1,0 +1,81 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build Java Services with Maven
+        run: mvn clean package -DskipTests
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push All Docker Images
+        run: |
+          SERVICES=("discovery-service" "api-gateway" "identity-service" "course-service" "assessment-service" "learning-service" "interaction-service" "order-service" "notification-service" "media-service" "search-service" "worker-service" "ai-service" "stt-service" "pdf-parser-service")
+          for SERVICE in "${SERVICES[@]}"; do
+            echo "Building image for $SERVICE..."
+            docker build -t ${{ secrets.DOCKER_USERNAME }}/$SERVICE:latest ./$SERVICE
+            docker push ${{ secrets.DOCKER_USERNAME }}/$SERVICE:latest
+          done
+
+  deploy-to-vps:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy Config Files to VPS
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "docker-compose-prod.yml,docker_dev/"
+          target: "/root/e-learning-platform/"
+          overwrite: true
+
+      - name: Execute Docker Compose on VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            cd /root/e-learning-platform
+            
+            # Tạo file .env để docker-compose tự động đọc biến môi trường
+            echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" > .env
+            echo "VPS_HOST=${{ secrets.VPS_HOST }}" >> .env
+            echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
+            echo "COHERE_API_KEY=${{ secrets.COHERE_API_KEY }}" >> .env
+            echo "TAVILY_API_KEY=${{ secrets.TAVILY_API_KEY }}" >> .env
+            
+            # Khởi động tầng Hạ tầng (Database, Kafka, ...)
+            docker-compose -f docker-compose-prod.yml up -d postgres-db mongo-db redis kafka keycloak elasticsearch minio
+            
+            echo "Đợi 15 giây cho hạ tầng khởi động..."
+            sleep 15
+            
+            # Khởi động toàn bộ Microservices
+            docker-compose -f docker-compose-prod.yml pull
+            docker-compose -f docker-compose-prod.yml up -d

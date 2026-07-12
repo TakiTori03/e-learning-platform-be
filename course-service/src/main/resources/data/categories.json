@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Web Development",
+    "categorySlug": "web-development",
+    "icon": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=120&h=120&fit=crop&q=80",
+    "description": "Xây dựng ứng dụng web hiện đại sử dụng React, Next.js, Node.js, Spring Boot."
+  },
+  {
+    "name": "Mobile App",
+    "categorySlug": "mobile-app",
+    "icon": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=120&h=120&fit=crop&q=80",
+    "description": "Phát triển ứng dụng di động đa nền tảng (Flutter, React Native) hoặc native (Swift, iOS)."
+  },
+  {
+    "name": "Data Science & AI",
+    "categorySlug": "data-science-ai",
+    "icon": "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=120&h=120&fit=crop&q=80",
+    "description": "Trí tuệ nhân tạo, Học máy (Machine Learning), Học sâu (Deep Learning) và Phân tích dữ liệu."
+  },
+  {
+    "name": "Software Engineering",
+    "categorySlug": "software-engineering",
+    "icon": "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=120&h=120&fit=crop&q=80",
+    "description": "Nguyên lý thiết kế phần mềm, cấu trúc dữ liệu, thuật toán và mô hình thiết kế (Design Patterns)."
+  },
+  {
+    "name": "Design & UI/UX",
+    "categorySlug": "design-ui-ux",
+    "icon": "https://images.unsplash.com/photo-1561070791-26c113006238?w=120&h=120&fit=crop&q=80",
+    "description": "Thiết kế giao diện và trải nghiệm người dùng với Figma, Adobe XD và nguyên tắc thiết kế đồ họa."
+  },
+  {
+    "name": "Business & Startups",
+    "categorySlug": "business-startups",
+    "icon": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=120&h=120&fit=crop&q=80",
+    "description": "Khởi nghiệp công nghệ, quản trị sản phẩm (Product Management), kỹ năng quản lý dự án Agile/Scrum."
+  },
+  {
+    "name": "Marketing & SEO",
+    "categorySlug": "marketing-seo",
+    "icon": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=120&h=120&fit=crop&q=80",
+    "description": "Tối ưu hóa công cụ tìm kiếm, quảng cáo số, xây dựng thương hiệu cá nhân và tiếp thị liên kết."
+  },
+  {
+    "name": "Cloud & DevOps",
+    "categorySlug": "cloud-devops",
+    "icon": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=120&h=120&fit=crop&q=80",
+    "description": "Quản trị hạ tầng đám mây (AWS, Azure), Docker, Kubernetes, CI/CD và tự động hóa vận hành."
+  },
+  {
+    "name": "Cyber Security",
+    "categorySlug": "cyber-security",
+    "icon": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=120&h=120&fit=crop&q=80",
+    "description": "An toàn thông tin, kiểm thử xâm nhập (Penetration Testing), mật mã học và bảo mật mạng."
+  },
+  {
+    "name": "Personal Development",
+    "categorySlug": "personal-development",
+    "icon": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=120&h=120&fit=crop&q=80",
+    "description": "Kỹ năng mềm thuyết trình, giao tiếp hiệu quả, quản lý thời gian và phát triển bản thân."
+  },
+  {
+    "name": "Database Systems",
+    "categorySlug": "database-systems",
+    "icon": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=120&h=120&fit=crop&q=80",
+    "description": "Thiết kế, tối ưu hóa cơ sở dữ liệu quan hệ (SQL) và phi quan hệ (NoSQL, Vector DB)."
+  },
+  {
+    "name": "Blockchain & Web3",
+    "categorySlug": "blockchain-web3",
+    "icon": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=120&h=120&fit=crop&q=80",
+    "description": "Tìm hiểu công nghệ chuỗi khối, hợp đồng thông minh (Smart Contract) và lập trình dApps."
+  },
+  {
+    "name": "Embedded Systems & IoT",
+    "categorySlug": "embedded-systems-iot",
+    "icon": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=120&h=120&fit=crop&q=80",
+    "description": "Lập trình vi điều khiển, phần cứng nhúng (Arduino, Raspberry Pi) và kết nối vạn vật."
+  },
+  {
+    "name": "Game Development",
+    "categorySlug": "game-development",
+    "icon": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=120&h=120&fit=crop&q=80",
+    "description": "Thiết kế và phát triển game 2D/3D chuyên nghiệp bằng Unity, Unreal Engine, C#."
+  },
+  {
+    "name": "Operating Systems & Linux",
+    "categorySlug": "operating-systems-linux",
+    "icon": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=120&h=120&fit=crop&q=80",
+    "description": "Quản trị hệ thống Linux, lập trình nhân (Kernel), cơ chế quản lý tài nguyên máy tính."
+  },
+  {
+    "name": "Distributed Systems",
+    "categorySlug": "distributed-systems",
+    "icon": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=120&h=120&fit=crop&q=80",
+    "description": "Thiết kế kiến trúc vi dịch vụ, cơ chế truyền tin (Saga, Event Sourcing, Kafka)."
+  },
+  {
+    "name": "Computer Networks",
+    "categorySlug": "computer-networks",
+    "icon": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=120&h=120&fit=crop&q=80",
+    "description": "Nguyên lý định tuyến, giao thức TCP/IP, cấu hình tường lửa và quản trị hạ tầng mạng."
+  },
+  {
+    "name": "Testing & QA",
+    "categorySlug": "testing-qa",
+    "icon": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=120&h=120&fit=crop&q=80",
+    "description": "Kiểm thử tự động (Selenium, Playwright), kiểm thử hiệu năng, quy trình quản lý chất lượng."
+  },
+  {
+    "name": "Languages for IT",
+    "categorySlug": "languages-for-it",
+    "icon": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&h=120&fit=crop&q=80",
+    "description": "Tiếng Anh chuyên ngành Công nghệ thông tin, ôn luyện chứng chỉ TOEIC/IELTS."
+  },
+  {
+    "name": "Office Productivity",
+    "categorySlug": "office-productivity",
+    "icon": "https://images.unsplash.com/photo-1468436139062-f60a71c5c892?w=120&h=120&fit=crop&q=80",
+    "description": "Làm chủ Excel nâng cao, kỹ năng sử dụng công cụ AI tăng năng suất làm việc hàng ngày."
+  }
+]

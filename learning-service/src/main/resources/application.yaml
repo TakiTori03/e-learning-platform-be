@@ -1,0 +1,58 @@
+server:
+  port: 9005
+  forward-headers-strategy: framework
+
+spring:
+  config:
+    import: optional:classpath:common-observability.yml
+  application:
+    name: learning-service
+  
+  # Database Configuration (MongoDB)
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/learning_db?maxPoolSize=50&minPoolSize=10&maxIdleTimeMS=300000&waitQueueTimeoutMS=10000}
+      auto-index-creation: true
+  
+  # Kafka Configuration
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+    consumer:
+      group-id: learning-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.hust.commonlibrary.event"
+
+  # Security Configuration (OAuth2 Resource Server)
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8443/realms/elearning-realm}
+          jwk-set-uri: ${KEYCLOAK_JWKS_URI:http://localhost:8443/realms/elearning-realm/protocol/openid-connect/certs}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    root: INFO
+    com.hust.learningservice: DEBUG
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.springframework.security: INFO
+

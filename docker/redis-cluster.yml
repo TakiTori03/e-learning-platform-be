@@ -1,0 +1,14 @@
+
+services:
+  redis-master:
+    image: redis:7.0-alpine
+    container_name: redis-master
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    networks:
+      - elearning-network
+
+networks:
+  elearning-network:
+    external: true

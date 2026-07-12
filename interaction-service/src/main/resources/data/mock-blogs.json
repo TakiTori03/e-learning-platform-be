@@ -1,0 +1,167 @@
+[
+  {
+    "title": "Cẩm nang hướng dẫn toàn diện về Kiến trúc Microservices",
+    "slug": "huong-dan-toan-dien-ve-kien-truc-microservices",
+    "content": "## 1. Khái niệm kiến trúc Microservices\n\nKiến trúc vi dịch vụ (Microservices Architecture) là một phương pháp phát triển phần mềm trong đó một ứng dụng lớn được chia thành các dịch vụ nhỏ hơn, độc lập và có thể deploy riêng biệt. Mỗi dịch vụ chạy quy trình riêng và giao tiếp qua cơ chế nhẹ nhàng, thường là HTTP REST API hoặc Message Brokers.\n\n> **💡 Core Concept**\n>\n> Thay vì đóng gói mọi thành phần vào một deployable duy nhất (Monolith), Microservices chia hệ thống theo các Business Capabilities rõ ràng (Domain-Driven Design).\n\n## 2. So sánh Monolithic vs Microservices\n\n| Tiêu chí | Monolithic (Đơn khối) | Microservices (Vi dịch vụ) |\n| --- | --- | --- |\n| Triển khai (Deployment) | Dễ dàng, chỉ cần build 1 file duy nhất. | Phức tạp, đòi hỏi CI/CD tự động hóa. |\n| Khả năng mở rộng (Scale) | Phải scale toàn bộ ứng dụng. | Chỉ scale dịch vụ bị quá tải. |\n| Công nghệ (Tech stack) | Bị giới hạn trong 1 ngôn ngữ/framework. | Linh hoạt chọn công nghệ phù hợp nhất. |\n\n## 3. Các mẫu thiết kế phổ biến\n\nKhi triển khai microservices, các lập trình viên thường áp dụng Saga Pattern, Event Sourcing, CQRS và API Gateway. Trong đó API Gateway đóng vai trò như điểm truy cập duy nhất điều hướng mọi luồng request từ phía client.\n\n```java\n@RestController\n@RequestMapping(\"/gateway\")\npublic class ApiGatewayController {\n    // Cấu hình định tuyến và phân quyền tập trung\n    public Mono<ResponseEntity<?>> routeRequest(ServerHttpRequest request) {\n        return routerService.dispatch(request);\n    }\n}\n```\n\n## 4. Lời khuyên khi bắt đầu\n\nĐừng vội vàng chuyển đổi sang Microservices nếu hệ thống của bạn còn nhỏ và lượng truy cập thấp. Hãy tối ưu hóa Monolithic của bạn trước khi bước vào thế giới vi dịch vụ đầy phức tạp.",
+    "thumbnail": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+    "topicSlug": "web-development",
+    "tags": ["microservices", "spring-boot", "architecture"],
+    "isPinned": true,
+    "viewsCount": 1520,
+    "courseCodes": ["WEB-SPRING-02", "SE-SYSDESIGN-02"]
+  },
+  {
+    "title": "Làm chủ React Hooks trong 10 phút",
+    "slug": "lam-chu-react-hooks-trong-10-phut",
+    "content": "## 1. Giới thiệu React Hooks\n\nReact Hooks được giới thiệu từ phiên bản React 16.8, cho phép bạn sử dụng State và các tính năng khác của React bên trong Functional Components mà không cần viết Class Components. Điều này giúp mã nguồn ngắn gọn, dễ đọc và dễ chia sẻ logic nghiệp vụ giữa các thành phần giao diện.\n\n## 2. Các Hooks cơ bản cần biết\n\n- **useState:** Quản lý trạng thái nội bộ của component.\n- **useEffect:** Xử lý các side-effects như call API, đăng ký event lắng nghe, dọn dẹp timer.\n- **useContext:** Truy xuất dữ liệu từ Context Provider toàn cục mà không cần truyền prop-drilling qua nhiều cấp.\n\n```javascript\nimport React, { useState, useEffect } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    document.title = `You clicked ${count} times`;\n  }, [count]);\n\n  return (\n    <button onClick={() => setCount(count + 1)}>\n      Click me ({count})\n    </button>\n  );\n}\n```\n\n## 3. Quy tắc vàng khi sử dụng Hooks\n\n> **⚠️ Rules of Hooks**\n>\n> 1. Chỉ gọi Hooks ở cấp cao nhất (không gọi trong vòng lặp hay câu lệnh điều kiện).\n> 2. Chỉ gọi Hooks từ React Function Components hoặc Custom Hooks.\n\nTuân thủ các quy tắc này giúp React đảm bảo trạng thái của các Hook được lưu giữ đúng vị trí qua mỗi lần render lại component.",
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
+    "topicSlug": "web-development",
+    "tags": ["reactjs", "frontend", "hooks"],
+    "isPinned": false,
+    "viewsCount": 980,
+    "courseCodes": ["WEB-REACT-01", "WEB-NODE-01"]
+  },
+  {
+    "title": "System Design: Xây dựng hệ thống High-Scalability",
+    "slug": "system-design-xay-dung-he-thong-high-scalability",
+    "content": "## 1. Thiết kế hệ thống chịu tải lớn\n\nHọc cách thiết kế hệ thống có khả năng chịu tải hàng triệu lượt truy cập đồng thời (High-Scalability) là kỹ năng tối quan trọng đối với các Kỹ sư phần mềm (Software Engineers). Để đạt được mục tiêu này, hệ thống cần tối ưu ở cả ba tầng: Load Balancing, Caching và Database Partitioning.\n\n> *\"Scalability is not about writing code faster, it's about architecture and predicting bottlenecks before they happen.\"*\n\n## 2. Cơ chế Caching đa lớp (Multi-layer Caching)\n\nSử dụng bộ nhớ đệm (Caching) giúp giảm thiểu số lượng truy vấn trực tiếp vào Database, tăng tốc độ phản hồi đáng kể. Hãy xem qua sơ đồ luồng dữ liệu chuẩn:\n\n| Tầng Cache | Mục đích sử dụng | Công nghệ sử dụng |\n| --- | --- | --- |\n| Client Cache | Lưu tài nguyên tĩnh tại trình duyệt người dùng. | HTTP Cache headers, Service Workers |\n| CDN Cache | Phân phối ảnh, video theo vị trí địa lý gần nhất. | Cloudflare, AWS CloudFront |\n| Application Cache | Lưu kết quả truy vấn database phức tạp. | Redis, Memcached |\n\n## 3. Kỹ thuật Database Partitioning\n\nKhi dữ liệu vượt quá giới hạn vật lý của một server, chúng ta áp dụng Read Replicas (phân tách luồng đọc/ghi), Database Sharding (chia nhỏ DB theo vùng địa lý hoặc ID người dùng) và Consistent Hashing.",
+    "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
+    "topicSlug": "software-engineering",
+    "tags": ["system-design", "architecture", "scaling"],
+    "isPinned": false,
+    "viewsCount": 2400,
+    "courseCodes": ["SE-SYSDESIGN-02", "WEB-SPRING-02", "DEV-DOCKER-01"]
+  },
+  {
+    "title": "Flutter vs React Native: Lựa chọn nào cho di động năm 2026?",
+    "slug": "flutter-vs-react-native-lua-chon-cho-di-dong-2026",
+    "content": "## 1. Bối cảnh thị trường di động\n\nPhát triển ứng dụng di động đa nền tảng đang ngày càng trở thành lựa chọn bắt buộc cho các doanh nghiệp tối ưu ngân sách và rút ngắn thời gian tiếp cận thị trường. Hai ứng cử viên sáng giá nhất hiện nay vẫn là Flutter của Google và React Native của Meta.\n\n## 2. So sánh chi tiết hiệu năng\n\n> **🚀 Ưu thế của Flutter**\n>\n> Tốc độ vẽ giao diện cực nhanh nhờ engine Skia/Impeller tự render. Không cần cầu nối (Bridge) qua hệ thống native nên ứng dụng chạy rất mượt mà.\n\n> **📱 Ưu thế của React Native**\n>\n> Tận dụng hệ sinh thái JavaScript khổng lồ. Thiết kế UI dựa trên các native component thực tế giúp ứng dụng mang cảm giác tự nhiên nguyên bản.\n\n## 3. Ví dụ đoạn code trong Dart (Flutter)\n\n```dart\nimport 'package:flutter/material.dart';\n\nvoid main() => runApp(const MyApp());\n\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      home: Scaffold(\n        appBar: AppBar(title: const Text('Flutter Demo')),\n        body: const Center(child: Text('Hello World')),\n      ),\n    );\n  }\n}\n```\n\n## 4. Đưa ra lựa chọn phù hợp\n\nNếu dự án của bạn ưu tiên hiệu năng đồ họa cao, game 2D hoặc ứng dụng có nhiều hoạt họa mượt mà, hãy chọn Flutter. Nếu bạn đã có sẵn đội ngũ lập trình viên React Web và muốn tái sử dụng code tối đa, React Native sẽ là lựa chọn sáng suốt hơn.",
+    "thumbnail": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
+    "topicSlug": "mobile-app",
+    "tags": ["flutter", "react-native", "mobile"],
+    "isPinned": false,
+    "viewsCount": 1150,
+    "courseCodes": ["MOB-FLUTTER-01"]
+  },
+  {
+    "title": "Cơ bản về học máy (Machine Learning) cho người mới bắt đầu",
+    "slug": "co-ban-ve-hoc-may-machine-learning-cho-nguoi-moi",
+    "content": "## 1. Học máy là gì?\n\nHọc máy (Machine Learning) là một lĩnh vực của Trí tuệ nhân tạo (AI) tập trung vào việc xây dựng các hệ thống có khả năng học hỏi từ dữ liệu để cải thiện hiệu suất thực hiện nhiệm vụ mà không cần lập trình rõ ràng.\n\n> **🧠 Sự khác biệt chính**\n>\n> Lập trình truyền thống: Dữ liệu + Quy tắc => Kết quả.  \n> Học máy (Machine Learning): Dữ liệu + Kết quả => Quy tắc (Mô hình).\n\n## 2. Các nhóm thuật toán chính\n\n- **Supervised Learning (Học có giám sát):** Dự đoán nhãn dựa trên dữ liệu học có sẵn nhãn từ trước (ví dụ: Linear Regression, Decision Tree).\n- **Unsupervised Learning (Học không giám sát):** Phân tích và nhóm dữ liệu chưa được dán nhãn (ví dụ: K-Means Clustering, PCA).\n- **Reinforcement Learning (Học tăng cường):** Huấn luyện tác tử thông qua điểm thưởng và hình phạt (như AlphaGo).\n\n## 3. Ví dụ triển khai Linear Regression bằng Python\n\n```python\nimport numpy as np\nfrom sklearn.linear_model import LinearRegression\n\n# Khởi tạo dữ liệu mẫu\nX = np.array([[1], [2], [3], [4]])\ny = np.array([2, 4, 6, 8])\n\n# Khởi tạo và huấn luyện mô hình\nmodel = LinearRegression()\nmodel.fit(X, y)\n\n# Dự đoán giá trị mới\nprediction = model.predict([[5]])\nprint(f\"Dự đoán giá trị cho X=5 là: {prediction[0]}\")\n```\n\n## 4. Kết luận\n\nHọc máy là nền tảng cốt lõi của thế giới trí tuệ nhân tạo hiện đại. Việc nắm chắc các nguyên lý học máy cơ bản sẽ mở ra cơ hội lớn cho bạn trong việc nghiên cứu và phát triển sản phẩm công nghệ.",
+    "thumbnail": "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=800",
+    "topicSlug": "data-science-ai",
+    "tags": ["machine-learning", "ai", "python"],
+    "isPinned": false,
+    "viewsCount": 1820,
+    "courseCodes": ["AI-PYTHON-01", "AI-NLP-01"]
+  },
+  {
+    "title": "Lợi ích của Docker trong việc Container hóa ứng dụng",
+    "slug": "loi-ich-cua-docker-trong-viec-container-hoa-ung-dung",
+    "content": "## 1. Vấn đề 'Chạy tốt trên máy tôi'\n\nTrước khi có Docker, việc đồng bộ môi trường phát triển (Development), kiểm thử (Staging) và chạy thật (Production) luôn là nỗi ác mộng đối với các DevOps và Developers. Docker giải quyết triệt để vấn đề này nhờ cơ chế Container hóa.\n\n## 2. Docker Image vs Docker Container\n\n> **📦 Docker Image**\n>\n> Là một bản thiết kế (blueprint) tĩnh, chỉ đọc, chứa tất cả các thư viện, biến môi trường và mã nguồn để khởi chạy ứng dụng.\n\n> **⚙️ Docker Container**\n>\n> Là một instance đang hoạt động được khởi chạy từ Docker Image, hoạt động cô lập hoàn toàn với các container khác.\n\n## 3. Ví dụ viết Dockerfile tối ưu\n\n```dockerfile\n# Sử dụng lightweight image\nFROM node:18-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nRUN npm run build\n\n# Chạy trên môi trường sản xuất tối giản\nFROM nginx:stable-alpine\nCOPY --from=builder /app/dist /usr/share/nginx/html\nEXPOSE 80\nCMD [\"nginx\", \"-g\", \"daemon off;\"]\n```\n\n## 4. Lợi ích vượt trội\n\nĐồng bộ hóa môi trường 100%, triển khai nhanh chóng trong vài giây và tối ưu hóa tài nguyên phần cứng tốt hơn hẳn so với máy ảo (Virtual Machines) truyền thống.",
+    "thumbnail": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800",
+    "topicSlug": "cloud-devops",
+    "tags": ["docker", "devops", "kubernetes"],
+    "isPinned": false,
+    "viewsCount": 1670,
+    "courseCodes": ["DEV-DOCKER-01", "SE-SYSDESIGN-02"]
+  },
+  {
+    "title": "Quy trình thiết kế giao diện UI/UX chuẩn công nghiệp với Figma",
+    "slug": "quy-trinh-thiet-ke-giao-dien-ui-ux-chuan-figma",
+    "content": "## 1. Tầm quan trọng của UI/UX trong thiết kế hiện đại\n\nMột ứng dụng thành công không chỉ cần chạy tốt mà còn cần dễ sử dụng và mang lại trải nghiệm thú vị cho người dùng. Giao diện (UI) đẹp mắt kết hợp với trải nghiệm người dùng (UX) mượt mà là chìa khóa giữ chân khách hàng.\n\n## 2. Quy trình thiết kế chuẩn 4 bước\n\n1. **Nghiên cứu (Research):** Phỏng vấn người dùng, khảo sát thị trường và xây dựng User Personas.\n2. **Wireframing:** Phác thảo giao diện cấu trúc sơ khai dạng trắng đen (Low-fidelity).\n3. **UI Design:** Thiết kế giao diện chi tiết, màu sắc, font chữ và các component hoàn chỉnh (High-fidelity).\n4. **Prototyping:** Liên kết các màn hình tạo trải nghiệm tương tác động thực tế để thử nghiệm.\n\n## 3. Xây dựng thư viện Design System\n\nVới Figma, các Designer có thể dễ dàng thiết lập bảng màu, kiểu chữ (Typography), lưới (Grids) và thư viện Components dùng chung để duy trì tính nhất quán trên toàn bộ sản phẩm.\n\n> **🎨 Best Practice**\n>\n> Hãy luôn sử dụng Auto-Layout để giao diện co giãn tự động tương thích tốt trên nhiều độ phân giải màn hình khác nhau.",
+    "thumbnail": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800",
+    "topicSlug": "design-ui-ux",
+    "tags": ["figma", "uiux", "design"],
+    "isPinned": false,
+    "viewsCount": 1410,
+    "courseCodes": ["DES-FIGMA-01"]
+  },
+  {
+    "title": "10 kỹ năng bảo mật cơ bản mà mọi Developer cần biết",
+    "slug": "10-ky-nang-bao-mat-co-ban-cho-developer",
+    "content": "## 1. Đừng phó thác bảo mật cho đội ngũ Security\n\nBảo mật ứng dụng phải được bắt đầu ngay từ những dòng code đầu tiên của lập trình viên. Việc lơ là các nguyên tắc bảo mật cơ bản có thể dẫn đến rò rỉ dữ liệu nghiêm trọng.\n\n## 2. Các lỗ hổng OWASP Top 10 phổ biến\n\n- **SQL Injection:** Tin tặc chèn mã SQL độc hại vào input để lấy dữ liệu trái phép. Hãy khắc phục bằng Parameterized Queries.\n- **XSS (Cross-Site Scripting):** Tiêm script độc hại vào trình duyệt người dùng khác. Hãy khắc phục bằng cách Encode Output dữ liệu.\n- **Broken Authentication:** Cơ chế xác thực yếu kém. Hãy khắc phục bằng Multi-Factor Authentication (MFA).\n\n```javascript\n// Ví dụ chống XSS bằng cách sanitize input trong JS\nfunction escapeHtml(unsafeText) {\n    return unsafeText\n         .replace(/&/g, \"&amp;\")\n         .replace(/</g, \"&lt;\")\n         .replace(/>/g, \"&gt;\")\n         .replace(/\"/g, \"&quot;\")\n         .replace(/'/g, \"&#039;\");\n}\n```\n\n## 3. Tầm quan trọng của HTTPS và mã hóa dữ liệu\n\nHãy luôn luôn mã hóa mật khẩu người dùng bằng các thuật toán mạnh mẽ như bcrypt hoặc PBKDF2 trước khi lưu trữ vào Database. Tuyệt đối không lưu mật khẩu dạng plaintext.",
+    "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",
+    "topicSlug": "cyber-security",
+    "tags": ["security", "ethical-hacking", "owasp"],
+    "isPinned": false,
+    "viewsCount": 1280,
+    "courseCodes": ["SEC-ETHICAL-01"]
+  },
+  {
+    "title": "Agile & Scrum: Phương pháp quản trị dự án hiệu quả cho Startups",
+    "slug": "agile-and-scrum-quan-tri-du-an-hieu-qua-startup",
+    "content": "## 1. Khái niệm cốt lõi của Agile\n\nAgile là tư duy quản lý linh hoạt, ưu tiên tương tác cá nhân, phần mềm chạy thử nghiệm tốt hơn tài liệu chi tiết, hợp tác với khách hàng hơn là đàm phán hợp đồng và phản hồi nhanh với thay đổi.\n\n## 2. Vận hành chu trình Scrum\n\nQuy trình Scrum chia dự án thành các chu kỳ nhỏ lặp lại gọi là Sprint (thường kéo dài 2-4 tuần). Mỗi Sprint bắt đầu bằng Sprint Planning, kết thúc bằng Sprint Review và Sprint Retrospective để liên tục cải tiến chất lượng và tốc độ của đội ngũ.\n\n> **🔄 Tinh thần cải tiến**\n>\n> Họp cải tiến Sprint Retrospective là sự kiện quan trọng nhất của Scrum, giúp nhóm nhìn nhận thẳng thắn các vấn đề và lập kế hoạch sửa đổi quy trình ngay trong Sprint kế tiếp.\n\n## 3. Bảng Kanban trực quan\n\nSử dụng bảng Kanban (To Do - In Progress - Done) để giúp toàn bộ thành viên nắm được tiến độ dự án tức thời, tránh tình trạng tắc nghẽn công việc.",
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "topicSlug": "personal-development",
+    "tags": ["agile", "scrum", "startup"],
+    "isPinned": false,
+    "viewsCount": 1390,
+    "courseCodes": ["BUS-AGILE-01", "PD-SOFT-01"]
+  },
+  {
+    "title": "Tại sao Clean Code lại quan trọng đối với sự phát triển lâu dài?",
+    "slug": "tai-sao-clean-code-lai-quan-trong-phat-trien-lau-dai",
+    "content": "## 1. Định nghĩa thế nào là Code sạch?\n\nMã nguồn sạch (Clean Code) là mã nguồn dễ hiểu, dễ sửa đổi, có tính nhất quán cao và được viết với mục đích phục vụ con người đọc chứ không chỉ để máy tính thực thi.\n\n> *\"Any fool can write code that a computer can understand. Good programmers write code that humans can understand.\"* - Martin Fowler\n\n## 2. Quy tắc SOLID trong lập trình hướng đối tượng\n\n- **Single Responsibility:** Mỗi class chỉ nên chịu một trách nhiệm duy nhất.\n- **Open/Closed:** Mở rộng tính năng bằng cách viết thêm code mới, tránh chỉnh sửa trực tiếp class cũ đã ổn định.\n- **Liskov Substitution, Interface Segregation, Dependency Inversion.**\n\n## 3. So sánh Bad Code vs Clean Code\n\n```javascript\n// BAD CODE\nfunction calc(a, b) {\n  return a * b;\n}\n\n// CLEAN CODE\nfunction calculateArea(width, height) {\n  return width * height;\n}\n```\n\nHãy đặt tên hàm và biến rõ ràng, mô tả đúng chức năng để người đọc tiếp theo (hoặc chính bạn trong vài tháng tới) không phải mất thời gian đoán nghĩa.",
+    "thumbnail": "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=800",
+    "topicSlug": "software-engineering",
+    "tags": ["clean-code", "solid", "refactoring"],
+    "isPinned": false,
+    "viewsCount": 1560,
+    "courseCodes": ["SE-CLEANCODE-01", "WEB-SPRING-02"]
+  },
+  {
+    "title": "Bí quyết thuyết trình tự tin trước đám đông dành cho lập trình viên",
+    "slug": "bi-quyet-thuyet-trinh-tu-tin-cho-lap-trinh-vien",
+    "content": "## 1. Nỗi sợ vô hình của người hướng nội\n\nCác lập trình viên thường có xu hướng ngần ngại chia sẻ hoặc trình bày ý kiến trước đám đông do bản tính hướng nội. Tuy nhiên, thuyết trình tốt là kỹ năng bắt buộc nếu bạn muốn thăng tiến lên Tech Lead hay Project Manager.\n\n## 2. Quy tắc 10-20-30 của Guy Kawasaki\n\n> **📋 Quy tắc 10-20-30**\n>\n> - Tối đa **10 slide** thuyết trình.\n> - Trình bày gọn gàng trong **20 phút**.\n> - Cỡ chữ nhỏ nhất trong slide là **30pt** để khán giả dễ đọc.\n\n## 3. Cách làm chủ buổi thuyết trình\n\nTập trung truyền tải thông điệp cốt lõi, không đọc slide và liên tục duy trì tương tác mắt với khán giả. Chuẩn bị kỹ lưỡng phần Demo trực tiếp và chuẩn bị các phương án dự phòng khi sự cố kỹ thuật xảy ra.",
+    "thumbnail": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800",
+    "topicSlug": "personal-development",
+    "tags": ["presentation", "soft-skills", "career"],
+    "isPinned": false,
+    "viewsCount": 940,
+    "courseCodes": ["PD-SOFT-01", "BUS-AGILE-01"]
+  },
+  {
+    "title": "Xây dựng RESTful API hiệu năng cao với Node.js và Express",
+    "slug": "xay-dung-restful-api-hieu-nang-cao-nodejs-express",
+    "content": "## 1. Node.js và ưu thế Non-blocking I/O\n\nNode.js sử dụng kiến trúc Single-Threaded kết hợp với Event Loop giúp xử lý hàng vạn truy cập I/O đồng thời bất động bộ với hiệu năng vượt trội và tiết kiệm tài nguyên RAM đáng kể so với mô hình đa luồng truyền thống.\n\n## 2. Khởi tạo Express Server cơ bản\n\n```javascript\nconst express = require('express');\nconst app = express();\nconst PORT = process.env.PORT || 3000;\n\napp.use(express.json());\n\napp.get('/api/health', (req, res) => {\n  res.status(200).json({ status: 'UP', timestamp: new Date() });\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n```\n\n## 3. Tích hợp Middleware tối ưu\n\nSử dụng các thư viện như CORS để phân quyền truy cập, Helmet để bảo mật tiêu đề HTTP, morgan để ghi log và express-rate-limit để chống spam gọi API liên tục.",
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
+    "topicSlug": "web-development",
+    "tags": ["nodejs", "express", "backend"],
+    "isPinned": false,
+    "viewsCount": 1320,
+    "courseCodes": ["WEB-NODE-01", "WEB-REACT-01"]
+  },
+  {
+    "title": "Xu hướng phát triển của Trí tuệ Nhân tạo & LLMs trong tương lai",
+    "slug": "xu-huong-phat-trien-tri-tue-nhan-tao-llm",
+    "content": "## 1. Kỷ nguyên của Large Language Models (LLMs)\n\nKể từ sự bùng nổ của GPT, kiến trúc Transformer đã định hình lại toàn bộ ranh giới công nghệ toàn cầu. Sự phát triển vượt bậc của LLMs giúp máy tính thấu hiểu ngôn ngữ tự nhiên, lập luận logic và tự động tạo mã nguồn phần mềm.\n\n## 2. Kỹ thuật Fine-tuning vs RAG\n\n- **Fine-tuning:** Huấn luyện lại một phần tham số mô hình trên tập dữ liệu riêng để thay đổi phong cách hoặc kiến thức chuyên sâu.\n- **RAG (Retrieval-Augmented Generation):** Kết hợp Vector Database để truy xuất thông tin doanh nghiệp thời gian thực cấp cho mô hình sinh câu trả lời mà không lo bị hallucination.\n\n> **🚀 Tương lai của AI Agent**\n>\n> Xu hướng tiếp theo sẽ là các Agent tự trị (Autonomous Agents), có khả năng tự động phân rã nhiệm vụ lớn, gọi API, sử dụng công cụ và tự động sửa sai để hoàn thành mục tiêu phức tạp.",
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800",
+    "topicSlug": "data-science-ai",
+    "tags": ["artificial-intelligence", "llm", "transformers"],
+    "isPinned": false,
+    "viewsCount": 1850,
+    "courseCodes": ["AI-NLP-01", "AI-PYTHON-01"]
+  },
+  {
+    "title": "Tầm quan trọng của Database Indexing trong tối ưu hóa SQL",
+    "slug": "tam-quan-trong-cua-database-indexing-sql",
+    "content": "## 1. Tại sao truy vấn của bạn lại chậm?\n\nKhi dữ liệu bảng SQL tăng lên hàng triệu dòng, việc không đánh chỉ mục (Index) khiến cơ sở dữ liệu phải thực hiện quét toàn bộ bảng (Table Scan) từ đầu đến cuối để tìm kiếm, dẫn tới tốc độ tải trang cực kỳ chậm.\n\n## 2. Nguyên lý hoạt động của B-Tree Index\n\nChỉ mục hoạt động tương tự như mục lục của một cuốn sách. Nó tổ chức dữ liệu theo cấu trúc cây B-Tree tự cân bằng, rút ngắn thời gian tìm kiếm từ độ phức tạp tuyến tính O(N) xuống O(log N).\n\n```sql\n-- Tạo chỉ mục đơn giản\nCREATE INDEX idx_courses_category ON courses (category_id);\n\n-- Truy vấn sử dụng index tăng tốc gấp 100 lần\nSELECT * FROM courses WHERE category_id = 'CAT-01';\n```\n\n## 3. Những sai lầm phổ biến khi đánh Index\n\nViệc lạm dụng tạo quá nhiều chỉ mục sẽ làm chậm các tác vụ ghi (INSERT, UPDATE, DELETE) vì CSDL phải cập nhật lại cấu trúc cây index liên tục. Hãy chỉ đánh chỉ mục cho các trường thường xuất hiện trong mệnh đề WHERE, JOIN.",
+    "thumbnail": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
+    "topicSlug": "database-systems",
+    "tags": ["database", "sql", "indexing"],
+    "isPinned": false,
+    "viewsCount": 1180,
+    "courseCodes": ["WEB-SPRING-02", "SE-SYSDESIGN-02"]
+  },
+  {
+    "title": "Blockchain & Web3: Tương lai của mạng Internet phi tập trung",
+    "slug": "blockchain-web3-tuong-lai-internet-phi-tap-trung",
+    "content": "## 1. Khái niệm Web3 và Phi tập trung\n\nWeb3 đại diện cho thế hệ tiếp theo của mạng Internet, nơi người dùng hoàn toàn làm chủ dữ liệu, tài sản và danh tính số của mình thông qua mật mã học và mạng ngang hàng phi tập trung, thay vì phụ thuộc vào các ông lớn công nghệ.\n\n## 2. Smart Contracts - Trái tim của dApps\n\nHợp đồng thông minh (Smart Contracts) là các đoạn mã tự động thực thi các điều khoản thỏa thuận đã được ghi trên Blockchain. Solidity là ngôn ngữ lập trình phổ biến nhất giúp viết các Smart Contracts trên mạng lưới Ethereum.\n\n```solidity\n// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract SimpleStorage {\n    uint256 private data;\n\n    function set(uint256 x) public {\n        data = x;\n    }\n\n    function get() public view returns (uint256) {\n        return data;\n    }\n}\n```\n\n## 3. Thách thức lớn của Blockchain\n\nMặc dù mang tính bảo mật và minh bạch cao, Blockchain vẫn đang đối mặt với bài toán khả năng mở rộng (Scalability Trilemma): rất khó đạt được đồng thời tính bảo mật, phi tập trung và tốc độ giao dịch cao.",
+    "thumbnail": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800",
+    "topicSlug": "blockchain-web3",
+    "tags": ["blockchain", "web3", "solidity"],
+    "isPinned": false,
+    "viewsCount": 1050,
+    "courseCodes": ["SE-SYSDESIGN-02"]
+  }
+]

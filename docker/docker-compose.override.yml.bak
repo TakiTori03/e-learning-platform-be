@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # Message Queue
+  kafka:
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+
+  # Redis Cache
+  redis-master:
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  # Identity PostgreSQL & Keycloak
+  elearning-identity-db:
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+  elearning-keycloak:
+    deploy:
+      resources:
+        limits:
+          memory: 600M
+
+  # Course MongoDB
+  elearning-course-db:
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  # Order PostgreSQL
+  elearning-order-db:
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+  # Learning MongoDB
+  elearning-learning-db:
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  # Interaction MongoDB
+  elearning-interaction-db:
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  # Media MongoDB & MinIO
+  elearning-media-db:
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+  minio:
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+  # AI PostgreSQL
+  elearning-ai-db:
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+  # Assessment MongoDB
+  elearning-assessment-db:
+    command: mongod --wiredTigerCacheSizeGB 0.25
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+
+  # Search & Catalog (Elasticsearch)
+  elasticsearch:
+    deploy:
+      resources:
+        limits:
+          memory: 1536M

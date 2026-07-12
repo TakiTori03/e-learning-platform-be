@@ -1,0 +1,61 @@
+server:
+  port: 9088
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: worker-service
+
+  # Kafka Configuration
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    consumer:
+      group-id: worker-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  # Redis for Media Processing Status Coordination
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+    register-with-eureka: true
+    fetch-registry: true
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  storage:
+    local-path: ${STORAGE_LOCAL_PATH:./uploads}
+  ffmpeg:
+    path: ${FFMPEG_PATH:ffmpeg}
+  ffprobe:
+    path: ${FFPROBE_PATH:ffprobe}
+  minio:
+    endpoint: ${MINIO_ENDPOINT:http://localhost:9100}
+    access-key: ${MINIO_ACCESS_KEY:minioadmin}
+    secret-key: ${MINIO_SECRET_KEY:minioadmin}
+    bucket-name: ${MINIO_BUCKET:elearning-media}
+    region: ${MINIO_REGION:us-east-1}
+  whisper:
+    enabled: ${WHISPER_ENABLED:true}
+    path: ${WHISPER_PATH:bin/whisper-cli.exe}
+    model-path: ${WHISPER_MODEL_PATH:models/whisper/ggml-base.bin}
+    language: ${WHISPER_LANGUAGE:auto}
+
+logging:
+  level:
+    root: INFO
+    com.hust.workerservice: DEBUG
+    org.springframework.security: INFO

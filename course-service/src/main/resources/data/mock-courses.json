@@ -1,0 +1,1481 @@
+[
+  {
+    "code": "WEB-REACT-01",
+    "name": "React.js & Next.js - Complete Frontend Guide",
+    "categorySlug": "web-development",
+    "level": "INTERMEDIATE",
+    "price": 1200000.0,
+    "finalPrice": 890000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "requirements": [
+      "Có kiến thức cơ bản về HTML, CSS và JavaScript",
+      "Máy tính kết nối Internet ổn định."
+    ],
+    "willLearns": [
+      "Làm chủ các khái niệm React Core: Hooks, State, Props",
+      "Xây dựng ứng dụng render phía Server với Next.js App Router",
+      "Quản lý state phức tạp với Redux Toolkit"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu & Thiết lập môi trường",
+        "description": "Các bài học cơ bản giúp làm quen với khóa học và công cụ phát triển."
+      },
+      {
+        "name": "Ôn tập ES6+ & JavaScript cho React",
+        "description": "Củng cố các kiến thức JavaScript hiện đại như Arrow Functions, Destructuring, Rest/Spread, Promises."
+      },
+      {
+        "name": "React Core Components & JSX",
+        "description": "Hiểu sâu về cấu trúc component, cú pháp JSX và cơ chế hoạt động của Virtual DOM."
+      },
+      {
+        "name": "React State & Props - Quản lý dữ liệu",
+        "description": "Cách truyền dữ liệu qua Props và quản lý trạng thái nội bộ Component với State."
+      },
+      {
+        "name": "Xử lý Sự kiện & Biểu mẫu (Forms)",
+        "description": "Làm việc với Event Handling, Controlled vs Uncontrolled Components và Form validation."
+      },
+      {
+        "name": "React Hooks chuyên sâu",
+        "description": "Làm chủ useState, useEffect, useContext, useMemo, useCallback và viết Custom Hooks."
+      },
+      {
+        "name": "Giới thiệu Next.js & App Router",
+        "description": "Khám phá cấu trúc thư mục, triết lý thiết kế mới của Next.js với Server Components."
+      },
+      {
+        "name": "Routing & Navigation trong Next.js",
+        "description": "Xây dựng hệ thống định tuyến động, lồng nhau (Nested Routing) và tối ưu liên kết trang."
+      },
+      {
+        "name": "Rendering Strategies (SSR, SSG, ISR)",
+        "description": "Tìm hiểu và áp dụng Server-Side Rendering, Static Site Generation và Incremental Static Regeneration."
+      },
+      {
+        "name": "Quản lý State toàn cục với Redux Toolkit",
+        "description": "Xây dựng Store, Actions, Reducers và cấu hình Middleware cho các ứng dụng quy mô lớn."
+      },
+      {
+        "name": "Deploy dự án & Tối ưu SEO",
+        "description": "Hướng dẫn deploy dự án lên Vercel, tối ưu hóa tốc độ tải trang và cấu hình Meta Tags chuẩn SEO."
+      }
+    ]
+  },
+  {
+    "code": "WEB-SPRING-02",
+    "name": "Spring Boot Microservices & Cloud Architecture",
+    "categorySlug": "web-development",
+    "level": "ADVANCED",
+    "price": 1500000.0,
+    "finalPrice": 1190000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=RVFAyFWRyRk",
+    "requirements": [
+      "Đã học lập trình Java Core và Spring Boot Basic",
+      "Hiểu biết cơ bản về mô hình RESTful API."
+    ],
+    "willLearns": [
+      "Thiết kế hệ thống phân tán dạng Microservice",
+      "Tự động phát hiện dịch vụ bằng Eureka Server và Gateway routing",
+      "Bảo mật microservice sử dụng OAuth2 và Keycloak"
+    ],
+    "sections": [
+      {
+        "name": "Thiết kế kiến trúc & Khởi tạo dự án",
+        "description": "Phân tích yêu cầu hệ thống và tạo cấu trúc dự án đa mô-đun Maven."
+      },
+      {
+        "name": "Spring Boot Core & RESTful APIs Development",
+        "description": "Xây dựng REST APIs chuẩn chỉnh, xử lý ngoại lệ toàn cục và kiểm thử với Postman."
+      },
+      {
+        "name": "Spring Data JPA & PostgreSQL Integration",
+        "description": "Cấu hình kết nối cơ sở dữ liệu, viết các truy vấn phức tạp và quản lý Transaction."
+      },
+      {
+        "name": "Spring Cloud Config Server",
+        "description": "Quản lý và cập nhật cấu hình tập trung cho toàn bộ hệ thống Microservices thông qua Git/Vault."
+      },
+      {
+        "name": "Netflix Eureka Server - Service Discovery",
+        "description": "Đăng ký dịch vụ tự động và phát hiện các instance của dịch vụ trong hệ thống phân tán."
+      },
+      {
+        "name": "Spring Cloud Gateway & Gateway routing",
+        "description": "Xây dựng điểm truy cập duy nhất, cấu hình routing, rate limiting và lọc request (Filters)."
+      },
+      {
+        "name": "Giao tiếp giữa các Service: OpenFeign",
+        "description": "Triển khai giao tiếp đồng bộ hiệu quả, xử lý lỗi (Circuit Breaker) với Resilience4j."
+      },
+      {
+        "name": "Bảo mật hệ thống với OAuth2 & Keycloak",
+        "description": "Tích hợp Single Sign-On (SSO), phân quyền dựa trên Roles và JWT token validation."
+      },
+      {
+        "name": "Saga Pattern & Distributed Transactions",
+        "description": "Giải quyết bài toán nhất quán dữ liệu qua nhiều DB độc lập bằng Saga Orchestrator."
+      },
+      {
+        "name": "Event-Driven Architecture với Apache Kafka",
+        "description": "Xây dựng luồng xử lý bất đồng bộ, publish và subscribe các event thông qua các Kafka topics."
+      },
+      {
+        "name": "Giám sát hệ thống: Prometheus & Grafana",
+        "description": "Thu thập metric của Spring Actuator và trực quan hóa hiệu năng hệ thống lên Dashboard."
+      }
+    ]
+  },
+  {
+    "code": "MOB-FLUTTER-01",
+    "name": "Flutter & Dart - Build iOS & Android Apps",
+    "categorySlug": "mobile-app",
+    "level": "INTERMEDIATE",
+    "price": 990000.0,
+    "finalPrice": 690000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+    "requirements": [
+      "Có kiến thức lập trình OOP cơ bản (C++, Java, JS)"
+    ],
+    "willLearns": [
+      "Sử dụng ngôn ngữ Dart thành thạo",
+      "Thiết kế UI đẹp mắt bằng Flutter widgets layout",
+      "Tích hợp API và quản lý trạng thái bằng Provider/Bloc"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu & Thiết lập môi trường Flutter",
+        "description": "Cài đặt Flutter SDK, cấu hình Android Studio và Xcode phục vụ lập trình giả lập."
+      },
+      {
+        "name": "Ngôn ngữ lập trình Dart Core & OOP",
+        "description": "Cú pháp cơ bản, Null Safety, Lập trình hướng đối tượng và xử lý bất đồng bộ (Async/Await)."
+      },
+      {
+        "name": "Flutter Widgets cơ bản",
+        "description": "Làm quen với cấu trúc Widget Tree, Stateless vs Stateful Widget, các widget giao diện cơ bản."
+      },
+      {
+        "name": "Bố cục và Layout nâng cao",
+        "description": "Thiết kế giao diện linh hoạt với Container, Row, Column, Stack và Flex layouts."
+      },
+      {
+        "name": "Navigation & Routing",
+        "description": "Quản lý việc chuyển trang, truyền tham số giữa các màn hình sử dụng Named Routes."
+      },
+      {
+        "name": "Kết nối REST API & JSON Serialization",
+        "description": "Sử dụng thư viện HTTP/Dio để fetch dữ liệu từ Server và parse JSON thành Dart Objects."
+      },
+      {
+        "name": "Quản lý State với Provider & BLoC",
+        "description": "Phân biệt Local State và Global State, áp dụng Provider và Flutter BLoC để tách biệt Logic và UI."
+      },
+      {
+        "name": "Local Database với SQLite & Hive",
+        "description": "Lưu trữ dữ liệu offline của ứng dụng bằng các cơ sở dữ liệu gọn nhẹ và tối ưu."
+      },
+      {
+        "name": "Tích hợp Firebase Services",
+        "description": "Cấu hình Firebase Authentication, lưu trữ Cloud Firestore và đẩy thông báo đẩy qua FCM."
+      },
+      {
+        "name": "Tối ưu hóa hiệu năng & UI Responsive",
+        "description": "Tránh render thừa thãi, tối ưu hình ảnh và thiết kế Layout Builder tương thích mọi màn hình."
+      },
+      {
+        "name": "Build và Phát hành ứng dụng",
+        "description": "Ký số ứng dụng (Signing), chuẩn bị tài sản đồ họa và đưa ứng dụng lên App Store / Play Store."
+      }
+    ]
+  },
+  {
+    "code": "AI-PYTHON-01",
+    "name": "Python for Data Science & Machine Learning",
+    "categorySlug": "data-science-ai",
+    "level": "BEGINNER",
+    "price": 1100000.0,
+    "finalPrice": 790000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=j942w-5ra4k",
+    "requirements": [
+      "Không yêu cầu kiến thức lập trình từ trước."
+    ],
+    "willLearns": [
+      "Viết code Python thành thạo cho phân tích dữ liệu",
+      "Sử dụng thư viện Pandas, NumPy, Matplotlib để xử lý dữ liệu lớn",
+      "Xây dựng các mô hình Machine Learning cơ bản (Regression, Classification)"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu Data Science & Setup Anaconda",
+        "description": "Cài đặt Python, Jupyter Notebook và làm quen với môi trường ảo Conda."
+      },
+      {
+        "name": "Cú pháp Python cơ bản",
+        "description": "Làm quen với các kiểu dữ liệu, vòng lặp, câu lệnh rẽ nhánh if-else và hàm."
+      },
+      {
+        "name": "Cấu trúc dữ liệu nâng cao trong Python",
+        "description": "Sử dụng Lists, Tuples, Dictionaries, Sets và viết List Comprehension."
+      },
+      {
+        "name": "Lập trình hướng đối tượng (OOP) với Python",
+        "description": "Định nghĩa Class, Object, các tính chất Kế thừa, Đa hình và cách xử lý Exception."
+      },
+      {
+        "name": "Phân tích dữ liệu với thư viện NumPy",
+        "description": "Xử lý mảng đa chiều (Arrays), các phép toán ma trận và tính toán vector hóa tốc độ cao."
+      },
+      {
+        "name": "Xử lý dữ liệu bảng với Pandas",
+        "description": "Làm việc với DataFrame, đọc/ghi file CSV/Excel, gom nhóm (Groupby) và ghép bảng (Merge/Join)."
+      },
+      {
+        "name": "Trực quan hóa dữ liệu (Data Visualization)",
+        "description": "Vẽ biểu đồ phân tích bằng Matplotlib và Seaborn để tìm kiếm insight dữ liệu."
+      },
+      {
+        "name": "Tiền xử lý dữ liệu & Feature Engineering",
+        "description": "Xử lý dữ liệu khuyết thiếu, chuẩn hóa dữ liệu (Scaling) và mã hóa biến phân loại."
+      },
+      {
+        "name": "Supervised Learning - Mô hình có giám sát",
+        "description": "Tìm hiểu Linear/Logistic Regression, Decision Trees, Random Forest với Scikit-Learn."
+      },
+      {
+        "name": "Unsupervised Learning - Phân cụm dữ liệu",
+        "description": "Áp dụng thuật toán K-Means Clustering và Kỹ thuật giảm chiều dữ liệu PCA."
+      },
+      {
+        "name": "Đánh giá mô hình & Deploy ứng dụng AI",
+        "description": "Sử dụng Confusion Matrix, ROC-AUC curve và triển khai Web App dự báo cơ bản với Streamlit."
+      }
+    ]
+  },
+  {
+    "code": "SE-SYSDESIGN-02",
+    "name": "System Design & High-Scalability Architectures",
+    "categorySlug": "software-engineering",
+    "level": "ADVANCED",
+    "price": 2000000.0,
+    "finalPrice": 1590000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "requirements": [
+      "Tối thiểu 1-2 năm kinh nghiệm làm việc thực tế với backend."
+    ],
+    "willLearns": [
+      "Hiểu sâu về kiến trúc High Scalability, Load Balancing, CDN",
+      "Áp dụng kỹ thuật DB Sharding, Replication, NoSQL phù hợp",
+      "Thiết kế hệ thống thực tế: Rate Limiter, Chat App, Elearning"
+    ],
+    "sections": [
+      {
+        "name": "Tổng quan về System Design & Các tiêu chí đánh giá",
+        "description": "Tìm hiểu về Khả năng mở rộng (Scalability), Độ sẵn sàng (Availability) và Hiệu năng (Performance)."
+      },
+      {
+        "name": "Cân bằng tải & API Gateway",
+        "description": "Các thuật toán load balancing, Layer 4 vs Layer 7, và vai trò của API Gateway trong hệ thống."
+      },
+      {
+        "name": "Caching Strategies chuyên sâu",
+        "description": "Thiết kế bộ nhớ đệm: Cache Aside, Write Through, Eviction Policies với Redis / Memcached."
+      },
+      {
+        "name": "Thiết kế Database ở quy mô lớn",
+        "description": "SQL vs NoSQL, kỹ thuật Read Replicas, Database Sharding, Consistent Hashing."
+      },
+      {
+        "name": "Truyền thông bất đồng bộ & Message Brokers",
+        "description": "Sử dụng Message Queue (RabbitMQ, Kafka) để giảm tải và tách rời các service."
+      },
+      {
+        "name": "Độ sẵn sàng cao & Khả năng chịu lỗi",
+        "description": "Thiết kế hệ thống chống lỗi: Circuit Breaker, Retry Policies và Disaster Recovery."
+      },
+      {
+        "name": "Thiết kế Hệ thống thực tế: Rate Limiter",
+        "description": "Xây dựng bộ giới hạn tốc độ truy cập với các thuật toán Token Bucket, Leaky Bucket."
+      },
+      {
+        "name": "Thiết kế Hệ thống thực tế: Chat & Notification System",
+        "description": "Hệ thống nhắn tin thời gian thực dựa trên WebSockets và Long Polling."
+      },
+      {
+        "name": "Thiết kế Hệ thống thực tế: E-learning & Video Streaming",
+        "description": "Xử lý tải lên, nén video đa định dạng, phân phối nội dung qua CDN và HLS streaming."
+      },
+      {
+        "name": "Phân tích hệ thống lớn (Google Search, Uber)",
+        "description": "Mổ xẻ kiến trúc các hệ thống tỷ người dùng để học cách giải quyết vấn đề quy mô cực lớn."
+      },
+      {
+        "name": "Monitoring, Logging & Distributed Tracing",
+        "description": "Thu thập log tập trung (ELK Stack) và theo dõi luồng request phân tán (Jaeger/Zipkin)."
+      }
+    ]
+  },
+  {
+    "code": "DEV-DOCKER-01",
+    "name": "Docker & Kubernetes - Cloud Native DevOps Complete Course",
+    "categorySlug": "cloud-devops",
+    "level": "INTERMEDIATE",
+    "price": 1350000.0,
+    "finalPrice": 950000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "requirements": [
+      "Có kiến thức cơ bản về Linux và mạng máy tính",
+      "Hiểu cấu trúc ứng dụng Web cơ bản."
+    ],
+    "willLearns": [
+      "Container hóa mọi ứng dụng với Docker",
+      "Quản lý cụm Container tự động hóa với Kubernetes",
+      "Thiết lập CI/CD pipeline tự động hóa triển khai sản phẩm"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu về DevOps & Cloud Native",
+        "description": "Hiểu xu thế phát triển phần mềm hiện đại và tổng quan hạ tầng Cloud Native."
+      },
+      {
+        "name": "Cài đặt và sử dụng Docker cơ bản",
+        "description": "Cài đặt Docker Engine, làm quen với dòng lệnh CLI và chạy container đầu tiên."
+      },
+      {
+        "name": "Dockerfile & Cách build tối ưu Container Images",
+        "description": "Học cách viết Dockerfile hiệu quả, giảm kích thước Image bằng Multi-stage build."
+      },
+      {
+        "name": "Docker Compose - Quản lý đa container",
+        "description": "Cấu hình file YAML để khởi chạy đồng thời nhiều service (Web, DB, Cache) liên thông."
+      },
+      {
+        "name": "Cơ bản về Kubernetes (K8s) Architecture",
+        "description": "Kiến trúc cụm K8s bao gồm Control Plane và Worker Nodes cùng cơ chế hoạt động."
+      },
+      {
+        "name": "Pods, Deployments & Services trong Kubernetes",
+        "description": "Tạo Pod, cấu hình Replication Controller, Deployment và mở cổng dịch vụ ra ngoài với Services."
+      },
+      {
+        "name": "Quản lý trạng thái với Volumes & Persistent Volumes (PV/PVC)",
+        "description": "Cấu hình chia sẻ dữ liệu giữa host và container, lưu trữ dữ liệu vĩnh viễn trên K8s."
+      },
+      {
+        "name": "Cấu hình ConfigMaps & Secrets",
+        "description": "Tách biệt tham số môi trường và mật khẩu bảo mật khỏi mã nguồn ứng dụng."
+      },
+      {
+        "name": "Ingress Controllers & Routing lưu lượng mạng",
+        "description": "Cài đặt Nginx Ingress Controller để định tuyến lưu lượng HTTPS thông minh."
+      },
+      {
+        "name": "CI/CD Pipeline tự động deploy lên K8s Cluster",
+        "description": "Sử dụng GitHub Actions hoặc Jenkins để tự động kiểm thử và deploy phiên bản mới."
+      },
+      {
+        "name": "Giám sát hạ tầng với Prometheus & Grafana",
+        "description": "Thu thập thông số RAM, CPU và vẽ biểu đồ cảnh báo sự cố hệ thống tự động."
+      }
+    ]
+  },
+  {
+    "code": "DES-FIGMA-01",
+    "name": "Figma UI/UX Design - Từ Cơ Bản Đến Nâng Cao",
+    "categorySlug": "design-ui-ux",
+    "level": "BEGINNER",
+    "price": 850000.0,
+    "finalPrice": 590000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=RVFAyFWRyRk",
+    "requirements": [
+      "Không cần kinh nghiệm mỹ thuật hay thiết kế trước đây."
+    ],
+    "willLearns": [
+      "Sử dụng thành thạo toàn bộ tính năng và phím tắt của Figma",
+      "Ứng dụng các quy tắc thiết kế giao diện UI/UX chuẩn thực tế",
+      "Xây dựng các prototype tương tác động nâng cao"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu về Figma & Giao diện công cụ",
+        "description": "Đăng ký tài khoản, làm quen không gian làm việc và quản lý dự án trong Figma."
+      },
+      {
+        "name": "Các công cụ vẽ vector & Layout cơ bản",
+        "description": "Sử dụng Pen tool, Shape tools để vẽ icon và các hình khối cơ bản."
+      },
+      {
+        "name": "Hệ thống lưới (Grids) & Căn chỉnh đối tượng",
+        "description": "Thiết lập Grid system, Layout Grid phù hợp cho Desktop và Mobile web."
+      },
+      {
+        "name": "Sử dụng Typography và Màu sắc chuẩn thiết kế",
+        "description": "Nguyên lý phối màu và lựa chọn font chữ phù hợp với trải nghiệm người dùng."
+      },
+      {
+        "name": "Auto Layout - Thiết kế Responsive UI tự động",
+        "description": "Làm chủ tính năng Auto Layout giúp co giãn nút, bảng biểu tự động theo nội dung."
+      },
+      {
+        "name": "Components & Variants - Xây dựng Design System",
+        "description": "Tạo các Component tái sử dụng cao và quản lý trạng thái nút qua Variants."
+      },
+      {
+        "name": "Làm quen với UI Kit & Thư viện dùng chung",
+        "description": "Sử dụng tài nguyên có sẵn trên cộng đồng để đẩy nhanh tiến độ làm việc."
+      },
+      {
+        "name": "Tạo mẫu thử tương tác (Prototyping) cơ bản",
+        "description": "Liên kết các màn hình và cấu hình các cử chỉ chạm, lướt trên thiết bị."
+      },
+      {
+        "name": "Smart Animate - Tạo hiệu ứng chuyển động mượt mà",
+        "description": "Tạo các animation phức tạp, chuyển trang đẹp mắt và sinh động."
+      },
+      {
+        "name": "Thiết kế giao diện Web Dashboard thực tế",
+        "description": "Thực hành thiết kế trọn vẹn một ứng dụng Dashboard quản lý từ A-Z."
+      },
+      {
+        "name": "Bàn giao thiết kế cho Developer (Design Handoff)",
+        "description": "Xuất file thiết kế, xem code CSS thông số và bàn giao cho đội lập trình viên."
+      }
+    ]
+  },
+  {
+    "code": "SEC-ETHICAL-01",
+    "name": "Ethical Hacking & Cyber Security Practitioner",
+    "categorySlug": "cyber-security",
+    "level": "ADVANCED",
+    "price": 1800000.0,
+    "finalPrice": 1390000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+    "requirements": [
+      "Hiểu biết cơ bản về mạng máy tính TCP/IP và hệ điều hành Linux."
+    ],
+    "willLearns": [
+      "Tư duy và cách thức hoạt động của một tin tặc mũ trắng",
+      "Sử dụng Kali Linux để tìm kiếm và đánh giá bảo mật hệ thống",
+      "Ngăn chặn các cuộc tấn công mạng nguy hiểm"
+    ],
+    "sections": [
+      {
+        "name": "Tổng quan về An ninh mạng & Đạo đức Hackers",
+        "description": "Phân biệt hacker mũ đen/trắng/xám và luật an ninh mạng cơ bản."
+      },
+      {
+        "name": "Thiết lập phòng lab an toàn trên Kali Linux",
+        "description": "Cài đặt máy ảo VirtualBox, cấu hình Kali Linux và Metasploitable cho thực hành."
+      },
+      {
+        "name": "Thu thập thông tin (Reconnaissance & Footprinting)",
+        "description": "Kỹ thuật do thám thông tin thụ động và chủ động về mục tiêu trên internet."
+      },
+      {
+        "name": "Quét cổng mạng và lỗ hổng (Scanning with Nmap)",
+        "description": "Sử dụng Nmap để dò tìm cổng mở, hệ điều hành và dịch vụ đang chạy trên server."
+      },
+      {
+        "name": "Tấn công hệ thống xác thực (Password Cracking)",
+        "description": "Thực hành bẻ khóa mật khẩu bằng phương pháp Brute Force, Dictionary Attack với Hydra."
+      },
+      {
+        "name": "Khai thác lỗ hổng Web ứng dụng (OWASP Top 10)",
+        "description": "Khai thác thực tế SQL Injection, Cross-Site Scripting (XSS) và Broken Authentication."
+      },
+      {
+        "name": "Tấn công mạng không dây (Wireless Hacking)",
+        "description": "Tìm hiểu và thử nghiệm lỗ hổng bảo mật của giao thức mã hóa WPA/WPA2."
+      },
+      {
+        "name": "Kỹ thuật xã hội (Social Engineering) & Phishing",
+        "description": "Cách kẻ tấn công thao túng tâm lý con người để lấy cắp thông tin đăng nhập."
+      },
+      {
+        "name": "Malware, Trojans & Backdoors cơ bản",
+        "description": "Tạo payload độc hại và tìm cách chèn mã độc vào file bình thường để duy trì kết nối."
+      },
+      {
+        "name": "Cách phát hiện & Phòng chống tấn công (IDS/IPS)",
+        "description": "Cấu hình tường lửa và hệ thống cảnh báo xâm nhập để bảo vệ hạ tầng doanh nghiệp."
+      },
+      {
+        "name": "Viết báo cáo đánh giá bảo mật chuyên nghiệp",
+        "description": "Trình bày các phát hiện lỗ hổng và giải pháp khắc phục cho ban giám đốc."
+      }
+    ]
+  },
+  {
+    "code": "MKT-SEO-01",
+    "name": "Digital Marketing & SEO Masterclass",
+    "categorySlug": "marketing-seo",
+    "level": "BEGINNER",
+    "price": 900000.0,
+    "finalPrice": 650000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=j942w-5ra4k",
+    "requirements": [
+      "Không cần kiến thức marketing từ trước, phù hợp cho người khởi đầu."
+    ],
+    "willLearns": [
+      "Xây dựng kế hoạch SEO tổng thể đưa từ khóa lên Top 1 Google",
+      "Chạy quảng cáo đa kênh hiệu quả tối ưu ngân sách",
+      "Cấu hình phân tích dữ liệu lượng truy cập web"
+    ],
+    "sections": [
+      {
+        "name": "Tổng quan về Digital Marketing thời đại số",
+        "description": "Các mô hình marketing hiện đại và kênh tiếp cận khách hàng tiềm năng."
+      },
+      {
+        "name": "Nghiên cứu thị trường và Chân dung khách hàng",
+        "description": "Xác định mục tiêu bán hàng và thói quen hành vi mua sắm trực tuyến."
+      },
+      {
+        "name": "Xây dựng kế hoạch nội dung (Content Marketing)",
+        "description": "Viết bài hấp dẫn chuẩn SEO, xây dựng kế hoạch đăng bài đa nền tảng."
+      },
+      {
+        "name": "Nguyên lý hoạt động của Google Search Engine",
+        "description": "Cách Google thu thập dữ liệu (Crawl), lập chỉ mục (Index) và xếp hạng website."
+      },
+      {
+        "name": "Nghiên cứu từ khóa (Keyword Research) chuyên sâu",
+        "description": "Sử dụng Google Keyword Planner và Ahrefs để chọn bộ từ khóa chuyển đổi cao."
+      },
+      {
+        "name": "Tối ưu SEO On-page cho Website",
+        "description": "Cấu hình thẻ Heading, Meta title, description, tối ưu ảnh và mật độ từ khóa."
+      },
+      {
+        "name": "Chiến lược SEO Off-page & Xây dựng Backlink",
+        "description": "Cách tạo backlink chất lượng cao để tăng độ uy tín (Authority) của trang web."
+      },
+      {
+        "name": "Quảng cáo Google Ads (Search & Display) cơ bản",
+        "description": "Thiết lập chiến dịch quảng cáo tìm kiếm Google Ads đầu tiên."
+      },
+      {
+        "name": "Tiếp thị qua mạng xã hội (Social Media Marketing)",
+        "description": "Cách phát triển trang Facebook, TikTok và tối ưu hóa chuyển đổi tự nhiên."
+      },
+      {
+        "name": "Thiết lập & Phân tích Google Analytics 4 (GA4)",
+        "description": "Đo lường hành vi người dùng trên website và thiết lập các sự kiện chuyển đổi."
+      },
+      {
+        "name": "Lập báo cáo đo lường hiệu quả chiến dịch Marketing",
+        "description": "Tổng kết doanh số thu về (ROI) và điều chỉnh chiến lược tiếp thị kịp thời."
+      }
+    ]
+  },
+  {
+    "code": "BUS-AGILE-01",
+    "name": "Agile & Scrum Product Management",
+    "categorySlug": "business-startups",
+    "level": "INTERMEDIATE",
+    "price": 1250000.0,
+    "finalPrice": 890000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "requirements": [
+      "Đã có kinh nghiệm tham gia vào các dự án phần mềm."
+    ],
+    "willLearns": [
+      "Vận hành và quản lý dự án theo đúng tinh thần Agile",
+      "Làm chủ quy trình Scrum trong vòng đời phát triển phần mềm",
+      "Tối ưu hóa năng suất làm việc của toàn bộ đội ngũ phát triển"
+    ],
+    "sections": [
+      {
+        "name": "Khái niệm về Agile & Tuyên ngôn Agile",
+        "description": "Sự học biệt giữa mô hình Thác nước (Waterfall) và triết lý Agile."
+      },
+      {
+        "name": "Tổng quan về Scrum Framework",
+        "description": "Học 3 cột trụ, 5 giá trị cốt lõi và chu trình lặp đi lặp lại của Scrum."
+      },
+      {
+        "name": "Vai trò của Product Owner, Scrum Master & Dev Team",
+        "description": "Phân chia trách nhiệm rõ ràng để vận hành tổ chức trơn tru."
+      },
+      {
+        "name": "Quản lý danh mục công việc (Product Backlog)",
+        "description": "Cách viết User Story chuẩn và kỹ thuật ưu tiên hóa các yêu cầu tính năng."
+      },
+      {
+        "name": "Ước lượng công việc (Estimation) & Story Points",
+        "description": "Sử dụng trò chơi Planning Poker để cả đội cùng thống nhất độ khó công việc."
+      },
+      {
+        "name": "Lập kế hoạch Sprint (Sprint Planning)",
+        "description": "Cam kết mục tiêu cho Sprint mới và lựa chọn công việc phù hợp năng lực đội."
+      },
+      {
+        "name": "Họp hằng ngày (Daily Standup) & Theo dõi tiến độ",
+        "description": "Họp nhanh 15 phút đầu ngày để phát hiện các rào cản cản trở tiến trình."
+      },
+      {
+        "name": "Đánh giá kết quả cuối Sprint (Sprint Review)",
+        "description": "Trình diễn bản demo sản phẩm hoàn thiện cho khách hàng và các bên liên quan."
+      },
+      {
+        "name": "Họp cải tiến quy trình (Sprint Retrospective)",
+        "description": "Nhìn nhận những mặt tốt và chưa tốt để cải tiến cách làm việc của đội."
+      },
+      {
+        "name": "Quản lý sản phẩm bằng bảng Kanban",
+        "description": "Sử dụng bảng trực quan hóa luồng công việc và giới hạn Work in Progress (WIP limit)."
+      },
+      {
+        "name": "Áp dụng Agile vào doanh nghiệp và Startups",
+        "description": "Giải quyết các thách thức khi chuyển dịch văn hóa làm việc truyền thống sang Agile."
+      }
+    ]
+  },
+  {
+    "code": "PD-SOFT-01",
+    "name": "Kỹ Năng Giao Tiếp & Thuyết Trình Hiệu Quả",
+    "categorySlug": "personal-development",
+    "level": "BEGINNER",
+    "price": 600000.0,
+    "finalPrice": 390000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "requirements": [
+      "Mọi đối tượng muốn cải thiện kỹ năng nói và giao tiếp xã hội."
+    ],
+    "willLearns": [
+      "Tự tin trình bày ý tưởng trước bất kỳ khán phòng nào",
+      "Làm chủ giọng nói và ngôn ngữ hình thể một cách tự nhiên",
+      "Cải thiện kỹ năng giao lưu, lắng nghe và viết email thuyết phục"
+    ],
+    "sections": [
+      {
+        "name": "Tầm quan trọng của giao tiếp trong công việc",
+        "description": "Giao tiếp hiệu quả là chìa khóa mở cánh cửa thăng tiến sự nghiệp."
+      },
+      {
+        "name": "Vượt qua nỗi sợ nói trước đám đông",
+        "description": "Giải tỏa tâm lý lo lắng thông qua các bài tập thở và điều chỉnh tư duy."
+      },
+      {
+        "name": "Chuẩn bị nội dung và Cấu trúc bài thuyết trình",
+        "description": "Thiết kế mở bài lôi cuốn, thân bài logic và kết bài ấn tượng đọng lại sâu sắc."
+      },
+      {
+        "name": "Kỹ thuật sử dụng ngôn ngữ cơ thể (Body Language)",
+        "description": "Giao tiếp bằng ánh mắt, cách di chuyển tay và đứng thế nào để tạo niềm tin."
+      },
+      {
+        "name": "Điều khiển giọng nói và Tốc độ nói phù hợp",
+        "description": "Luyện giọng bụng, ngắt nghỉ đúng lúc và nhấn nhá từ khóa quan trọng."
+      },
+      {
+        "name": "Thiết kế Slide thuyết trình ấn tượng & Tối giản",
+        "description": "Sử dụng màu sắc, hình ảnh trực quan thay vì nhồi nhét quá nhiều chữ."
+      },
+      {
+        "name": "Kỹ năng lắng nghe tích cực (Active Listening)",
+        "description": "Lắng nghe để thấu hiểu chứ không phải lắng nghe chỉ để phản hồi."
+      },
+      {
+        "name": "Giải quyết xung đột thông qua giao tiếp khéo léo",
+        "description": "Học cách từ chối khéo, phê bình xây dựng và thuyết phục người khác."
+      },
+      {
+        "name": "Trả lời câu hỏi ứng biến trước đám đông (Q&A)",
+        "description": "Các kỹ thuật xử lý câu hỏi hóc búa từ người nghe một cách tự tin."
+      },
+      {
+        "name": "Kỹ năng giao tiếp qua Email và chat công việc",
+        "description": "Viết email ngắn gọn, lịch sự, đúng trọng tâm và tránh gây hiểu lầm."
+      },
+      {
+        "name": "Kế hoạch rèn luyện kỹ năng tự tin suốt đời",
+        "description": "Tạo thói quen thực hành hằng ngày để biến giao tiếp thành phản xạ tự nhiên."
+      }
+    ]
+  },
+  {
+    "code": "WEB-NODE-01",
+    "name": "Node.js & Express - Build RESTful APIs & Backend Services",
+    "categorySlug": "web-development",
+    "level": "INTERMEDIATE",
+    "price": 1100000.0,
+    "finalPrice": 790000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=RVFAyFWRyRk",
+    "requirements": [
+      "Có hiểu biết cơ bản về JavaScript lập trình cơ bản."
+    ],
+    "willLearns": [
+      "Xây dựng các RESTful API hiệu năng cao với Express.js",
+      "Làm việc với cơ sở dữ liệu MongoDB thông qua Mongoose",
+      "Bảo mật backend với JWT và tối ưu hóa hiệu năng ứng dụng"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu về môi trường Node.js & NPM",
+        "description": "Tìm hiểu về Event Loop, Non-blocking I/O và cách cài đặt thư viện ngoài qua NPM."
+      },
+      {
+        "name": "Javascript bất đồng bộ nâng cao",
+        "description": "Thành thạo Callbacks, Promises và cách viết code trực quan với Async/Await."
+      },
+      {
+        "name": "Khởi tạo Express.js app & Cấu trúc thư mục chuẩn",
+        "description": "Tổ chức source code theo mô hình MVC (Model-View-Controller) khoa học."
+      },
+      {
+        "name": "Xây dựng Routing và Xử lý Request/Response",
+        "description": "Cách nhận tham số qua Query, Path variables và parse JSON body gửi lên."
+      },
+      {
+        "name": "Quản lý Middleware trong Express",
+        "description": "Viết custom middleware xử lý ghi log, phân quyền và bắt lỗi tập trung."
+      },
+      {
+        "name": "Kết nối MongoDB sử dụng thư viện Mongoose",
+        "description": "Thiết kế Schemas, Models và thực hiện các thao tác CRUD dữ liệu nhanh chóng."
+      },
+      {
+        "name": "Xác thực người dùng bằng JWT (JSON Web Token)",
+        "description": "Mã hóa Token, thiết lập hạn dùng và bảo vệ các API riêng tư (Protected Routes)."
+      },
+      {
+        "name": "Xử lý File Upload sử dụng Multer",
+        "description": "Thiết lập tải ảnh đại diện lên server và xử lý định dạng file hợp lệ."
+      },
+      {
+        "name": "Viết Unit Tests với Jest và Supertest",
+        "description": "Viết mã kiểm thử tự động cho các API để đảm bảo chất lượng code backend."
+      },
+      {
+        "name": "Tối ưu hiệu năng, bảo mật và CORS configuration",
+        "description": "Cài đặt Helmet, giới hạn tỷ lệ gọi API (rate limit) và cấu hình CORS an toàn."
+      },
+      {
+        "name": "Triển khai Express API lên môi trường Heroku/Render",
+        "description": "Cấu hình biến môi trường production và tiến hành đưa ứng dụng web hoạt động online."
+      }
+    ]
+  },
+  {
+    "code": "AI-NLP-01",
+    "name": "Natural Language Processing & Large Language Models",
+    "categorySlug": "data-science-ai",
+    "level": "ADVANCED",
+    "price": 1950000.0,
+    "finalPrice": 1490000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+    "requirements": [
+      "Đã học Python lập trình và có kiến thức Toán Giải tích, Đại số cơ bản."
+    ],
+    "willLearns": [
+      "Làm chủ kiến trúc Transformer và cơ chế Attention",
+      "Fine-tune các mô hình BERT, GPT phục vụ các nhiệm vụ chuyên biệt",
+      "Xây dựng hệ thống RAG nâng cao truy xuất thông tin doanh nghiệp"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu về NLP và Tiền xử lý văn bản",
+        "description": "Thực hiện tách từ (Tokenization), loại bỏ stop words và chuẩn hóa văn bản tiếng Việt."
+      },
+      {
+        "name": "Biểu diễn từ (Word Embeddings)",
+        "description": "Hiểu cách chuyển hóa chữ viết sang vector với Word2Vec, FastText và GloVe."
+      },
+      {
+        "name": "Mạng nơ-ron tuần hoàn (RNN) & LSTM cho văn bản",
+        "description": "Mô hình hóa chuỗi thời gian văn bản và giải quyết vấn đề tiêu biến đạo hàm."
+      },
+      {
+        "name": "Cơ chế Attention (Attention Mechanism) trong NLP",
+        "description": "Sự cải tiến vượt trội giúp mô hình tập trung vào các từ ngữ quan trọng nhất."
+      },
+      {
+        "name": "Mô hình Transformer: Kiến trúc Encoder & Decoder",
+        "description": "Đi sâu vào cơ chế Multi-Head Self-Attention mở ra cuộc cách mạng AI mới."
+      },
+      {
+        "name": "Giới thiệu BERT & Fine-tuning cho bài toán phân loại",
+        "description": "Sử dụng mô hình BERT học trước để phân tích cảm xúc phản hồi khách hàng."
+      },
+      {
+        "name": "Kiến trúc GPT và các dòng Generative AI",
+        "description": "Tìm hiểu cơ chế sinh chữ tự động của các mô hình sinh (Generative Models)."
+      },
+      {
+        "name": "Làm việc với Large Language Models qua Hugging Face APIs",
+        "description": "Tải và chạy thử nghiệm các mô hình LLM mã nguồn mở (Llama, Mistral)."
+      },
+      {
+        "name": "Prompt Engineering nâng cao cho nhà phát triển",
+        "description": "Kỹ thuật viết câu lệnh thông minh: Few-shot prompting, Chain of Thought."
+      },
+      {
+        "name": "Xây dựng ứng dụng RAG (Retrieval-Augmented Generation)",
+        "description": "Tích hợp Vector Database để trả lời câu hỏi dựa trên kho tài liệu riêng tư."
+      },
+      {
+        "name": "Đánh giá mô hình ngôn ngữ & Triển khai API suy luận",
+        "description": "Đo lường chất lượng sinh chữ và đóng gói mô hình thành API phục vụ thực tế."
+      }
+    ]
+  },
+  {
+    "code": "SE-CLEANCODE-01",
+    "name": "Clean Code & Refactoring Practices",
+    "categorySlug": "software-engineering",
+    "level": "INTERMEDIATE",
+    "price": 950000.0,
+    "finalPrice": 690000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=j942w-5ra4k",
+    "requirements": [
+      "Có kinh nghiệm lập trình tối thiểu 6 tháng với một ngôn ngữ bất kỳ."
+    ],
+    "willLearns": [
+      "Nhận diện và loại bỏ các đoạn mã nguồn cẩu thả (Code Smells)",
+      "Viết code sạch sẽ, dễ đọc, dễ bảo trì và mở rộng",
+      "Thực hành refactor code hệ thống cũ mà không làm hỏng tính năng"
+    ],
+    "sections": [
+      {
+        "name": "Khái niệm Clean Code và tại sao nên viết code sạch",
+        "description": "Tác hại của Technical Debt (Nợ kỹ thuật) đối với tương lai dự án."
+      },
+      {
+        "name": "Quy tắc đặt tên biến, hàm, class chuẩn ý nghĩa",
+        "description": "Đặt tên sao cho code tự giải thích chính nó mà không cần viết ghi chú giải thích."
+      },
+      {
+        "name": "Viết hàm (Functions) ngắn gọn, đơn nhiệm",
+        "description": "Triết lý Single Responsibility ở cấp độ hàm: Chỉ làm một việc duy nhất."
+      },
+      {
+        "name": "Xử lý comment code đúng cách và khi nào nên tránh",
+        "description": "Khi nào bình luận là cần thiết và khi nào bình luận thể hiện mã nguồn chưa tốt."
+      },
+      {
+        "name": "Định dạng code (Formatting) chuẩn công nghiệp",
+        "description": "Quy tắc viết dấu cách, xuống dòng và tổ chức file logic, thống nhất cả đội."
+      },
+      {
+        "name": "Quản lý đối tượng và cấu trúc dữ liệu",
+        "description": "Hiểu sự khác nhau giữa Object (giấu dữ liệu) và Data Structure (lộ dữ liệu)."
+      },
+      {
+        "name": "Xử lý lỗi (Error Handling) sạch sẽ",
+        "description": "Sử dụng exceptions thay vì trả về mã lỗi, và nói không với việc return null."
+      },
+      {
+        "name": "Viết Unit Test sạch (Clean Tests) & TDD",
+        "description": "Quy trình phát triển hướng kiểm thử (TDD) giúp tạo ra thiết kế code tối ưu."
+      },
+      {
+        "name": "Tìm hiểu 5 nguyên lý thiết kế SOLID",
+        "description": "Đi sâu tìm hiểu các nguyên lý SOLID kinh điển của lập trình hướng đối tượng."
+      },
+      {
+        "name": "Nhận diện các dấu hiệu code xấu (Code Smells)",
+        "description": "Cách phát hiện Duplicated Code, Long Method, Large Class để kịp thời tối ưu hóa."
+      },
+      {
+        "name": "Thực hành Refactor một project legacy thực tế",
+        "description": "Từng bước cải tiến một đoạn code cũ rắm rối thành code sạch sẽ, chạy mượt mà."
+      }
+    ]
+  },
+  {
+    "code": "SEC-CLOUD-01",
+    "name": "AWS Cloud Security & Identity Access Management (IAM)",
+    "categorySlug": "cloud-devops",
+    "level": "ADVANCED",
+    "price": 1600000.0,
+    "finalPrice": 1290000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "requirements": [
+      "Có kiến thức cơ bản về AWS Cloud Services như EC2, S3."
+    ],
+    "willLearns": [
+      "Thiết lập hệ thống phân quyền IAM chặt chẽ chuẩn bảo mật AWS",
+      "Bảo mật tài nguyên mạng VPC và mã hóa dữ liệu nhạy cảm",
+      "Audit và giám sát an ninh toàn bộ tài khoản AWS đám mây"
+    ],
+    "sections": [
+      {
+        "name": "Khái niệm mô hình bảo mật chia sẻ (Shared Responsibility)",
+        "description": "Phân định rõ trách nhiệm bảo mật giữa Amazon Web Services và khách hàng."
+      },
+      {
+        "name": "AWS IAM Core: Users, Groups, Roles và Policies",
+        "description": "Cách quản lý danh tính người dùng và cấp quyền hạn truy cập hạ tầng AWS."
+      },
+      {
+        "name": "Viết IAM Policy an toàn theo nguyên tắc đặc quyền tối thiểu",
+        "description": "Viết cấu trúc JSON Policy cấp quyền hẹp nhất có thể để đảm bảo an toàn tối đa."
+      },
+      {
+        "name": "Bảo mật dữ liệu trên AWS S3",
+        "description": "Cấu hình S3 Block Public Access, mã hóa KMS và ghi nhật ký truy cập."
+      },
+      {
+        "name": "Bảo mật hạ tầng mạng VPC",
+        "description": "Triển khai Security Groups và Network ACLs (NACLs) để lọc lưu lượng vào ra."
+      },
+      {
+        "name": "Quản lý Key bảo mật với AWS KMS",
+        "description": "Tạo, xoay vòng (Rotate) khóa mã hóa dữ liệu lưu trữ tĩnh (Encryption at rest)."
+      },
+      {
+        "name": "Logging & Auditing sử dụng AWS CloudTrail & AWS Config",
+        "description": "Theo dõi mọi cuộc gọi API trên tài khoản và ghi nhận lịch sử thay đổi cấu hình tài nguyên."
+      },
+      {
+        "name": "Phát hiện mối đe dọa với AWS GuardDuty & Security Hub",
+        "description": "Sử dụng trí tuệ nhân tạo để phát hiện các hoạt động bất thường và tấn công mạng."
+      },
+      {
+        "name": "Quản lý cấu hình bảo mật đa tài khoản với AWS Organizations",
+        "description": "Thiết lập Service Control Policies (SCPs) để kiểm soát quyền của toàn tổ chức."
+      },
+      {
+        "name": "Tích hợp Keycloak/Okta SSO với AWS IAM Identity Center",
+        "description": "Cấu hình đăng nhập một lần bằng tài khoản định danh doanh nghiệp bên ngoài."
+      },
+      {
+        "name": "Chuẩn bị cho kỳ thi AWS Certified Security - Specialty",
+        "description": "Ôn tập các dạng câu hỏi thực tế trong kỳ thi chứng chỉ chuyên sâu bảo mật AWS."
+      }
+    ]
+  },
+  {
+    "code": "DB-SQL-NOSQL-01",
+    "name": "SQL & NoSQL Databases - Thiết Kế Và Tối Ưu Hóa",
+    "categorySlug": "database-systems",
+    "level": "INTERMEDIATE",
+    "price": 1100000.0,
+    "finalPrice": 790000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "requirements": [
+      "Đã biết lập trình cơ bản và hiểu cấu trúc dữ liệu căn bản."
+    ],
+    "willLearns": [
+      "Thiết kế lược đồ cơ sở dữ liệu quan hệ chuẩn hóa 3NF",
+      "Viết các truy vấn SQL phức tạp và tối ưu hiệu năng với Index",
+      "Làm chủ MongoDB và kỹ thuật Caching với Redis"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu Hệ Quản trị Cơ sở dữ liệu",
+        "description": "Mô hình quan hệ và phân biệt các hệ CSDL phổ biến (SQL vs NoSQL)."
+      },
+      {
+        "name": "Ngôn ngữ SQL cơ bản & Nâng cao",
+        "description": "Truy vấn SELECT, gom nhóm GROUP BY, các phép kết bảng JOIN và Subquery."
+      },
+      {
+        "name": "Thiết kế & Chuẩn hóa Cơ sở dữ liệu",
+        "description": "Các dạng chuẩn hóa 1NF, 2NF, 3NF và thiết kế sơ đồ thực thể liên kết ERD."
+      },
+      {
+        "name": "Index & Tối ưu hóa câu lệnh SQL",
+        "description": "Cơ chế B-Tree Index, phân tích kế hoạch thực thi (Execution Plan) và tránh Sequential Scan."
+      },
+      {
+        "name": "Transaction & Cơ chế khóa (Locking)",
+        "description": "Tính chất ACID, các mức cô lập giao dịch (Isolation Levels) và xử lý Deadlock."
+      },
+      {
+        "name": "CSDL Phi quan hệ (NoSQL) và MongoDB",
+        "description": "Mô hình tài liệu (Document Model), truy vấn dữ liệu và thiết kế schema phi chuẩn hóa."
+      },
+      {
+        "name": "Redis Caching - Tăng tốc hệ thống",
+        "description": "Sử dụng Redis làm bộ nhớ đệm, các cấu trúc dữ liệu String, Hash, List, Set, Sorted Set."
+      },
+      {
+        "name": "Vector Database cho các ứng dụng Generative AI",
+        "description": "Giới thiệu pgvector, Pinecone, cơ chế tìm kiếm cosine similarity và index HNSW."
+      },
+      {
+        "name": "Replication, Sharding & Backup dữ liệu",
+        "description": "Xây dựng cụm Master-Slave, phân vùng dữ liệu sharding và lập lịch sao lưu tự động."
+      }
+    ]
+  },
+  {
+    "code": "BC-SOLIDITY-01",
+    "name": "Solidity & Ethereum Blockchain Developer Bootcamp",
+    "categorySlug": "blockchain-web3",
+    "level": "ADVANCED",
+    "price": 1600000.0,
+    "finalPrice": 1250000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=RVFAyFWRyRk",
+    "requirements": [
+      "Có tư duy lập trình vững chắc và hiểu biết cơ bản về mật mã học."
+    ],
+    "willLearns": [
+      "Lập trình smart contract bằng ngôn ngữ Solidity trên Ethereum",
+      "Tạo token riêng chuẩn ERC-20 và các bộ sưu tập NFT chuẩn ERC-721",
+      "Xây dựng ứng dụng phi tập trung dApps kết nối ví Web3 (Metamask)"
+    ],
+    "sections": [
+      {
+        "name": "Tổng quan Blockchain & Mạng lưới Ethereum",
+        "description": "Tìm hiểu cơ chế đồng thuận Proof of Work vs Proof of Stake, cấu trúc Block."
+      },
+      {
+        "name": "Ngôn ngữ Solidity căn bản",
+        "description": "Cú pháp, các kiểu dữ liệu, cấu trúc điều khiển và quản lý bộ nhớ (Memory, Storage, Calldata)."
+      },
+      {
+        "name": "Thiết kế Smart Contract chuyên sâu",
+        "description": "Viết contract tương tác, kế thừa (Inheritance), Interfaces và xử lý Exceptions."
+      },
+      {
+        "name": "Chuẩn Token ERC-20 & ERC-721",
+        "description": "Xây dựng đồng coin riêng và tạo dự án phát hành NFT từ đầu sử dụng OpenZeppelin."
+      },
+      {
+        "name": "Sử dụng công cụ phát triển Truffle & Hardhat",
+        "description": "Viết Unit Test cho smart contract, mô phỏng mạng local và lập script deploy."
+      },
+      {
+        "name": "Bảo mật Smart Contract & Các lỗi bảo mật phổ biến",
+        "description": "Phòng chống các cuộc tấn công kinh điển như Reentrancy, Overflow/Underflow."
+      },
+      {
+        "name": "Tích hợp Frontend Web3: Ethers.js & Web3.js",
+        "description": "Kết nối ứng dụng React với Metamask, gọi hàm đọc và ghi dữ liệu lên mạng lưới blockchain."
+      },
+      {
+        "name": "Mạng thử nghiệm (Testnet) & Triển khai ứng dụng",
+        "description": "Đưa Smart Contract lên Goerli/Sepolia testnet và tương tác thực tế."
+      }
+    ]
+  },
+  {
+    "code": "IOT-ARDUINO-01",
+    "name": "Lập Trình Hệ Thống Nhúng & IoT Căn Bản",
+    "categorySlug": "embedded-systems-iot",
+    "level": "BEGINNER",
+    "price": 950000.0,
+    "finalPrice": 690000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+    "requirements": [
+      "Không yêu cầu kiến thức điện tử trước, phù hợp cho người mới bắt đầu."
+    ],
+    "willLearns": [
+      "Hiểu nguyên lý hoạt động của các linh kiện điện tử cơ bản",
+      "Lập trình vi điều khiển Arduino và ESP8266/ESP32 bằng C/C++",
+      "Xây dựng ứng dụng IoT điều khiển thiết bị qua Wi-Fi và MQTT"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu IoT & Linh kiện điện tử căn bản",
+        "description": "Tìm hiểu điện trở, tụ điện, transistor, nguyên lý dòng điện và cách đo kiểm."
+      },
+      {
+        "name": "Làm chủ Kit phát triển Arduino Uno",
+        "description": "Cài đặt phần mềm Arduino IDE, nạp chương trình và điều khiển đèn LED nhấp nháy."
+      },
+      {
+        "name": "Giao tiếp GPIO: Digital Input/Output",
+        "description": "Lập trình đọc nút nhấn và điều khiển còi chip, rơ-le đóng ngắt."
+      },
+      {
+        "name": "Đọc tín hiệu cảm biến Analog (ADC)",
+        "description": "Đọc dữ liệu từ cảm biến ánh sáng (quang trở), cảm biến độ ẩm đất và biến trở."
+      },
+      {
+        "name": "Giao tiếp I2C & SPI hiển thị màn hình LCD/OLED",
+        "description": "Kết nối dây và hiển thị các thông tin đo đạc lên màn hình OLED 0.96 inch."
+      },
+      {
+        "name": "Kit Wi-Fi ESP8266 & Kết nối Internet",
+        "description": "Lập trình kết nối mạng Wi-Fi nhà bạn và truy cập API lấy thông tin thời tiết."
+      },
+      {
+        "name": "Giao thức MQTT truyền tải thông tin IoT",
+        "description": "Xây dựng cấu trúc Publisher/Subscriber gửi dữ liệu lên Cloud Broker."
+      },
+      {
+        "name": "Xây dựng Web Dashboard điều khiển thiết bị thông minh",
+        "description": "Tạo giao diện web trực quan để bật tắt đèn, giám sát nhiệt độ nhà từ xa."
+      }
+    ]
+  },
+  {
+    "code": "GAME-UNITY-01",
+    "name": "Phát Triển Game 2D/3D Với Unity và C#",
+    "categorySlug": "game-development",
+    "level": "INTERMEDIATE",
+    "price": 1200000.0,
+    "finalPrice": 850000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=j942w-5ra4k",
+    "requirements": [
+      "Có kiến thức lập trình cơ bản bằng ngôn ngữ C# hoặc hướng đối tượng OOP."
+    ],
+    "willLearns": [
+      "Sử dụng thành thạo phần mềm Unity Engine",
+      "Lập trình kịch bản chuyển động, cơ chế game bằng ngôn ngữ C#",
+      "Đóng gói và phát hành game lên các nền tảng PC, Web và Mobile"
+    ],
+    "sections": [
+      {
+        "name": "Làm quen với Unity Editor",
+        "description": "Cấu trúc giao diện, làm việc với GameObjects, Components và hệ tọa độ."
+      },
+      {
+        "name": "Lập trình C# cơ bản trong Unity",
+        "description": "Viết script điều khiển nhân vật di chuyển, nhảy và nhận phím bấm của người chơi."
+      },
+      {
+        "name": "Vật lý trong Unity (Physics & Colliders)",
+        "description": "Hiểu lực hấp dẫn, ma sát, cơ chế va chạm RigidBody và Trigger Events."
+      },
+      {
+        "name": "Thiết kế màn chơi Game 2D (Tilemaps & Sprites)",
+        "description": "Cắt ảnh sprite, ghép gạch tạo môi trường nền và cấu hình camera đi theo nhân vật."
+      },
+      {
+        "name": "Animation & Animator Controller",
+        "description": "Tạo các trạng thái hoạt họa cho nhân vật: Idle, Run, Jump, Attack."
+      },
+      {
+        "name": "Thiết kế Game 3D cơ bản",
+        "description": "Sử dụng mô hình 3D, hệ thống ánh sáng (Lighting), đổ bóng và vật liệu (Materials)."
+      },
+      {
+        "name": "Giao diện người dùng UI & HUD",
+        "description": "Hiển thị điểm số, thanh máu (HP), bảng thông báo chiến thắng/thất bại."
+      },
+      {
+        "name": "Lưu trữ dữ liệu & Tối ưu hóa hiệu năng",
+        "description": "Sử dụng PlayerPrefs lưu điểm cao, tối ưu hóa bộ nhớ và xuất file cài đặt."
+      }
+    ]
+  },
+  {
+    "code": "OS-LINUX-01",
+    "name": "Quản Trị Hệ Điều Hành Linux Chuyên Sâu",
+    "categorySlug": "operating-systems-linux",
+    "level": "INTERMEDIATE",
+    "price": 1000000.0,
+    "finalPrice": 750000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "requirements": [
+      "Hiểu biết cơ bản về phần cứng máy tính và cách thức hoạt động của mạng."
+    ],
+    "willLearns": [
+      "Sử dụng thuần thục các lệnh Linux trên giao diện dòng lệnh Terminal",
+      "Quản lý phân quyền, người dùng, tiến trình và lưu trữ dữ liệu Linux",
+      "Viết Shell Script để tự động hóa các tác vụ quản trị hệ thống"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu Linux & Cài đặt hệ điều hành Ubuntu",
+        "description": "Lịch sử Linux, cách cài đặt máy ảo Ubuntu Server/Desktop chi tiết."
+      },
+      {
+        "name": "Làm chủ dòng lệnh Linux CLI",
+        "description": "Các lệnh cơ bản quản lý file, thư mục, sao chép, di chuyển và tìm kiếm thông tin."
+      },
+      {
+        "name": "Quản lý Người dùng & Phân quyền hệ thống",
+        "description": "Cấu hình User, Group, cấp quyền đọc/ghi/chạy (chmod, chown) và sudoers."
+      },
+      {
+        "name": "Quản lý Tiến trình (Processes) & Dịch vụ (Services)",
+        "description": "Giám sát tiến trình bằng ps, top, kill và quản lý dịch vụ hệ thống với systemctl."
+      },
+      {
+        "name": "Quản trị đĩa cứng và phân vùng LVM",
+        "description": "Định dạng đĩa fdisk, mount ổ cứng và quản trị Logical Volume Manager linh hoạt."
+      },
+      {
+        "name": "Tự động hóa với Bash Shell Scripting",
+        "description": "Viết kịch bản tự động sao lưu cấu hình, kiểm tra trạng thái mạng tự động."
+      },
+      {
+        "name": "Cấu hình Mạng Linux & Tường lửa UFW",
+        "description": "Thiết lập IP tĩnh, giám sát cổng mạng và cấu hình luật chặn tường lửa."
+      },
+      {
+        "name": "Giám sát và phân tích Log hệ thống",
+        "description": "Cách đọc file log trong /var/log để phát hiện lỗi dịch vụ và dấu vết truy cập lạ."
+      }
+    ]
+  },
+  {
+    "code": "DS-KAFKA-SAGA-01",
+    "name": "Hệ Thống Phân Tán & Kiến Trúc Microservices Nâng Cao",
+    "categorySlug": "distributed-systems",
+    "level": "ADVANCED",
+    "price": 1850000.0,
+    "finalPrice": 1390000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=w7ejDZ8SWv8",
+    "requirements": [
+      "Có tối thiểu 1 năm làm việc với Spring Boot, Node.js hoặc .NET backend."
+    ],
+    "willLearns": [
+      "Giải quyết bài toán nhất quán dữ liệu qua Saga Pattern sử dụng Kafka",
+      "Triển khai kiến trúc Event-Driven, Event Sourcing và CQRS",
+      "Xây dựng hệ thống phân tán chịu lỗi cao, có khả năng mở rộng quy mô lớn"
+    ],
+    "sections": [
+      {
+        "name": "Tổng quan Hệ thống phân tán & Định lý CAP",
+        "description": "Thách thức về tính nhất quán (Consistency), độ sẵn sàng (Availability) và độ trễ."
+      },
+      {
+        "name": "Thiết kế giao tiếp bất đồng bộ với Apache Kafka",
+        "description": "Cơ chế hoạt động của Topics, Partitions, Consumer Groups, Producer."
+      },
+      {
+        "name": "Giải pháp nhất quán dữ liệu: Saga Pattern",
+        "description": "Triển khai Saga Orchestrator và Saga Choreography chi tiết."
+      },
+      {
+        "name": "Outbox Pattern giải quyết ghi kép (Dual Write)",
+        "description": "Đảm bảo ghi cơ sở dữ liệu và đẩy message vào queue diễn ra trong cùng một transaction."
+      },
+      {
+        "name": "Event Sourcing & CQRS Pattern",
+        "description": "Lưu giữ lịch sử thay đổi dưới dạng event, phân tách luồng đọc và luồng ghi dữ liệu."
+      },
+      {
+        "name": "Distributed Locking với Redis",
+        "description": "Tránh tranh chấp tài nguyên giữa nhiều service độc lập bằng thuật toán Redlock."
+      },
+      {
+        "name": "Giám sát & Distributed Tracing phân tán",
+        "description": "Theo dõi luồng đi của một request qua nhiều service bằng Zipkin hoặc Jaeger."
+      },
+      {
+        "name": "Chiến lược chịu lỗi: Circuit Breaker & Retry",
+        "description": "Cấu hình giới hạn cuộc gọi lỗi, tự động ngắt kết nối với Resilience4j bảo vệ hệ thống."
+      }
+    ]
+  },
+  {
+    "code": "NET-CCNA-01",
+    "name": "Mạng Máy Tính & Thiết Kế Hạ Tầng Mạng CCNA",
+    "categorySlug": "computer-networks",
+    "level": "BEGINNER",
+    "price": 1150000.0,
+    "finalPrice": 850000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=RVFAyFWRyRk",
+    "requirements": [
+      "Không yêu cầu kiến thức chuyên ngành trước, bắt đầu từ số 0."
+    ],
+    "willLearns": [
+      "Làm chủ mô hình mạng 7 tầng OSI và giao thức TCP/IP",
+      "Thiết kế, chia mạng con (Subnetting) hiệu quả cho doanh nghiệp",
+      "Cấu hình thiết bị Switch, Router Cisco thực tế bằng giả lập Packet Tracer"
+    ],
+    "sections": [
+      {
+        "name": "Mô hình OSI & TCP/IP Stack",
+        "description": "Tìm hiểu chi tiết vai trò của 7 lớp mạng, cách thức đóng gói gói tin dữ liệu."
+      },
+      {
+        "name": "Địa chỉ IPv4 & Chia mạng con (Subnetting)",
+        "description": "Tính toán dải địa chỉ IP, VLSM (Variable Length Subnet Masking) tránh lãng phí IP."
+      },
+      {
+        "name": "Cơ bản về thiết bị Switch & Cấu hình VLAN",
+        "description": "Tạo mạng ảo độc lập VLAN, cấu hình cổng Trunking chuyển tiếp dữ liệu."
+      },
+      {
+        "name": "Định tuyến mạng (Routing): Static & Dynamic",
+        "description": "Thiết lập định tuyến tĩnh và định tuyến động sử dụng giao thức OSPF."
+      },
+      {
+        "name": "Bảo mật mạng với Access Control Lists (ACL)",
+        "description": "Viết luật chặn truy cập giữa các phòng ban, ngăn chặn IP xấu truy cập server."
+      },
+      {
+        "name": "Dịch vụ mạng: DHCP, DNS và NAT/PAT",
+        "description": "Cấp phát IP động tự động, phân giải tên miền và cơ chế chia sẻ IP Public internet."
+      },
+      {
+        "name": "Mạng không dây (Wireless LAN)",
+        "description": "Nguyên lý hoạt động của Wi-Fi, bảo mật WPA2/WPA3 và Access Point."
+      },
+      {
+        "name": "Khắc phục sự cố mạng (Troubleshooting)",
+        "description": "Sử dụng ping, traceroute để chẩn đoán điểm nghẽn hoặc đứt mạng thực tế."
+      }
+    ]
+  },
+  {
+    "code": "QA-PLAYWRIGHT-01",
+    "name": "Kiểm Thử Tự Động Với Playwright & Selenium",
+    "categorySlug": "testing-qa",
+    "level": "INTERMEDIATE",
+    "price": 990000.0,
+    "finalPrice": 720000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=bMknfKXIFA8",
+    "requirements": [
+      "Có nền tảng lập trình cơ bản tốt bằng JavaScript, Python hoặc Java."
+    ],
+    "willLearns": [
+      "Xây dựng Framework kiểm thử tự động Web UI từ con số 0",
+      "Sử dụng Playwright Codegen ghi lại thao tác người dùng tạo test script",
+      "Tích hợp luồng chạy Test tự động vào CI/CD (GitHub Actions) của dự án"
+    ],
+    "sections": [
+      {
+        "name": "Giới thiệu Automation Testing",
+        "description": "Phân biệt Manual vs Automation, các loại kiểm thử phần mềm cơ bản."
+      },
+      {
+        "name": "Thiết lập môi trường & Hello World Playwright",
+        "description": "Cài đặt Node.js, thư viện Playwright Test và viết kịch bản mở trình duyệt đầu tiên."
+      },
+      {
+        "name": "Locators & Selectors chuyên sâu",
+        "description": "Kỹ thuật xác định phần tử trên màn hình qua CSS Selector, XPath và text."
+      },
+      {
+        "name": "Xử lý các tương tác người dùng phức tạp",
+        "description": "Click chuột, nhập văn bản, chọn dropdown, kéo thả (Drag & Drop), xử lý Alerts/Iframes."
+      },
+      {
+        "name": "Assertions & Tạo báo cáo lỗi (Reporting)",
+        "description": "Viết các điều kiện kiểm tra (Expect) và cấu hình xuất báo cáo HTML trực quan."
+      },
+      {
+        "name": "Kiến trúc Page Object Model (POM)",
+        "description": "Thiết kế mã nguồn test sạch sẽ, dễ bảo trì bằng cách tách biệt giao diện và kịch bản test."
+      },
+      {
+        "name": "Kiểm thử API kết hợp UI",
+        "description": "Gửi request HTTP tạo dữ liệu giả trước khi chạy kịch bản test UI để tăng tốc."
+      },
+      {
+        "name": "Tích hợp CI/CD Pipeline với GitHub Actions",
+        "description": "Tự động kích hoạt kiểm thử mỗi khi lập trình viên đẩy mã nguồn mới lên Github."
+      }
+    ]
+  },
+  {
+    "code": "ENG-IT-01",
+    "name": "Tiếng Anh Chuyên Ngành Công Nghệ Thông Tin",
+    "categorySlug": "languages-for-it",
+    "level": "BEGINNER",
+    "price": 650000.0,
+    "finalPrice": 450000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=j942w-5ra4k",
+    "requirements": [
+      "Không yêu cầu chứng chỉ tiếng Anh, phù hợp cho mọi trình độ bắt đầu."
+    ],
+    "willLearns": [
+      "Đọc hiểu tài liệu lập trình, đặc tả kỹ thuật tiếng Anh trơn tru",
+      "Viết báo cáo lỗi (Bug Report) và soạn thảo Email tiếng Anh chuẩn công sở",
+      "Tự tin trả lời phỏng vấn IT và giao tiếp trong các cuộc họp Standup Meeting"
+    ],
+    "sections": [
+      {
+        "name": "Từ vựng cốt lõi phần cứng & phần mềm",
+        "description": "Các thuật ngữ cơ bản thường dùng nhất trong hệ điều hành, RAM, CPU, mạng máy tính."
+      },
+      {
+        "name": "Kỹ năng đọc hiểu tài liệu kỹ thuật & API Docs",
+        "description": "Phương pháp đọc nhanh (Skimming) để nắm bắt ý chính trong tài liệu Swagger/Javadoc."
+      },
+      {
+        "name": "Viết báo cáo lỗi (Bug Report) chuẩn xác",
+        "description": "Mẫu câu tiếng Anh mô tả các bước tái hiện lỗi (Steps to reproduce), kết quả thực tế."
+      },
+      {
+        "name": "Giao tiếp trong cuộc họp Daily Standup",
+        "description": "Cách báo cáo công việc ngày hôm qua, hôm nay và khó khăn (Blockers) bằng tiếng Anh trôi chảy."
+      },
+      {
+        "name": "Viết Email trao đổi kỹ thuật chuyên nghiệp",
+        "description": "Mẫu thư xin nghỉ phép, trao đổi lỗi hệ thống với khách hàng nước ngoài lịch sự."
+      },
+      {
+        "name": "Kỹ năng Phỏng vấn xin việc ngành IT tiếng Anh",
+        "description": "Trả lời tự tin câu hỏi giới thiệu bản thân, mô tả dự án cũ và xử lý câu hỏi kỹ thuật."
+      },
+      {
+        "name": "Xây dựng CV / Resume tiếng Anh ấn tượng",
+        "description": "Lựa chọn động từ hành động (Action Verbs) làm nổi bật kỹ năng và dự án của bạn."
+      }
+    ]
+  },
+  {
+    "code": "OFF-EXCEL-AI-01",
+    "name": "Làm Chủ Excel Nâng Cao & Tối Ưu Hiệu Suất Với AI",
+    "categorySlug": "office-productivity",
+    "level": "BEGINNER",
+    "price": 590000.0,
+    "finalPrice": 390000.0,
+    "thumbnail": "https://images.unsplash.com/photo-1468436139062-f60a71c5c892?w=800",
+    "coursePreview": "https://www.youtube.com/watch?v=SqcY0GlETPk",
+    "requirements": [
+      "Máy tính cài sẵn Microsoft Excel và kết nối mạng."
+    ],
+    "willLearns": [
+      "Sử dụng thuần thục các hàm tính toán, tìm kiếm Excel nâng cao",
+      "Thiết kế báo cáo Dashboard trực quan phân tích dữ liệu nhanh chóng",
+      "Ứng dụng công cụ AI (ChatGPT, Copilot) để viết công thức Excel tự động"
+    ],
+    "sections": [
+      {
+        "name": "Làm quen phím tắt & Thao tác dữ liệu nhanh",
+        "description": "Tăng tốc độ thao tác, định dạng bảng biểu tự động trong Excel."
+      },
+      {
+        "name": "Làm chủ hàm tìm kiếm nâng cao XLOOKUP",
+        "description": "Thay thế VLOOKUP truyền thống, xử lý lỗi dữ liệu không khớp khéo léo."
+      },
+      {
+        "name": "Phân tích dữ liệu với PivotTable & PivotChart",
+        "description": "Gom nhóm, tổng hợp số liệu doanh thu, số lượng học viên trong vài cú click."
+      },
+      {
+        "name": "Thiết kế báo cáo Dashboard động",
+        "description": "Tạo giao diện quản lý chỉ số KPI trực quan với slicers tương tác."
+      },
+      {
+        "name": "Ứng dụng ChatGPT viết công thức Excel hóc búa",
+        "description": "Đặt câu hỏi để AI sinh công thức hàm IF lồng nhau phức tạp giúp bạn."
+      },
+      {
+        "name": "Tự động hóa với Excel Macro/VBA cơ bản",
+        "description": "Ghi lại các thao tác lặp đi lặp lại để thực thi tự động trong 1 giây."
+      },
+      {
+        "name": "Sử dụng Copilot trong Excel xử lý số liệu lớn",
+        "description": "Tận dụng AI của Microsoft để tự vẽ biểu đồ xu hướng và dự đoán sự phát triển."
+      }
+    ]
+  }
+]

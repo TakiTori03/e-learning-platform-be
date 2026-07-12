@@ -1,0 +1,21 @@
+# Master Docker Compose for E-learning Platform
+
+include:
+  - mq-cluster.yml
+  - redis-cluster.yml
+  - elasticsearch.yml
+  - identity/docker-compose.yml
+  - course/docker-compose.yml
+  - order/docker-compose.yml
+  - learning/docker-compose.yml
+  - interaction/docker-compose.yml
+  - media/docker-compose.yml
+  # - observability/docker-compose.yml
+  - ai/docker-compose.yml
+  - assessment/docker-compose.yml
+
+
+networks:
+  default:
+    name: elearning-network
+    external: true

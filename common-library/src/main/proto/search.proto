@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package com.hust.commonlibrary.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.hust.commonlibrary.grpc";
+option java_outer_classname = "SearchProto";
+
+service SearchServiceGrpc {
+  rpc SearchCourses (SearchCourseRequest) returns (SearchCourseResponse);
+  rpc SuggestCourses (SuggestCourseRequest) returns (SuggestCourseResponse);
+}
+
+message SearchCourseRequest {
+  string q = 1;
+  repeated string authors = 2;
+  repeated string topics = 3;
+  repeated string levels = 4;
+  repeated string prices = 5;
+  double rating = 6;
+  int32 page = 7;
+  int32 size = 8;
+  repeated string sort = 9;
+}
+
+message CourseHit {
+  string courseId = 1;
+  string nameHighlight = 2;
+  string descriptionHighlight = 3;
+}
+
+message SearchCourseResponse {
+  repeated CourseHit hits = 1;
+  int64 totalElements = 2;
+  int32 totalPages = 3;
+  int32 page = 4;
+  int32 size = 5;
+  map<string, int64> levelFacets = 6;
+  map<string, int64> categoryFacets = 7;
+  map<string, int64> priceFacets = 8;
+}
+
+message SuggestCourseRequest {
+  string q = 1;
+  int32 limit = 2;
+}
+
+message SuggestCourseResponse {
+  repeated string suggestions = 1;
+}

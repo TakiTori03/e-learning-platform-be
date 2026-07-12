@@ -1,0 +1,52 @@
+logging:
+  # file:
+  #   name: logs/${spring.application.name}.log
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker: ERROR
+
+spring:
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true # Kích hoạt Circuit Breaker tự động cho Feign Client
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10 # Số lượng cuộc gọi gần nhất dùng để theo dõi tỷ lệ lỗi
+        minimumNumberOfCalls: 5 # Số cuộc gọi tối thiểu phải thực hiện trước khi bắt đầu tính tỷ lệ lỗi
+        failureRateThreshold: 50 # Tỷ lệ lỗi (%) tối đa, vượt quá ngưỡng này sẽ ngắt kết nối (OPEN)
+        waitDurationInOpenState: 10000ms # Thời gian (ms) giữ trạng thái ngắt kết nối trước khi thử kết nối lại
+        permittedNumberOfCallsInHalfOpenState: 3 # Số cuộc gọi thử nghiệm để kiểm tra xem dịch vụ đã phục hồi chưa
+        slowCallRateThreshold: 75 # Tỷ lệ cuộc gọi chậm (%) tối đa cho phép trước khi ngắt kết nối
+        slowCallDurationThreshold: 2000ms # Ngưỡng thời gian phản hồi (ms) bị coi là chậm
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 3000ms # Thời gian phản hồi tối đa (ms) trước khi ngắt kết nối và kích hoạt Fallback
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  tracing:
+    enabled: ${TRACING_ENABLED:false} # Có thể set false để tắt hoàn toàn tracing
+    sampling:
+      probability: ${TRACING_SAMPLING:1.0}
+    export:
+      otlp:
+        enabled: ${OTEL_EXPORT_ENABLED:false} # Mặc định false ở local để tiết kiệm RAM và tránh log lỗi kết nối 4318
+  otlp:
+    tracing:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://localhost:4318/v1/traces}
+

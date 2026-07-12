@@ -1,0 +1,159 @@
+[
+  {
+    "email": "admin.hust.elearning@gmail.com",
+    "password": "123456",
+    "firstName": "Hải",
+    "lastName": "Nguyễn Minh",
+    "role": "ADMIN",
+    "phone": "0982555001",
+    "address": "Số 1 Đại Cồ Việt, Bách Khoa, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "email": "hoang.lm.admin@hust.edu.vn",
+    "password": "123456",
+    "firstName": "Minh",
+    "lastName": "Lê Hoàng",
+    "role": "ADMIN",
+    "phone": "0982555012",
+    "address": "SOICT, Tòa nhà B1, Đại học Bách Khoa Hà Nội"
+  },
+  {
+    "email": "diemquynh.hust.admin@gmail.com",
+    "password": "123456",
+    "firstName": "Quỳnh",
+    "lastName": "Nguyễn Diễm",
+    "role": "ADMIN",
+    "phone": "0982555013",
+    "address": "Tạ Quang Bửu, Hai Bà Trưng, Hà Nội"
+  },
+  {
+    "email": "minh.nguyen.architect@hust.edu.vn",
+    "password": "123456",
+    "firstName": "Minh",
+    "lastName": "Nguyễn Văn",
+    "role": "INSTRUCTOR",
+    "phone": "0912345002",
+    "address": "Hoàng Mai, Hà Nội",
+    "headline": "Senior Software Architect & HUST Lecturer",
+    "biography": "Hơn 12 năm kinh nghiệm thiết kế hệ thống phân tán chịu tải cao (High-Scalability System) tại các tập đoàn công nghệ lớn. Giảng viên thỉnh giảng tại Trường Công nghệ Thông tin và Truyền thông (SOICT) - Đại học Bách Khoa Hà Nội.",
+    "avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150"
+  },
+  {
+    "email": "binh.tran.devops@outlook.com",
+    "password": "123456",
+    "firstName": "Bình",
+    "lastName": "Trần Thị",
+    "role": "INSTRUCTOR",
+    "phone": "0912345003",
+    "address": "Quận 3, TP. Hồ Chí Minh",
+    "headline": "AWS Authorized Instructor & DevOps Tech Lead",
+    "biography": "Chuyên gia tư vấn giải pháp đám mây Cloud Migration và DevOps. Sở hữu đầy đủ bộ chứng chỉ AWS Certified Solutions Architect Professional, DevOps Engineer Professional và Kubernetes CKA/CKAD.",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+  },
+  {
+    "email": "dung.pham.ai@gmail.com",
+    "password": "123456",
+    "firstName": "Dũng",
+    "lastName": "Phạm Anh",
+    "role": "INSTRUCTOR",
+    "phone": "0912345006",
+    "address": "Cầu Giấy, Hà Nội",
+    "headline": "AI Tech Lead @ VinAI & HUST Alumnus",
+    "biography": "Cựu sinh viên K58 Trường Công nghệ Thông tin và Truyền thông - Đại học Bách Khoa Hà Nội. Hiện là kỹ sư nghiên cứu trí tuệ nhân tạo chuyên sâu về xử lý ngôn ngữ tự nhiên (NLP), mô hình ngôn ngữ lớn (LLM) và thị giác máy tính.",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150"
+  },
+  {
+    "email": "huong.vu.data@hust.edu.vn",
+    "password": "123456",
+    "firstName": "Hương",
+    "lastName": "Vũ Thị",
+    "role": "INSTRUCTOR",
+    "phone": "0912345007",
+    "address": "Hai Bà Trưng, Hà Nội",
+    "headline": "Head of Data Analytics & Machine Learning Specialist",
+    "biography": "Trưởng bộ phận phân tích dữ liệu lớn tại tổ chức tài chính lớn. Có nhiều công trình nghiên cứu khoa học được công bố tại các hội thảo quốc tế lớn về ứng dụng Data Mining và Predictive Analytics.",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150"
+  },
+  {
+    "email": "quang.hoang.sec@cybersecurity.vn",
+    "password": "123456",
+    "firstName": "Quang",
+    "lastName": "Hoàng Nam",
+    "role": "INSTRUCTOR",
+    "phone": "0912345008",
+    "address": "Quận Bình Thạnh, TP. Hồ Chí Minh",
+    "headline": "Offensive Security Specialist & OSCP Practitioner",
+    "biography": "Chuyên gia đánh giá an toàn thông tin hệ thống (Penetration Tester). Đã tìm ra hàng chục lỗ hổng bảo mật nghiêm trọng trên các nền tảng lớn toàn cầu. Giảng dạy các khóa học Ethical Hacking, bảo mật mã nguồn và phòng chống tấn công mạng.",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+  },
+  {
+    "email": "tuan.an.soict@gmail.com",
+    "password": "123456",
+    "firstName": "An",
+    "lastName": "Trần Tuấn",
+    "role": "STUDENT",
+    "phone": "0387654001",
+    "address": "Ký túc xá Bách Khoa, Hai Bà Trưng, Hà Nội",
+    "avatar": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150"
+  },
+  {
+    "email": "lan.pham.cantho@gmail.com",
+    "password": "123456",
+    "firstName": "Lan",
+    "lastName": "Phạm Thị",
+    "role": "STUDENT",
+    "phone": "0387654002",
+    "address": "Ninh Kiều, Cần Thơ",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+  },
+  {
+    "email": "viet.hai.k65@sis.hust.edu.vn",
+    "password": "123456",
+    "firstName": "Hải",
+    "lastName": "Nguyễn Việt",
+    "role": "STUDENT",
+    "phone": "0387654003",
+    "address": "Thanh Xuân, Hà Nội",
+    "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150"
+  },
+  {
+    "email": "mai.le.hust@gmail.com",
+    "password": "123456",
+    "firstName": "Mai",
+    "lastName": "Lê Thị",
+    "role": "STUDENT",
+    "phone": "0387654004",
+    "address": "Đống Đa, Hà Nội",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+  },
+  {
+    "email": "tuan.vu.soict@gmail.com",
+    "password": "123456",
+    "firstName": "Tuấn",
+    "lastName": "Vũ Minh",
+    "role": "STUDENT",
+    "phone": "0387654005",
+    "address": "Hai Bà Trưng, Hà Nội",
+    "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150"
+  },
+  {
+    "email": "phuongthao.hueuni@gmail.com",
+    "password": "123456",
+    "firstName": "Thảo",
+    "lastName": "Hoàng Phương",
+    "role": "STUDENT",
+    "phone": "0387654006",
+    "address": "Thành phố Huế, Thừa Thiên Huế",
+    "avatar": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150"
+  },
+  {
+    "email": "khoa.dang.k66@sis.hust.edu.vn",
+    "password": "123456",
+    "firstName": "Khoa",
+    "lastName": "Đặng Minh",
+    "role": "STUDENT",
+    "phone": "0387654007",
+    "address": "Từ Sơn, Bắc Ninh",
+    "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150"
+  }
+]
