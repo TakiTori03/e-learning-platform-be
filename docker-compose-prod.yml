@@ -9,6 +9,8 @@ x-common-env: &common-env
   SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
   KAFKA_BOOTSTRAP_SERVERS: kafka:29092
   DB_HOST: postgres-db
+  DB_USER: postgres
+  DB_PASSWORD: password
   REDIS_HOST: redis
   MINIO_ENDPOINT: http://minio:9000
   ELASTICSEARCH_URI: http://elasticsearch:9200
@@ -32,6 +34,7 @@ services:
     - 5432:5432
     volumes:
     - postgres_data_prod:/var/lib/postgresql/data
+    - ./docker_dev/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
