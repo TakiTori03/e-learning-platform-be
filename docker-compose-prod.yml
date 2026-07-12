@@ -12,6 +12,8 @@ x-common-env: &common-env
   DB_USER: postgres
   DB_PASSWORD: password
   REDIS_HOST: redis
+  SPRING_DATA_REDIS_HOST: redis
+  SPRING_DATA_REDIS_PORT: 6379
   MINIO_ENDPOINT: http://minio:9000
   ELASTICSEARCH_URI: http://elasticsearch:9200
   KAFKA_SERVER: kafka:29092
