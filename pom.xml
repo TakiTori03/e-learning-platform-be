@@ -11,7 +11,7 @@
 
     <groupId>com.hust</groupId>
     <artifactId>e-learning-platform</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>e-learning-platform</name>
 
