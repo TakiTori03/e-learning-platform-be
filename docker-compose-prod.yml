@@ -17,7 +17,7 @@ x-common-env: &common-env
   MINIO_ENDPOINT: http://minio:9000
   ELASTICSEARCH_URI: http://elasticsearch:9200
   KAFKA_SERVER: kafka:29092
-  KEYCLOAK_ISSUER_URI: http://${VPS_HOST}:8443/realms/elearning-realm
+  KEYCLOAK_ISSUER_URI: https://auth.hust-elearning.online/realms/elearning-realm
   KEYCLOAK_JWKS_URI: http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs
 
 services:
