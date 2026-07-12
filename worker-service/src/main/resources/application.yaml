@@ -35,7 +35,7 @@ eureka:
     fetch-registry: true
 
 app:
-  frontend-url: ${FRONTEND_URL:https://e-learning-platform-web.vercel.app}
+  frontend-url: ${FRONTEND_URL:https://app.hust-elearning.online}
   storage:
     local-path: ${STORAGE_LOCAL_PATH:./uploads}
   ffmpeg:

@@ -27,7 +27,7 @@ public class NewsletterScheduler {
     private final EmailService emailService;
     private final CourseClient courseClient;
 
-    @Value("${app.frontend-url:https://e-learning-platform-web.vercel.app}")
+    @Value("${app.frontend-url:https://app.hust-elearning.online}")
     private String frontendUrl;
 
     // Cron job running at 8 AM on the 1st day of every month

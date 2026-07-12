@@ -11,7 +11,7 @@ public final class AppConstants {
     public static final String BACKEND_PREFIX = "/api/v1";
     public static final String PHONE_NUMBER = "^\\+?[0-9]{10,15}$";
 
-    public static final String FRONTEND_HOST = "https://e-learning-platform-web.vercel.app";
+    public static final String FRONTEND_HOST = "https://app.hust-elearning.online";
     public static final String BACKEND_HOST = "https://api.hust-elearning.online";
 
     public static final String DEFAULT_PAGE_NUMBER = "1";

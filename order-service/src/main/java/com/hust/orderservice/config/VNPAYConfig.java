@@ -17,6 +17,6 @@ public class VNPAYConfig {
     @Value("${payment.vnpay.url:https://sandbox.vnpayment.vn/paymentv2/vpcpay.html}")
     private String vnpPayUrl;
 
-    @Value("${payment.vnpay.return-url:https://e-learning-platform-web.vercel.app/order/vnpay-return}")
+    @Value("${payment.vnpay.return-url:https://app.hust-elearning.online/order/vnpay-return}")
     private String vnpReturnUrl;
 }

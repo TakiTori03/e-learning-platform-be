@@ -82,4 +82,4 @@ payment:
     tmn-code: ${VNPAY_TMN_CODE:DSN2ECPX}
     hash-secret: ${VNPAY_HASH_SECRET:A0M6XA158VQMXQJ7TMB96L6MB6DHO1JA}
     url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-    return-url: ${VNPAY_RETURN_URL:https://e-learning-platform-web.vercel.app/order/vnpay-return}
+    return-url: ${VNPAY_RETURN_URL:https://app.hust-elearning.online/order/vnpay-return}

@@ -84,7 +84,7 @@ spring:
       globalcors:
         cors-configurations:
           "[/**]":
-            allowedOrigins: ${CORS_ALLOWED_ORIGINS:https://e-learning-platform-web.vercel.app}
+            allowedOrigins: ${CORS_ALLOWED_ORIGINS:https://app.hust-elearning.online}
             allowedMethods: "*"
             allowedHeaders: "*"
             allowCredentials: true

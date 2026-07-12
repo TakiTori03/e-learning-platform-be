@@ -20,9 +20,11 @@ x-common-env: &common-env
   KEYCLOAK_ISSUER_URI: https://auth.hust-elearning.online/realms/elearning-realm
   KEYCLOAK_JWKS_URI: http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs
   KEYCLOAK_AUTH_URL: http://keycloak:8080
-  FRONTEND_URL: https://e-learning-platform-web.vercel.app
-  VNPAY_RETURN_URL: https://e-learning-platform-web.vercel.app/order/vnpay-return
+  FRONTEND_URL: https://app.hust-elearning.online
+  VNPAY_RETURN_URL: https://app.hust-elearning.online/order/vnpay-return
   BACKEND_URL: https://api.hust-elearning.online
+  COOKIE_DOMAIN: hust-elearning.online
+  COOKIE_SECURE: "true"
 
 services:
   # ==========================================
@@ -221,7 +223,7 @@ services:
     environment:
       <<: *common-env
       JAVA_TOOL_OPTIONS: -Xmx384m -XX:TieredStopAtLevel=1
-      CORS_ALLOWED_ORIGINS: "https://e-learning-platform-web.vercel.app"
+      CORS_ALLOWED_ORIGINS: "https://app.hust-elearning.online"
     depends_on:
       discovery-service:
         condition: service_healthy

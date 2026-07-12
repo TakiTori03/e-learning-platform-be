@@ -30,8 +30,14 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
     private final OAuth2AuthorizedClientService authorizedClientService;
     private final UserRepository userRepository;
 
-    @Value("${app.frontend-url:https://e-learning-platform-web.vercel.app}")
+    @Value("${app.frontend-url:https://app.hust-elearning.online}")
     private String frontendUrl;
+
+    @Value("${app.cookie-domain:}")
+    private String cookieDomain;
+
+    @Value("${app.cookie-secure:false}")
+    private boolean cookieSecure;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -49,24 +55,30 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         // Đổ Token vào Cookie trả về cho Frontend
         assert client.getAccessToken().getExpiresAt() != null;
-        ResponseCookie accessCookie = ResponseCookie.from(AppConstants.Token_Constants.ACCESS_TOKEN, accessToken)
+        ResponseCookie.ResponseCookieBuilder accessCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.ACCESS_TOKEN, accessToken)
                 .httpOnly(true)
-                .secure(false) // Đặt true nếu chạy HTTPS
+                .secure(cookieSecure)
                 .path("/")
                 .maxAge(client.getAccessToken().getExpiresAt().getEpochSecond() - Instant.now().getEpochSecond())
-                .sameSite("Lax")
-                .build();
-        response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
+                .sameSite("Lax");
+
+        if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+            accessCookieBuilder.domain(cookieDomain);
+        }
+        response.addHeader(HttpHeaders.SET_COOKIE, accessCookieBuilder.build().toString());
 
         if (refreshToken != null) {
-            ResponseCookie refreshCookie = ResponseCookie.from(AppConstants.Token_Constants.REFRESH_TOKEN, refreshToken)
+            ResponseCookie.ResponseCookieBuilder refreshCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.REFRESH_TOKEN, refreshToken)
                     .httpOnly(true)
-                    .secure(false)
+                    .secure(cookieSecure)
                     .path("/")
                     .maxAge(7 * 24 * 60 * 60) // 7 days
-                    .sameSite("Lax")
-                    .build();
-            response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
+                    .sameSite("Lax");
+
+            if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+                refreshCookieBuilder.domain(cookieDomain);
+            }
+            response.addHeader(HttpHeaders.SET_COOKIE, refreshCookieBuilder.build().toString());
         }
 
         log.info("User {} logged in successfully via OAuth2. Redirecting to Frontend...", oidcUser.getEmail());

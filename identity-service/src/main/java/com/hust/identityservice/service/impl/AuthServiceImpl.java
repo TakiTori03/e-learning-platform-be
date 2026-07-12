@@ -42,6 +42,12 @@ public class AuthServiceImpl implements AuthService {
     private final UserMapper userMapper;
     private final TokenBlacklistService tokenBlacklistService;
 
+    @org.springframework.beans.factory.annotation.Value("${app.cookie-domain:}")
+    private String cookieDomain;
+
+    @org.springframework.beans.factory.annotation.Value("${app.cookie-secure:false}")
+    private boolean cookieSecure;
+
     @Override
     @Transactional
     public UserResponse login(LoginRequest request, HttpServletResponse response) {
@@ -196,33 +202,42 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private void setTokenCookies(HttpServletResponse response, AccessTokenResponse tokenResponse) {
-        ResponseCookie accessCookie = ResponseCookie.from(AppConstants.Token_Constants.ACCESS_TOKEN, tokenResponse.getToken())
+        ResponseCookie.ResponseCookieBuilder accessCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.ACCESS_TOKEN, tokenResponse.getToken())
                 .httpOnly(true)
-                .secure(false) // Set to true on HTTPS envs
+                .secure(cookieSecure)
                 .path("/")
                 .maxAge(tokenResponse.getExpiresIn())
-                .sameSite("Lax")
-                .build();
+                .sameSite("Lax");
 
-        ResponseCookie refreshCookie = ResponseCookie.from(AppConstants.Token_Constants.REFRESH_TOKEN, tokenResponse.getRefreshToken())
+        if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+            accessCookieBuilder.domain(cookieDomain);
+        }
+
+        ResponseCookie.ResponseCookieBuilder refreshCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.REFRESH_TOKEN, tokenResponse.getRefreshToken())
                 .httpOnly(true)
-                .secure(false)
+                .secure(cookieSecure)
                 .path("/")
                 .maxAge(tokenResponse.getRefreshExpiresIn() > 0 ? tokenResponse.getRefreshExpiresIn() : 604800)
-                .sameSite("Lax")
-                .build();
+                .sameSite("Lax");
 
-        response.addHeader(HttpHeaders.SET_COOKIE, accessCookie.toString());
-        response.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
+        if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+            refreshCookieBuilder.domain(cookieDomain);
+        }
+
+        response.addHeader(HttpHeaders.SET_COOKIE, accessCookieBuilder.build().toString());
+        response.addHeader(HttpHeaders.SET_COOKIE, refreshCookieBuilder.build().toString());
     }
 
     private void clearCookie(HttpServletResponse response, String name) {
-        ResponseCookie cookie = ResponseCookie.from(name, "")
+        ResponseCookie.ResponseCookieBuilder cookieBuilder = ResponseCookie.from(name, "")
                 .httpOnly(true)
                 .path("/")
-                .maxAge(0)
-                .build();
-        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+                .maxAge(0);
+
+        if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+            cookieBuilder.domain(cookieDomain);
+        }
+        response.addHeader(HttpHeaders.SET_COOKIE, cookieBuilder.build().toString());
     }
 
     private String extractCookie(HttpServletRequest request, String name) {

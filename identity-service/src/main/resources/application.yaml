@@ -69,7 +69,9 @@ spring:
     client-secret: ${KEYCLOAK_CLIENT_SECRET:Q00zTTG1USNRQqniiMfhFaplnxNRehjj}
 
 app:
-  frontend-url: ${FRONTEND_URL:https://e-learning-platform-web.vercel.app}
+  frontend-url: ${FRONTEND_URL:https://app.hust-elearning.online}
+  cookie-domain: ${COOKIE_DOMAIN:}
+  cookie-secure: ${COOKIE_SECURE:false}
 
 eureka:
   instance:
