@@ -67,8 +67,8 @@ public class VNPAYServiceImpl implements VNPAYService {
     @Override
     public Boolean verifyCallback(Map<String, String> queryParams) {
         String vnp_SecureHash = queryParams.get("vnp_SecureHash");
-        if ("mock_hash".equals(vnp_SecureHash)) {
-            return true; // Bypass signature verification for load testing
+        if (vnp_SecureHash == null) {
+            return false;
         }
         Map<String, String> fields = new HashMap<>();
         for (Map.Entry<String, String> entry : queryParams.entrySet()) {

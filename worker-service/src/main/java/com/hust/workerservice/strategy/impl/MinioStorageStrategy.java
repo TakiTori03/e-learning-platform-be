@@ -69,12 +69,12 @@ public class MinioStorageStrategy implements StorageStrategy {
 
     @Override
     public void deleteFile(String fileUrl) {
-        String key;
-        String prefix = endpoint + "/" + bucketName + "/";
-        if (fileUrl.startsWith(prefix)) {
-            key = fileUrl.substring(prefix.length());
-        } else {
-            key = fileUrl;
+        if (fileUrl == null || fileUrl.isBlank()) return;
+        String key = fileUrl;
+        String bucketPart = bucketName + "/";
+        int index = fileUrl.indexOf(bucketPart);
+        if (index != -1) {
+            key = fileUrl.substring(index + bucketPart.length());
         }
         s3Client.deleteObject(bucketName, key);
     }
@@ -84,12 +84,14 @@ public class MinioStorageStrategy implements StorageStrategy {
     @Override
     public void downloadFileToLocal(String path, java.io.File destinationFile) throws IOException {
         log.info("Streaming direct file download from MinIO to local path: {}", destinationFile.getAbsolutePath());
-        String key;
-        String prefix = endpoint + "/" + bucketName + "/";
-        if (path != null && path.startsWith(prefix)) {
-            key = path.substring(prefix.length());
-        } else {
-            key = path;
+        if (path == null || path.isBlank()) {
+            throw new IOException("Path cannot be empty");
+        }
+        String key = path;
+        String bucketPart = bucketName + "/";
+        int index = path.indexOf(bucketPart);
+        if (index != -1) {
+            key = path.substring(index + bucketPart.length());
         }
         try (S3Object s3Object = s3Client.getObject(bucketName, key);
              java.io.InputStream in = s3Object.getObjectContent()) {

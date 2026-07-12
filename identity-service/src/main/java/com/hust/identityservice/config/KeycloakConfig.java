@@ -14,6 +14,9 @@ public class KeycloakConfig {
     @Value("${spring.keycloak.auth-server-url}")
     private String serverUrl;
 
+    @Value("${spring.keycloak.auth-public-url:${spring.keycloak.auth-server-url}}")
+    private String publicUrl;
+
     @Value("${spring.keycloak.realm}")
     private String realm;
 

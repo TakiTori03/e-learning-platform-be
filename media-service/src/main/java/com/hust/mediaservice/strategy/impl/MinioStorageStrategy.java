@@ -80,12 +80,12 @@ public class MinioStorageStrategy implements StorageStrategy {
 
     @Override
     public void deleteFile(String fileUrl) {
-        String key;
-        String prefix = endpoint + "/" + bucketName + "/";
-        if (fileUrl.startsWith(prefix)) {
-            key = fileUrl.substring(prefix.length());
-        } else {
-            key = fileUrl;
+        if (fileUrl == null || fileUrl.isBlank()) return;
+        String key = fileUrl;
+        String bucketPart = bucketName + "/";
+        int index = fileUrl.indexOf(bucketPart);
+        if (index != -1) {
+            key = fileUrl.substring(index + bucketPart.length());
         }
         s3Client.deleteObject(bucketName, key);
     }

@@ -48,7 +48,7 @@ public class VNPAYUtils {
                 if ((fieldValue != null) && (fieldValue.length() > 0)) {
                     hashData.append(fieldName);
                     hashData.append('=');
-                    hashData.append(URLEncoder.encode(fieldValue, StandardCharsets.US_ASCII.toString()));
+                    hashData.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
                     if (itr.hasNext()) {
                         hashData.append('&');
                     }
@@ -73,9 +73,9 @@ public class VNPAYUtils {
                 String fieldName = itr.next();
                 String fieldValue = fields.get(fieldName);
                 if ((fieldValue != null) && (fieldValue.length() > 0)) {
-                    query.append(URLEncoder.encode(fieldName, StandardCharsets.US_ASCII.toString()));
+                    query.append(URLEncoder.encode(fieldName, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
                     query.append('=');
-                    query.append(URLEncoder.encode(fieldValue, StandardCharsets.US_ASCII.toString()));
+                    query.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
                     if (itr.hasNext()) {
                         query.append('&');
                     }

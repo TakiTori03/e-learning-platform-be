@@ -16,7 +16,7 @@ public interface AuthService {
     
     UserResponse registerInstructor(InstructorRegistrationRequest request);
     
-    void logout(HttpServletRequest request, HttpServletResponse response);
+    com.hust.identityservice.dto.response.LogoutResponse logout(HttpServletRequest request, HttpServletResponse response);
     
     void refreshToken(HttpServletRequest request, HttpServletResponse response);
     

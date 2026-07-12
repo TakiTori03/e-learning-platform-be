@@ -81,6 +81,20 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
             response.addHeader(HttpHeaders.SET_COOKIE, refreshCookieBuilder.build().toString());
         }
 
+        // Đổ ID Token vào Cookie để dùng cho luồng Logout (id_token_hint)
+        String idToken = oidcUser.getIdToken().getTokenValue();
+        ResponseCookie.ResponseCookieBuilder idCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.ID_TOKEN, idToken)
+                .httpOnly(true)
+                .secure(cookieSecure)
+                .path("/")
+                .maxAge(7 * 24 * 60 * 60) // 7 days (matches refresh token)
+                .sameSite("Lax");
+
+        if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+            idCookieBuilder.domain(cookieDomain);
+        }
+        response.addHeader(HttpHeaders.SET_COOKIE, idCookieBuilder.build().toString());
+
         log.info("User {} logged in successfully via OAuth2. Redirecting to Frontend...", oidcUser.getEmail());
 
         // Redirect về Frontend sau khi xử lý xong

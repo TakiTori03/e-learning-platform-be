@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.hust.identityservice.dto.response.LogoutResponse;
+
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -53,12 +55,13 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<ApiResponse<Void>> logout(
+    public ResponseEntity<ApiResponse<LogoutResponse>> logout(
             HttpServletRequest request, HttpServletResponse response) {
-        authService.logout(request, response);
+        LogoutResponse logoutResponse = authService.logout(request, response);
         return ResponseEntity.ok(
-                ApiResponse.<Void>builder()
+                ApiResponse.<LogoutResponse>builder()
                         .success(true)
+                        .payload(logoutResponse)
                         .build()
         );
     }

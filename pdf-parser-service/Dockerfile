@@ -19,14 +19,13 @@ EXPOSE 8090
 # Tắt CUDA cho PaddleOCR vì VPS dùng CPU
 ENV PADDLE_WITH_CUDA=OFF
 
-# MinIO Configuration
-ENV MINIO_ENDPOINT=http://localhost:9100
+ENV MINIO_ENDPOINT=http://minio:9000
 ENV MINIO_ACCESS_KEY=minioadmin
 ENV MINIO_SECRET_KEY=minioadmin
 ENV MINIO_BUCKET=elearning-media
 
 # Kafka Configuration
-ENV KAFKA_BOOTSTRAP_SERVERS=localhost:9092
+ENV KAFKA_BOOTSTRAP_SERVERS=kafka:29092
 ENV KAFKA_GROUP_ID=pdf-parser-service-group
 ENV PDF_PARSER_REQUESTS_TOPIC=pdf-parser-requests-topic
 ENV PDF_PARSER_RESULTS_TOPIC=pdf-parser-results-topic

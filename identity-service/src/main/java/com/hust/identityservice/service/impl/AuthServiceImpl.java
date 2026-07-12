@@ -41,12 +41,16 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final TokenBlacklistService tokenBlacklistService;
+    private final com.hust.identityservice.config.KeycloakConfig keycloakConfig;
 
     @org.springframework.beans.factory.annotation.Value("${app.cookie-domain:}")
     private String cookieDomain;
 
     @org.springframework.beans.factory.annotation.Value("${app.cookie-secure:false}")
     private boolean cookieSecure;
+
+    @org.springframework.beans.factory.annotation.Value("${app.frontend-url:https://app.hust-elearning.online}")
+    private String frontendUrl;
 
     @Override
     @Transactional
@@ -128,8 +132,9 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void logout(HttpServletRequest request, HttpServletResponse response) {
+    public com.hust.identityservice.dto.response.LogoutResponse logout(HttpServletRequest request, HttpServletResponse response) {
         String refreshToken = extractCookie(request, AppConstants.Token_Constants.REFRESH_TOKEN);
+        String idToken = extractCookie(request, AppConstants.Token_Constants.ID_TOKEN);
 
         if (refreshToken != null && !refreshToken.isEmpty()) {
             authRepository.logout(refreshToken);
@@ -142,8 +147,21 @@ public class AuthServiceImpl implements AuthService {
 
         clearCookie(response, AppConstants.Token_Constants.ACCESS_TOKEN);
         clearCookie(response, AppConstants.Token_Constants.REFRESH_TOKEN);
+        clearCookie(response, AppConstants.Token_Constants.ID_TOKEN);
 
-        log.info("BFF: Tokens cleared and blacklisted. Logout complete.");
+        // Xây dựng Keycloak frontchannel logout URL (OIDC RP-Initiated Logout)
+        String logoutUrl = String.format("%s/realms/%s/protocol/openid-connect/logout?client_id=%s&post_logout_redirect_uri=%s",
+                keycloakConfig.getPublicUrl(),
+                keycloakConfig.getRealm(),
+                keycloakConfig.getClientId(),
+                frontendUrl);
+
+        if (idToken != null && !idToken.isEmpty()) {
+            logoutUrl += "&id_token_hint=" + idToken;
+        }
+
+        log.info("BFF: Tokens cleared and blacklisted. Logout redirect URL generated: {}", logoutUrl);
+        return new com.hust.identityservice.dto.response.LogoutResponse(logoutUrl);
     }
 
     @Override
@@ -226,13 +244,29 @@ public class AuthServiceImpl implements AuthService {
 
         response.addHeader(HttpHeaders.SET_COOKIE, accessCookieBuilder.build().toString());
         response.addHeader(HttpHeaders.SET_COOKIE, refreshCookieBuilder.build().toString());
+
+        if (tokenResponse.getIdToken() != null && !tokenResponse.getIdToken().isEmpty()) {
+            ResponseCookie.ResponseCookieBuilder idCookieBuilder = ResponseCookie.from(AppConstants.Token_Constants.ID_TOKEN, tokenResponse.getIdToken())
+                    .httpOnly(true)
+                    .secure(cookieSecure)
+                    .path("/")
+                    .maxAge(tokenResponse.getRefreshExpiresIn() > 0 ? tokenResponse.getRefreshExpiresIn() : 604800)
+                    .sameSite("Lax");
+
+            if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
+                idCookieBuilder.domain(cookieDomain);
+            }
+            response.addHeader(HttpHeaders.SET_COOKIE, idCookieBuilder.build().toString());
+        }
     }
 
     private void clearCookie(HttpServletResponse response, String name) {
         ResponseCookie.ResponseCookieBuilder cookieBuilder = ResponseCookie.from(name, "")
                 .httpOnly(true)
+                .secure(cookieSecure)
                 .path("/")
-                .maxAge(0);
+                .maxAge(0)
+                .sameSite("Lax");
 
         if (cookieDomain != null && !cookieDomain.trim().isEmpty()) {
             cookieBuilder.domain(cookieDomain);

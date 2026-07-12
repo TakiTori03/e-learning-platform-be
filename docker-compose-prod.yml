@@ -20,6 +20,7 @@ x-common-env: &common-env
   KEYCLOAK_ISSUER_URI: https://auth.hust-elearning.online/realms/elearning-realm
   KEYCLOAK_JWKS_URI: http://keycloak:8080/realms/elearning-realm/protocol/openid-connect/certs
   KEYCLOAK_AUTH_URL: http://keycloak:8080
+  KEYCLOAK_AUTH_PUBLIC_URL: https://auth.hust-elearning.online
   FRONTEND_URL: https://app.hust-elearning.online
   VNPAY_RETURN_URL: https://app.hust-elearning.online/order/vnpay-return
   BACKEND_URL: https://api.hust-elearning.online
@@ -400,6 +401,8 @@ services:
     container_name: stt-service
     environment:
       <<: *common-env
+      MINIO_ENDPOINT: http://minio:9000
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     networks:
     - elearning-network
     restart: unless-stopped
@@ -409,6 +412,8 @@ services:
     container_name: pdf-parser-service
     environment:
       <<: *common-env
+      MINIO_ENDPOINT: http://minio:9000
+      KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     networks:
     - elearning-network
     restart: unless-stopped
