@@ -473,7 +473,7 @@ def kafka_consumer_loop():
         'group.id': KAFKA_GROUP_ID,
         'auto.offset.reset': 'earliest',
         'enable.auto.commit': False,
-        'max.poll.interval.ms': 600000,  # 10 phút timeout cho OCR nặng
+        'max.poll.interval.ms': 1800000,  # 30 minutes timeout for heavy OCR PDFs
     }
     
     consumer = Consumer(conf)

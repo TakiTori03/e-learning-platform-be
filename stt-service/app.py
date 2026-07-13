@@ -223,7 +223,7 @@ def kafka_consumer_loop():
         'group.id': KAFKA_GROUP_ID,
         'auto.offset.reset': 'earliest',
         'enable.auto.commit': False, # Commit thủ công để đảm bảo không mất mát tin nhắn
-        'max.poll.interval.ms': 900000, # 15 minutes processing timeout
+        'max.poll.interval.ms': 7200000, # 2 hours processing timeout for long audios on CPU
     }
     
     consumer = Consumer(conf)
