@@ -41,17 +41,15 @@ public class VNPAYUtils {
             List<String> fieldNames = new ArrayList<>(fields.keySet());
             Collections.sort(fieldNames);
             StringBuilder hashData = new StringBuilder();
-            Iterator<String> itr = fieldNames.iterator();
-            while (itr.hasNext()) {
-                String fieldName = itr.next();
+            for (String fieldName : fieldNames) {
                 String fieldValue = fields.get(fieldName);
-                if ((fieldValue != null) && (fieldValue.length() > 0)) {
-                    hashData.append(fieldName);
-                    hashData.append('=');
-                    hashData.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
-                    if (itr.hasNext()) {
+                if (fieldValue != null && fieldValue.length() > 0) {
+                    if (hashData.length() > 0) {
                         hashData.append('&');
                     }
+                    hashData.append(fieldName);
+                    hashData.append('=');
+                    hashData.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()));
                 }
             }
             return hmacSHA512(hashSecret, hashData.toString());
@@ -61,24 +59,22 @@ public class VNPAYUtils {
     }
 
     /**
-     * Build the query string for URL (UTF-8, space encoded as %20)
+     * Build the query string for URL (UTF-8, space encoded as +)
      */
     public static String buildQueryUrl(Map<String, String> fields) {
         try {
             List<String> fieldNames = new ArrayList<>(fields.keySet());
             Collections.sort(fieldNames);
             StringBuilder query = new StringBuilder();
-            Iterator<String> itr = fieldNames.iterator();
-            while (itr.hasNext()) {
-                String fieldName = itr.next();
+            for (String fieldName : fieldNames) {
                 String fieldValue = fields.get(fieldName);
-                if ((fieldValue != null) && (fieldValue.length() > 0)) {
-                    query.append(URLEncoder.encode(fieldName, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
-                    query.append('=');
-                    query.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()).replace("+", "%20"));
-                    if (itr.hasNext()) {
+                if (fieldValue != null && fieldValue.length() > 0) {
+                    if (query.length() > 0) {
                         query.append('&');
                     }
+                    query.append(URLEncoder.encode(fieldName, StandardCharsets.UTF_8.toString()));
+                    query.append('=');
+                    query.append(URLEncoder.encode(fieldValue, StandardCharsets.UTF_8.toString()));
                 }
             }
             return query.toString();
