@@ -31,9 +31,14 @@ public class VNPAYServiceImpl implements VNPAYService {
         // Nén UUID 36 ký tự thành 22 ký tự để đảm bảo luôn dưới giới hạn 30 của VNPay
         String vnp_TxnRef = VNPAYUtils.encodeOrderId(orderId);
 
-        // Chuẩn hóa IP (VNPay không hỗ trợ IPv6 localhost)
-        String vnp_IpAddr = (ipAddress.equals("0:0:0:0:0:0:0:1") || ipAddress.equals("[0:0:0:0:0:0:0:1]")) 
-                            ? "127.0.0.1" : ipAddress;
+        // Chuẩn hóa IP (VNPay không hỗ trợ IPv6 localhost hoặc danh sách nhiều IP do proxy)
+        String vnp_IpAddr = ipAddress;
+        if (vnp_IpAddr != null && vnp_IpAddr.contains(",")) {
+            vnp_IpAddr = vnp_IpAddr.split(",")[0].trim();
+        }
+        if (vnp_IpAddr == null || vnp_IpAddr.equals("0:0:0:0:0:0:0:1") || vnp_IpAddr.equals("[0:0:0:0:0:0:0:1]")) {
+            vnp_IpAddr = "127.0.0.1";
+        }
 
         Map<String, String> vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
