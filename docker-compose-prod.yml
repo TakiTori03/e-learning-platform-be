@@ -403,6 +403,8 @@ services:
       <<: *common-env
       MINIO_ENDPOINT: http://minio:9000
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      WHISPER_DEVICE: cpu
+      WHISPER_COMPUTE_TYPE: int8
     networks:
     - elearning-network
     restart: unless-stopped
@@ -414,6 +416,7 @@ services:
       <<: *common-env
       MINIO_ENDPOINT: http://minio:9000
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      USE_GPU: "false"
     networks:
     - elearning-network
     restart: unless-stopped

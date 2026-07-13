@@ -61,12 +61,18 @@ app = FastAPI(
     version="2.2.0"
 )
 
-# Khởi tạo PaddleOCR chạy 100% trên GPU CUDA (Mặc định)
-try:
-    ocr_engine = PaddleOCR(use_angle_cls=True, lang="vi", use_gpu=True, gpu_mem=1000, show_log=False)
-    print("🚀 PaddleOCR khởi tạo thành công chạy 100% trên GPU CUDA!")
-except Exception as e:
-    print(f"⚠️ Cảnh báo khởi tạo GPU: {e}. Chuyển sang CPU.")
+# Kiểm tra cấu hình sử dụng GPU từ biến môi trường (Mặc định False/CPU cho môi trường deploy không có GPU)
+USE_GPU = os.getenv("USE_GPU", "False").lower() in ("true", "1", "yes")
+
+if USE_GPU:
+    try:
+        ocr_engine = PaddleOCR(use_angle_cls=True, lang="vi", use_gpu=True, gpu_mem=1000, show_log=False)
+        print("🚀 PaddleOCR khởi tạo thành công chạy 100% trên GPU CUDA!")
+    except Exception as e:
+        print(f"⚠️ Cảnh báo khởi tạo GPU thất bại: {e}. Chuyển sang CPU.")
+        ocr_engine = PaddleOCR(use_angle_cls=True, lang="vi", use_gpu=False, show_log=False)
+else:
+    print("💻 PaddleOCR khởi tạo chạy trên CPU (Cấu hình USE_GPU=False).")
     ocr_engine = PaddleOCR(use_angle_cls=True, lang="vi", use_gpu=False, show_log=False)
 
 # Cấu hình Lazy Initialization cho bộ OCR dự phòng chạy trên CPU
