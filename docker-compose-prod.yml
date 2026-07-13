@@ -49,6 +49,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -66,6 +71,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -82,6 +92,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -111,6 +126,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -143,6 +163,11 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -165,6 +190,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
 
@@ -186,6 +216,11 @@ services:
       interval: 15s
       timeout: 5s
       retries: 10
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
 
@@ -212,6 +247,11 @@ services:
       interval: 15s
       timeout: 5s
       retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -228,6 +268,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -243,6 +288,11 @@ services:
         condition: service_healthy
       postgres-db:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -260,6 +310,11 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -277,6 +332,11 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -293,6 +353,11 @@ services:
         condition: service_healthy
       mongo-db:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -307,6 +372,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -322,6 +392,11 @@ services:
         condition: service_healthy
       postgres-db:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -336,6 +411,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -350,6 +430,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -363,6 +448,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -376,6 +466,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -392,6 +487,11 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -405,6 +505,11 @@ services:
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       WHISPER_DEVICE: cpu
       WHISPER_COMPUTE_TYPE: int8
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
@@ -417,6 +522,11 @@ services:
       MINIO_ENDPOINT: http://minio:9000
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
       USE_GPU: "false"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
     networks:
     - elearning-network
     restart: unless-stopped
