@@ -25,7 +25,7 @@ public class VNPAYUtils {
             byte[] result = hmac512.doFinal(dataBytes);
             StringBuilder sb = new StringBuilder(2 * result.length);
             for (byte b : result) {
-                sb.append(String.format("%02x", b & 0xff));
+                sb.append(String.format("%02X", b & 0xff));
             }
             return sb.toString();
         } catch (Exception ex) {
