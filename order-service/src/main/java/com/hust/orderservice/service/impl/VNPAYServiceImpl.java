@@ -5,10 +5,12 @@ import com.hust.orderservice.utils.VNPAYUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
+@Slf4j
 public class VNPAYServiceImpl implements VNPAYService {
 
     @Value("${payment.vnpay.tmn-code}")
@@ -62,12 +64,18 @@ public class VNPAYServiceImpl implements VNPAYService {
         vnp_Params.put("vnp_ExpireDate", formatter.format(cld.getTime()));
 
         // 1. Tính toán chữ ký trên dữ liệu RAW (chuẩn 2.1.0)
+        log.info("VNPAY Creation - tmnCode: {}, hashSecret (masked): {}", 
+                 tmnCode, 
+                 (hashSecret != null && hashSecret.length() > 6) ? hashSecret.substring(0, 3) + "***" + hashSecret.substring(hashSecret.length() - 3) : "null");
         String vnp_SecureHash = VNPAYUtils.hashAllFields(hashSecret, vnp_Params);
         
         // 2. Tạo Query String với dữ liệu đã ENCODE
         String queryUrl = VNPAYUtils.buildQueryUrl(vnp_Params);
 
-        return vnpPayUrl + "?" + queryUrl + "&vnp_SecureHash=" + vnp_SecureHash;
+        String redirectUrl = vnpPayUrl + "?" + queryUrl + "&vnp_SecureHash=" + vnp_SecureHash;
+        log.info("Generated VNPAY Redirect URL: {}", redirectUrl);
+
+        return redirectUrl;
     }
 
     @Override
