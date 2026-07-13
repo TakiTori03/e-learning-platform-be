@@ -39,8 +39,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: elearning
-    ports:
-    - 5432:5432
     volumes:
     - postgres_data_prod:/var/lib/postgresql/data
     - ./docker_dev/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
@@ -62,8 +60,6 @@ services:
     image: mongo:latest
     container_name: elearning-mongodb
     command: mongod --wiredTigerCacheSizeGB 0.25
-    ports:
-    - 27017:27017
     volumes:
     - mongodb_data_prod:/data/db
     healthcheck:
@@ -200,9 +196,6 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
     container_name: elearning-elasticsearch
-    ports:
-    - 9200:9200
-    - 9300:9300
     environment:
       discovery.type: single-node
       xpack.security.enabled: 'false'
