@@ -15,10 +15,12 @@ public class OrderItem {
     
     private String courseId;
     
+    @Column(columnDefinition = "TEXT")
     private String name;
     
     @Column(precision = 19, scale = 2)
     private BigDecimal finalPrice;
     
+    @Column(columnDefinition = "TEXT")
     private String thumbnail;
 }
