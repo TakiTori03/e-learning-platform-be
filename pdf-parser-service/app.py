@@ -425,9 +425,9 @@ def process_pdf_from_minio_key(file_url: str) -> dict:
     temp_dir = tempfile.mkdtemp(prefix="pdf-kafka-")
     
     # Trích xuất object key
-    prefix = f"{MINIO_ENDPOINT}/{MINIO_BUCKET}/"
-    if file_url.startswith(prefix):
-        object_key = file_url[len(prefix):]
+    bucket_marker = f"/{MINIO_BUCKET}/"
+    if bucket_marker in file_url:
+        object_key = file_url.split(bucket_marker, 1)[1]
     else:
         object_key = file_url
     

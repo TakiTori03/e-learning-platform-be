@@ -217,6 +217,9 @@ public class VideoProcessingConsumer {
 
     @DltHandler
     public void handleDlt(MediaProcessingRequestEvent event, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+        if (!"VIDEO".equalsIgnoreCase(event.getMediaType())) {
+            return;
+        }
         log.error("❌ [DLQ] Xử lý Video/STT cho lesson {} thất bại hoàn toàn sau tất cả các lần thử lại tại topic: {}", event.getLessonId(), topic);
         try {
             LessonMediaReadyEvent failedEvent = LessonMediaReadyEvent.builder()
