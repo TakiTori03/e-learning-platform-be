@@ -173,7 +173,7 @@ public class MediaService {
         return SecurityUtils.getCurrentUserIdOrThrow();
     }
 
-    @CustomCache(key = "'media:access:' + #userId + ':' + #lessonId", ttl = 5)
+    @CustomCache(key = "'media:access:' + #userId + ':' + #lessonId", ttl = 5, unit = java.util.concurrent.TimeUnit.SECONDS)
     public boolean checkLessonAccess(String userId, String lessonId) {
         log.debug("🔑 [CustomCache MISS] Checking access for userId {} and lessonId {} via learning-service Feign", userId, lessonId);
         ApiResponse<Boolean> accessResponse = learningClient.checkLessonAccess(userId, lessonId);
