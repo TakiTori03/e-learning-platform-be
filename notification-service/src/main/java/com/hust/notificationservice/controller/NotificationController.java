@@ -18,7 +18,8 @@ public class NotificationController {
     private final NotificationService notificationService;
 
     @GetMapping
-    public ApiResponse<ListResponse<Notification>> getNotifications(Pageable pageable) {
+    public ApiResponse<ListResponse<Notification>> getNotifications(
+            @org.springframework.data.web.PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         String userId = SecurityUtils.getCurrentUserIdOrThrow();
         Page<Notification> page = notificationService.getNotifications(userId, pageable);
         return ApiResponse.<ListResponse<Notification>>builder()

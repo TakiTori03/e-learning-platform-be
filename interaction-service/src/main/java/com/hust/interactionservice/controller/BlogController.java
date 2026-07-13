@@ -69,7 +69,7 @@ public class BlogController {
     @GetMapping("/topics/search")
     public ResponseEntity<ApiResponse<ListResponse<BlogTopicResponse>>> searchTopics(
             @RequestParam(name = "q", required = false) String text,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<BlogTopicResponse>>builder()
                         .success(true)
@@ -179,7 +179,7 @@ public class BlogController {
             @RequestParam(value = "tag", required = false) String tag,
             @RequestParam(value = "author", required = false) String authorId,
             @RequestParam(value = "excludeIds", required = false) List<String> excludeIds,
-            @PageableDefault(size = 10) Pageable pageable) {
+            @PageableDefault(size = 10, sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<BlogPostResponse>>builder()
                 .success(true)
                 .payload(blogService.getPublishedBlogPosts(topicId, search, tag, authorId, excludeIds, pageable))
@@ -192,7 +192,7 @@ public class BlogController {
             @RequestParam(value = "topic", required = false) String topicId,
             @RequestParam(value = "status", required = false) BlogStatus status,
             @RequestParam(value = "search", required = false) String search,
-            @PageableDefault(size = 10) Pageable pageable) {
+            @PageableDefault(size = 10, sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<BlogPostResponse>>builder()
                 .success(true)
                 .payload(blogService.getMyBlogPosts(topicId, status, search, pageable))
@@ -217,7 +217,7 @@ public class BlogController {
             @RequestParam(value = "isPinned", required = false) Boolean isPinned,
             @RequestParam(value = "hasReports", required = false) Boolean hasReports,
             @RequestParam(value = "search", required = false) String search,
-            @PageableDefault(size = 10) Pageable pageable) {
+            @PageableDefault(size = 10, sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<BlogPostResponse>>builder()
                 .success(true)
                 .payload(blogService.getAdminManagedBlogPosts(topicId, status, authorId, isPinned, hasReports, search, pageable))
@@ -274,7 +274,7 @@ public class BlogController {
     @GetMapping("/{id}/comments")
     public ResponseEntity<ApiResponse<ListResponse<BlogCommentResponse>>> getComments(
             @PathVariable String id,
-            @PageableDefault(size = 10) Pageable pageable) {
+            @PageableDefault(size = 10, sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<BlogCommentResponse>>builder()
                 .success(true)
                 .payload(blogService.getComments(id, pageable))

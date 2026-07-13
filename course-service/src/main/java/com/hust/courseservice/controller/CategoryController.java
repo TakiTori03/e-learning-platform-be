@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Sort;
+
 import java.util.List;
 
 @RestController
@@ -54,7 +56,7 @@ public class CategoryController {
     @GetMapping("/search")
     public ResponseEntity<ApiResponse<ListResponse<CategoryResponse>>> search(
             @RequestParam(name = "q", required = false) String text,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<CategoryResponse>>builder()
                         .success(true)

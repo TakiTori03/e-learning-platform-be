@@ -41,7 +41,7 @@ public class DiscussionController {
     @GetMapping("/lesson/{lessonId}")
     public ResponseEntity<ApiResponse<ListResponse<DiscussionResponse>>> getDiscussionTree(
             @PathVariable String lessonId,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<DiscussionResponse>>builder()
                 .success(true)
                 .payload(discussionService.getDiscussionTreeByLesson(lessonId, pageable))

@@ -7,6 +7,7 @@ import com.hust.courseservice.dto.response.SectionResponse;
 import com.hust.courseservice.service.SectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,7 +55,7 @@ public class SectionController {
     @GetMapping("/search")
     public ResponseEntity<ApiResponse<ListResponse<SectionResponse>>> search(
             @RequestParam(name = "q", required = false) String text,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<SectionResponse>>builder()
                         .success(true)

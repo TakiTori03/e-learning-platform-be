@@ -51,7 +51,7 @@ public class FeedbackController {
             @RequestParam(required = false) String q,
             @RequestParam(required = false) com.hust.interactionservice.constant.FeedbackType type,
             @RequestParam(required = false) com.hust.interactionservice.constant.FeedbackStatus status,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<FeedbackResponse>>builder()
                         .success(true)

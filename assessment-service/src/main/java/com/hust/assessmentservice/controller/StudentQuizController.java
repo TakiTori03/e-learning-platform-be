@@ -136,7 +136,7 @@ public class StudentQuizController {
             @RequestParam(required = false) String search,
             @RequestParam(required = false) com.hust.commonlibrary.entity.QuizType type,
             @RequestParam(required = false) com.hust.assessmentservice.entity.QuizStatus status,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         String userId = SecurityUtils.getCurrentUserIdOrThrow();
         log.info("Student API: Fetching paged assignments for userId={}, courseIds={}, search={}, type={}, status={}, pageable={}",
                 userId, courseIds, search, type, status, pageable);

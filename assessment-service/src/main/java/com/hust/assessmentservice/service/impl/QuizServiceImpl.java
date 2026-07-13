@@ -108,6 +108,8 @@ public class QuizServiceImpl implements QuizService {
             query.addCriteria(searchCriteria);
         }
 
+        query.with(org.springframework.data.domain.Sort.by(org.springframework.data.domain.Sort.Direction.DESC, "createdAt"));
+
         List<Quiz> quizzes = mongoTemplate.find(query, Quiz.class);
         List<QuizResponse> responses = quizzes.stream()
                 .map(quiz -> toQuizResponse(quiz, false))

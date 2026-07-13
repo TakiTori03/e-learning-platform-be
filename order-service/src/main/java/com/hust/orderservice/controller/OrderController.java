@@ -59,7 +59,7 @@ public class OrderController {
 
     @GetMapping("/mine")
     public ResponseEntity<ApiResponse<com.hust.commonlibrary.dto.ListResponse<OrderResponse>>> getMyOrders(
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         String userId = SecurityUtils.getCurrentUserIdOrThrow();
         log.info("REST request to get all Orders for user: {}, pageable: {}", userId, pageable);
         return ResponseEntity.ok(ApiResponse.<com.hust.commonlibrary.dto.ListResponse<OrderResponse>>builder()

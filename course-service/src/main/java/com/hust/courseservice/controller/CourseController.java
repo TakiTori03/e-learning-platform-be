@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,7 +60,7 @@ public class CourseController {
             @RequestParam(required = false) List<String> levels,
             @RequestParam(required = false) List<String> prices,
             @RequestParam(required = false) Double rating,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
 
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<CourseResponse>>builder()
@@ -77,7 +78,7 @@ public class CourseController {
             @RequestParam(required = false) List<String> levels,
             @RequestParam(required = false) List<String> prices,
             @RequestParam(required = false) Double rating,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
 
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<CourseResponse>>builder()
@@ -304,7 +305,7 @@ public class CourseController {
             @RequestParam(required = false) List<String> prices,
             @RequestParam(required = false) Double rating,
             @RequestParam(required = false) CourseStatus status,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         String instructorId = com.hust.commonlibrary.utils.SecurityUtils.getCurrentUserIdOrThrow();
         log.info("Instructor {} is searching their courses with query q: {}, status: {}", instructorId, q, status);
         return ResponseEntity.ok(
@@ -351,7 +352,7 @@ public class CourseController {
             @RequestParam(required = false) List<String> prices,
             @RequestParam(required = false) Double rating,
             @RequestParam(required = false) CourseStatus status,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<CourseResponse>>builder()
                         .success(true)

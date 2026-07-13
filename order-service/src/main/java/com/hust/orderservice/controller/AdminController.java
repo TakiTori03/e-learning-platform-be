@@ -34,7 +34,7 @@ public class AdminController {
 
     @GetMapping("/orders")
     public ResponseEntity<ApiResponse<ListResponse<OrderResponse>>> getAllOrders(
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         log.info("Admin fetching all orders with pagination: {}", pageable);
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<OrderResponse>>builder()
@@ -108,7 +108,7 @@ public class AdminController {
 
     @GetMapping("/transactions")
     public ResponseEntity<ApiResponse<ListResponse<PaymentResponse>>> getAllTransactions(
-            @PageableDefault(size = 15) Pageable pageable) {
+            @PageableDefault(size = 15, sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         log.info("Admin query: Fetching paginated list of all bank transactions: {}", pageable);
         return ResponseEntity.ok(
                 ApiResponse.<ListResponse<PaymentResponse>>builder()

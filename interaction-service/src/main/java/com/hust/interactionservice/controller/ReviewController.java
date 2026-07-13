@@ -46,7 +46,7 @@ public class ReviewController {
             @PathVariable String courseId,
             @RequestParam(required = false) String _q,
             @RequestParam(required = false) Integer _rating,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<ReviewResponse>>builder()
                 .success(true)
                 .payload(reviewService.getReviewsByCourse(courseId, _q, _rating, pageable))
@@ -58,7 +58,7 @@ public class ReviewController {
             @RequestParam(required = false) String courseId,
             @RequestParam(required = false) String q,
             @RequestParam(required = false) Integer rating,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<ReviewResponse>>builder()
                 .success(true)
                 .payload(reviewService.getInstructorReviews(courseId, q, rating, pageable))
@@ -70,7 +70,7 @@ public class ReviewController {
             @RequestParam(required = false) String courseId,
             @RequestParam(required = false) String q,
             @RequestParam(required = false) Integer rating,
-            @PageableDefault Pageable pageable) {
+            @PageableDefault(sort = "createdAt", direction = org.springframework.data.domain.Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok(ApiResponse.<ListResponse<ReviewResponse>>builder()
                 .success(true)
                 .payload(reviewService.getAdminReviews(courseId, q, rating, pageable))
